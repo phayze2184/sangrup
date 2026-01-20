@@ -189,21 +189,27 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 .hero-right{
   display:flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
   padding-top: 6px;
 }
 
+.hero-description{
+  display:flex;
+  align-items:flex-start;
+  gap: 16px;
+}
+
 .hero-mark{
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1;
-  font-weight: 800;
-  margin-left: 6px;
+  width: clamp(32px, 3vw, 48px);
+  height: auto;
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .hero-text{
   margin: 0;
   color: var(--muted);
-  font-size: clamp(14px, 1.7vw, 16px);
+  font-size: clamp(14px, 4vw, 16px);
   line-height: 1.65;
   max-width: 44ch;
 }
