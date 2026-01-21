@@ -289,5 +289,4 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 @media (max-width: 479px){
   .container { width: min(var(--container), calc(100% - 28px)); }
   .hero { padding-top: 42px; }
-  .brand-logo { height: clamp(28px, 2vw, 38px); }
 }
