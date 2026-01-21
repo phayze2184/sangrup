@@ -59,7 +59,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 }
 
 .brand { display:flex; align-items:center; gap:10px; }
-.brand-logo{ height: clamp(32px, 4vw, 56px); width:auto; }
+.brand-logo{ height: clamp(44px, 5vw, 56px); width:auto; }
 
 .nav {
   display:flex;
