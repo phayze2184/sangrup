@@ -29,8 +29,8 @@ body{
 
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none}
-a:not(.nav-link):not(.button):hover,
-a:not(.nav-link):not(.button):focus-visible{
+a:not(.nav-link):not(.cta-header):not(.cta-hero):hover,
+a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
@@ -127,6 +127,7 @@ a:not(.nav-link):not(.button):focus-visible{
 }
 
 .button-inner-wrapper {
+  display: flex;s
   position: relative;
   width: 100%;
   padding-right: 1.5625rem;
@@ -144,6 +145,7 @@ a:not(.nav-link):not(.button):focus-visible{
 }
 
 .button.is-primary .icon-wrapper {
+  display: flex;
   width: 3.6875rem;
   height: 3rem;
   padding: 0.75rem;
@@ -154,14 +156,14 @@ a:not(.nav-link):not(.button):focus-visible{
 
 .button.is-primary .button-icon {
   position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .button.is-primary .button-icon img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
+  width: 24px;
+  height: 24px;
   object-fit: cover;
 }
 
@@ -170,9 +172,6 @@ a:not(.nav-link):not(.button):focus-visible{
   letter-spacing: 0.02em;
   white-space: nowrap;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: .02em;
-  white-space: nowrap;
   color: var(--white);
  }
 
@@ -287,6 +286,42 @@ a:not(.nav-link):not(.button):focus-visible{
   background: #0b1220;
   color: var(--white);
   border-radius: 10px;
+}
+.cta-hero .cta-icon img{
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.cta-header{
+  background: rgba(11,18,32,.92);
+  border-color: rgba(255,255,255,.2);
+  color: var(--white);
+}
+.cta-header .cta-icon{
+  background: var(--white);
+}
+.cta-hero .cta-text-wrap{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+  height: 1.2em;
+}
+.cta-hero .cta-text{
+  display: block;
+  transition: transform .28s ease;
+}
+.cta-hero .cta-text--bottom{
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+.cta-hero:hover .cta-text--top{
+  transform: translateY(-100%);
+}
+.cta-hero:hover .cta-text--bottom{
+  transform: translateY(-100%);
 }
 
 /* Hero image */
