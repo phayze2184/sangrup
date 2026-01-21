@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Fonts (Inter for menu, Manrope for headings/body) -->
+  <!-- Fonts (Inter for menu/body, Manrope for headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -23,20 +23,30 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#" aria-label="San Grup - Acasă">
-          <!-- Replace with your SVG/logo -->
           <img class="brand-logo" src="assets/logo-sangrup.svg" alt="SANGRUP LOGO" />
         </a>
 
-        <nav class="nav" data-nav>
-          <a class="nav-link" href="#servicii">SERVICII</a>
-          <a class="nav-link" href="#portofoliu">PORTOFOLIU</a>
-          <a class="nav-link" href="#parteneri">PARTENERI</a>
+        <nav class="nav is-uppercase" data-nav>
+          <a class="nav-link" href="#servicii">Servicii</a>
+          <a class="nav-link" href="#portofoliu">Portofoliu</a>
+          <a class="nav-link" href="#parteneri">Parteneri</a>
         </nav>
+        <div class="button-wrapper">
+          <div class="button is-primary" aria-hidden="true">
+            <div class="button-inner-wrapper is-clipped">
+               <a href="tel:0241627700" class="button-phone">
+                 <div class="button-icon">
+                   <div class="icon-wrapper">
+                     <img src="assets/phone-icon.svg" alt="telefon">
+                   </div>
+                  </div>
 
-        <a class="cta-header" href="#contact">
-          <span class="cta-icon" aria-hidden="true">→</span>
-          <span>CONTACTAȚI-NE</span>
-        </a>
+                 <div class="button-text-wrapper">
+                   <p class="button-text">0241 62 77 00</p>
+                 </div>
+               </a>
+           </div>
+         </div>
       </div>
     </header>
     <!-- HERO -->
@@ -45,40 +55,38 @@
         <div class="container hero-top">
           <!-- LEFT -->
           <div class="hero-left">
-            <div class="hero-eyebrow">
-              INGINERIE ȘI TEHNOLOGIE FEROVIARĂ
+            <div class="hero-eyebrow is-uppercase">
+              Inginerie și tehnologie feroviară
             </div>
 
-            <h1 class="hero-title">
-              SOLUȚII COMPLETE DE INSTALAȚII
-              <span class="highlight">ELECTRICE</span>
-              PENTRU SISTEME FEROVIARE MODERNE
+            <h1 class="hero-title is-clipped">
+              Soluții complete de instalații
+              <span class="highlight">electrice</span>
+              pentru sisteme feroviare moderne
             </h1>
           </div>
-
-          <!-- DIVIDER -->
-          <div class="hero-divider" aria-hidden="true"></div>
 
           <!-- RIGHT -->
           <div class="hero-right">
             <div class="hero-description">
               <img src="assets/vector_mark.svg" alt="" aria-hidden="true" class="hero-mark"/>
-
-              <p class="hero-text">
-                Proiectăm, realizăm și modernizăm instalații feroviare folosind tehnologii de ultimă generație și expertiză solidă, pentru rețele de transport feroviar mai sigure, mai eficiente și mai performante.
-              </p>
+                <div class="text-cta">
+                  <p class="hero-text">
+                     Proiectăm, realizăm și modernizăm instalații feroviare folosind tehnologii de ultimă generație și expertiză solidă, pentru rețele de transport feroviar mai sigure, mai eficiente și mai performante.
+                  </p>
+                  <a class="cta-hero is-uppercase" href="#servicii">
+                       <span class="cta-icon" aria-hidden="true">→</span>
+                       <span>Vezi soluțiile noastre</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <a class="cta-hero" href="#servicii">
-              <span class="cta-icon" aria-hidden="true">→</span>
-              <span>VEZI SOLUȚIILE NOASTRE</span>
-            </a>
-          </div>
+            
         </div>
 
         <!-- HERO IMAGE -->
         <div class="hero-media">
-          <!-- Replace with your image -->
           <img
             src="assets/hero-rail.webp"
             alt="Echipă în teren la instalații feroviare"
