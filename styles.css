@@ -25,6 +25,7 @@
   --subtext-font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
  /* Typography sizes */
+  --h1-extra-size: clamp(40px, 5vw, 72px);
   --h1-size: clamp(32px, 4.1vw, 64px);
   --h2-size: clamp(24px, 3.2vw, 48px);
   --h3-size: clamp(20px, 2.6vw, 40px);
@@ -355,7 +356,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 }
 .hero-metric-title{
   font-family: var(--font-headings);
-  font-size: var(--h2-size);
+  font-size: var(--h1-extra-size);
   font-weight: var(--weight-bold);
   letter-spacing: var(--ls-tight);
   line-height: var(--lh-title);
