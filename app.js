@@ -1,5 +1,5 @@
 const revealTargets = document.querySelectorAll(
-  ".hero-eyebrow, .hero-title, .hero-text, .cta-hero"
+  ".hero-eyebrow, .hero-title, .hero-description"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal-up"));
