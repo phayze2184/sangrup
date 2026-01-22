@@ -404,7 +404,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .hero-text { text-align: center; margin-inline: auto; }
   .hero .cta-hero { margin-inline: auto; }
   .cta-header { margin-left: auto; }
-  .cta-header {padding: 0 10px 0 6px; gap: 0; }
+  .cta-header {padding: 0 6px; gap: 0; }
   .cta-header .cta-text {display: none; } 
   .cta-header .cta-icon {width: 40px; height: 40px; }
   .text-cta { gap: 32px; }
