@@ -316,7 +316,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 /* Hero image */
 .hero-media{
   position: relative;
-  margin-top: 44px;
+  margin-top: clamp(24px, 4vw, 48px);
   border-top: 1px solid var(--line);
 }
 .hero-media img{
@@ -404,6 +404,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .hero-top {flex-direction: column; }
   .hero-right {border-left: none; padding-left: 0; padding-top: 12px; width: 100%; }
 }
+
 
 
 @media (max-width: 479px){
