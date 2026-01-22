@@ -163,6 +163,10 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 }
 
 .hero-left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   padding-bottom: clamp(24px, 5vw, 50px);
 }
 
@@ -221,7 +225,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 .text-cta{
   display:flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40x;
   overflow: hidden;
 }
 
@@ -286,6 +290,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   background: var(--soft-black);
   border-color: var(--border);
   color: var(--white);
+  margin-left: auto;
 }
 .cta-header .cta-icon{
   background: var(--white);
@@ -302,7 +307,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   transition: transform .28s ease;
 }
 .cta-hero .cta-text--bottom{
-  position: absolute;
+  position: absolute; 
   left: 0;
   top: 100%;
 }
@@ -398,19 +403,23 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   
 @media screen and (max-width: 767px){
   
+  .hero { display: flex; flex-direction: column; }
+  .hero { padding-top: 0; }
+  .hero-media { order: 1; margin-top: 0; margin-bottom: 40px; }
+  .hero-top { order: 2; flex-direction: column; align-items: center; text-align: center; gap: 0px; }
+  .hero-left { order: 1; gap: 10px; text-align: center;}
+  .hero-right { order: 2; border-left: none; padding: 0; width: 100%; }
+  .hero-eyebrow { margin-inline: auto; }
+  .hero-title { margin-inline: auto; margin: 0px; }
+  .hero-description {gap: 40px; } 
+  .hero-text { text-align: center; margin-inline: auto; }
+  .hero .cta-hero { margin-inline: auto; }
+  .cta-header { margin-left: auto; }
   .cta-header {padding: 10px; gap: 0; }
   .cta-header .cta-text {display: none; } 
   .cta-header .cta-icon {width: 44px; height: 44px; }
-  .hero { display: flex; flex-direction: column; }
-  .hero { padding-top: 0; }
-  .hero-media { order: 1; }
-  .hero-media { margin-top: 0; margin-bottom: 32px; }
-  .hero-top { order: 2; flex-direction: column; }
-  .hero-left { order: 1; }
-  .hero-right { order: 2; }
-  .hero-right {border-left: none; padding-left: 0; padding-top: 12px; width: 100%; }
+  .text-cta { gap: 32px; }
 }
-
 
 
 @media (max-width: 479px){
