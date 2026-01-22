@@ -152,12 +152,11 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 .hero{
   position:relative;
   overflow:hidden;
-  padding:clamp(36px, 6vw, 56px) 0 0;
+  padding:clamp(24px, 3vw, 40px) 0 0;
 }
 
 .hero-top{
   display:flex;
-  padding-bottom: 4rem;
   justify-content: space-between;
   align-items: flex-end;
   gap: 1.25rem;
@@ -402,12 +401,11 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .cta-header {padding: 10px; gap: 0; }
   .cta-header .cta-text {display: none; } 
   .cta-header .cta-icon {width: 44px; height: 44px; }
-  .hero-top {flex-direction: column; padding-bottom: 1rem; }
-  .hero-right {border-left: none; padding-left: 0; padding-top: 20px; width: 100%; }
+  .hero-top {flex-direction: column; }
+  .hero-right {border-left: none; padding-left: 0; padding-top: 12px; width: 100%; }
 }
 
 
 @media (max-width: 479px){
   .container { width: min(var(--container), calc(100% - 28px)); }
-  .hero { padding-top: 42px; }
 }
