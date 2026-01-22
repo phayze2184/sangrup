@@ -102,15 +102,15 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 }
 
 .header-inner{
-  display:flex;
+  display:grid;
+  grid-template-columns: auto 1fr auto;
   align-items:center;
-  justify-content:space-between;
   gap: 18px;
   padding: 12px 0;
 }
 
 .brand{ display:flex; align-items:center; gap:10px; }
-.brand-logo{ height: clamp(44px, 5vw, 56px); width:auto; }
+.brand-logo{ height: 52px; width:auto; }
 
 .nav{
   display:flex;
@@ -121,6 +121,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   font-size: var(--menu-size);
   line-height: var(--lh-tight);
   letter-spacing: .02em;
+  justify-self: center;
 }
 
 .nav-link{
@@ -212,29 +213,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   justify-content: space-between;
   align-items: flex-start;
   gap: 18px;
-  padding-top: 6px;
   border-left: 1px solid var(--line);
-}
-
-
-.hero-description{
-  display:flex;
-  align-items:flex-start;
-  gap: 16px;
 }
 
 .text-cta{
   display:flex;
   flex-direction: column;
-  gap: 40x;
+  gap: 32px;
   overflow: hidden;
-}
-
-.hero-mark{
-  width: clamp(32px, 3vw, 48px);
-  height: auto;
-  flex-shrink: 0;
-  margin-top: 4px;
 }
 
 .hero-text{
