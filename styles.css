@@ -183,6 +183,18 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   max-width: 44ch;
 }
 
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.reveal-up.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .cta-hero {
   display:inline-flex;
   align-items:center;
@@ -264,6 +276,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 
 .is-uppercase{
   text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ===== Responsive ===== */
