@@ -206,7 +206,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   padding-left: 20px;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 25px;
+  gap: 18px;
   padding-top: 6px;
   border-left: 1px solid var(--line);
 }
@@ -221,7 +221,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 .text-cta{
   display:flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
   overflow: hidden;
 }
 
