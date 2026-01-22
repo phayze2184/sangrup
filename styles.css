@@ -401,7 +401,13 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .cta-header {padding: 10px; gap: 0; }
   .cta-header .cta-text {display: none; } 
   .cta-header .cta-icon {width: 44px; height: 44px; }
-  .hero-top {flex-direction: column; }
+  .hero { display: flex; flex-direction: column; }
+  .hero { padding-top: 0; }
+  .hero-media { order: 1; }
+  .hero-media { margin-top: 0; margin-bottom: 32px; }
+  .hero-top { order: 2; flex-direction: column; }
+  .hero-left { order: 1; }
+  .hero-right { order: 2; }
   .hero-right {border-left: none; padding-left: 0; padding-top: 12px; width: 100%; }
 }
 
