@@ -21,3 +21,4 @@ if (revealTargets.length > 0) {
 
   revealTargets.forEach((el) => observer.observe(el));
 }
+
