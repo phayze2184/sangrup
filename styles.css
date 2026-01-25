@@ -387,6 +387,25 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   width: min(85vw, 420px);
   scroll-snap-align: start;
 }
+.services-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 12px;
+}
+.services-dot{
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.services-dot.is-active{
+  background: var(--soft-black);
+  border-color: var(--soft-black);
+}
 .service-card{
   position: relative;
   overflow: hidden;
