@@ -775,6 +775,12 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .portfolio-item.is-reversed .portfolio-content{
     order: unset;
   }
+  .portfolio-media{
+    overflow: hidden;
+  }
+  .portfolio-media::after{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 479px){
