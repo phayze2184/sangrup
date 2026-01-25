@@ -22,3 +22,20 @@ if (revealTargets.length > 0) {
   revealTargets.forEach((el) => observer.observe(el));
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  if (!window.jQuery || !jQuery.fn || !jQuery.fn.owlCarousel) return;
+  const $slider = jQuery(".services-track");
+  if (!$slider.length) return;
+
+  $slider.owlCarousel({
+    loop: true,
+    margin: 24,
+    nav: false,
+    dots: true,
+    responsive: {
+      0: { items: 1, nav: false, dots: true },
+      600: { items: 2, nav: false, dots: true },
+      1024: { items: 2, nav: false, dots: true },
+    },
+  });
+});

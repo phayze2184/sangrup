@@ -16,6 +16,7 @@
   --line: rgba(11,18,32,.08);
   --border: rgba(11,18,32,.18);
   --shadow: rgba(11,18,32,.12); 
+  --linear-background: linear-gradient(180deg, rgba(11,18,32,0.06), rgba(11,18,32,0));
 
 /*Typography font families */
   --font-headings: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -56,7 +57,7 @@
   --ls-normal: 0;
   --ls-wide: 0.02em;
   --ls-wider: 0.2em;
-  --ls-uppercase: 0.14em;
+  --heading-text-gap: 1.25rem;
 
 /* Other */
   --container: 1200px;
@@ -169,7 +170,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: var(--heading-text-gap);
   padding-bottom: clamp(24px, 5vw, 50px);
 }
 
@@ -361,11 +362,66 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   letter-spacing: var(--ls-normal);
 }
 
+/* ===== Services ===== */
+.services{
+  padding: clamp(36px, 6vw, 84px) 0;
+  border-top: 1px solid var(--line);
+  background: var(--linear-background);
+}
+.services-slider{
+  position: relative;
+  padding-inline: clamp(16px, 3vw, 28px);
+}
+.services-track{
+  display: flex;
+  gap: clamp(16px, 3vw, 28px);
+}
+.service-card{
+  position: relative;
+  overflow: hidden;
+}
+.service-overlay{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(8px, 2vw, 12px);
+  left: 12px;
+  bottom: 12px;
+  max-width: min(260px, calc(100% - 24px));
+  padding: 10px 12px;
+  height: clamp(160px, 22vw, 200px);
+  background: rgba(10, 16, 28, 0.4);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--white);
+  
+}
+.service-overlay h3{
+  margin: 0 0 6px;
+  font-family: var(--font-headings);
+  font-size: var(--h5-size);
+  line-height: var(--lh-tight);
+}
+.service-overlay p{
+  margin: 0;
+  font-size: var(--subtext-size);
+  line-height: var(--lh-body);
+  color: var(--bg);
+}
+.services-slider img{
+  width: 100%;
+  height: clamp(352px, 35vw, 512px);
+  object-fit: cover;
+}
+
+
 /* ===== Certifications ===== */
 .certifications{
   padding: clamp(36px, 6vw, 84px) 0;
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(11,18,32,0.06), rgba(11,18,32,0));
+  background: var(--bg);
 }
 .certifications-header{
   display:flex;
@@ -387,13 +443,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   --marquee-gap: clamp(24px, 4vw, 52px);
   --cert-4-5-gap: clamp(12px, 2vw, 28px);
   --duration: 30s;
-
+  display: flex;
   position: relative;
   overflow: hidden;
   padding: clamp(16px, 3vw, 24px) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   gap: var(--marquee-gap);
+  user-select: none;
 }
 .certifications-marquee::before,
 .certifications-marquee::after{
@@ -491,6 +548,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .text-cta { gap: 32px; }
   .certifications { padding-top: var(--section-seam-gap); }
   .certifications-header { align-items: center; text-align: center;  padding-top: var(--section-seam-gap); }
+  .services-header { align-items: center; text-align: center;  padding-top: var(--section-seam-gap); }  
 }
 
 @media screen and (max-width: 479px){
@@ -504,6 +562,6 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
     transition: none;
   }
   .marquee-track{
-    animation-duration: 35s;
+    animation-duration: 30s;
   }
 }

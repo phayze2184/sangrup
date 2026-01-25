@@ -10,12 +10,16 @@
   <meta name="description" content="Sisteme electrice feroviare, instalatii SCB, TTR, curenti slabi, sisteme de securitate" />  
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 
   <!-- Fonts (Inter for menu/body, Manrope for headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
   <script src="app.js" defer></script>
 
 </head>
@@ -43,8 +47,7 @@
             <span class="cta-text cta-text--bottom">0241 62 77 00</span>
           </span>
         </a>
-      
-      </div>
+     </div>
     </header> 
     <!-- HERO -->
     <main>
@@ -62,7 +65,6 @@
               pentru sisteme feroviare moderne
             </h1>
           </div>
-
           <!-- RIGHT -->
           <div class="hero-right">
             <div class="hero-description">
@@ -80,24 +82,62 @@
                 </div>
               </div>
             </div>
-
-            
-        </div>
-
+          </div>
         <!-- HERO IMAGE -->
         <div class="hero-media">
           <img
-            src="assets/hero-rail.webp"
-            alt="Echipă în teren la instalații feroviare"
-            loading="eager"
-          />
+            src="assets/hero-rail.webp"alt="Echipă în teren la instalații feroviare" loading="eager"/>
           <div class="hero-metric" role="note" aria-label="Experiență Sangrup">
             <h2 class="hero-metric-title">23+</h2>
             <p class="hero-metric-label">ani experiență</p>
           </div>
         </div>
       </section>
+      <!-- SERVICES -->
+      <section class="services" id="servicii">
+        <div class="container services-header">
+          <div class="eyebrow is-uppercase">Servicii</div>
+          <h2 class="services-title">Soluții integrate pentru infrastructura feroviară</h2>
+          <p class="services-subtitle">
+            De la proiectare la implementare și mentenanță, livrăm servicii complete pentru
+            sisteme feroviare moderne.
+          </p>
+        </div>
 
+        <div class="services-slider" aria-label="Serviciile noastre">
+          <div class="services-track owl-carousel owl-theme">
+            <div class="service-card">
+              <img src="assets/servicii-1.webp" alt="Instalații electrice feroviare" loading="lazy" />
+              <div class="service-overlay">
+                <h3>Instalații feroviare SCB, TTR, LC, EA, ELF</h3>
+                <p>Proiectare și implementare de sisteme de semnalizare, automatizare și telecomunicații, conforme standardelor feroviare în vigoare.</p>
+              </div>
+            </div>
+            <div class="service-card">
+              <img src="assets/servicii-2.webp" alt="Instalații electrice până la 110 kV" loading="lazy" />
+              <div class="service-overlay">
+                <h3>Instalații electrice până la 110 kV</h3>
+                <p>Execuție branșamente electrice, lucrări de joasă și medie tensiune, măsurători PRAM și realizare tablouri electrice conforme normativelor.</p>
+              </div>
+            </div>
+            <div class="service-card">
+              <img src="assets/servicii-3.webp" alt="Sisteme de securitate" loading="lazy" />
+              <div class="service-overlay">
+                <h3>Instalații de curenți slabi</h3>
+                <p>Sisteme de automatizare, securitate, TVCI, detecție și stingere incendiu, desfumare, precum și pozare și cablare fibră optică.</p>
+              </div>
+            </div>
+            <div class="service-card">
+              <img src="assets/servicii-4.webp" alt="Curenți slabi și rețele" loading="lazy" />
+              <div class="service-overlay">
+                <h3>Proiectare instalații tehnice</h3>
+                <p>Proiectare instalații electrice și instalații pentru infrastructura feroviară, realizate conform normativelor și cerințelor tehnice ale proiectului.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CERTIFICATIONS -->
       <section class="certifications" id="certificari">
         <div class="container certifications-header">
             <p class="eyebrow is-uppercase">Standardele noastre tehnice</p>
