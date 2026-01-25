@@ -63,7 +63,7 @@
   --radius: 12px;
   --section-seam-gap: 40px;
   --title-max-width: 500px; 
-  --title-max-width-tight: 250px;
+  --title-max-width-mobile: 250px;
   --text-max-width: 40ch; 
   --heading-text-gap: 1.25rem;
   --box-shadow: 0 12px 28px rgba(11, 18, 32, 0.05);
@@ -891,6 +891,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .contact-header{
     align-items: center;
     text-align: center;
+  }
+  .contact-header h2{
+    max-width: var(--title-max-width-mobile);
   }
   .contact-grid{
     grid-template-columns: 1fr;
