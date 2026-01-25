@@ -23,10 +23,15 @@ if (revealTargets.length > 0) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (!window.jQuery || !jQuery.fn || !jQuery.fn.owlCarousel) return;
-  const $slider = jQuery(".services-track");
-  if (!$slider.length) return;
+  const track = document.querySelector(".services-track");
+  if (!track) return;
 
+  if (!window.jQuery || !jQuery.fn || !jQuery.fn.owlCarousel) {
+    track.classList.add("no-owl");
+    return;
+  }
+
+  const $slider = jQuery(track);
   $slider.owlCarousel({
     loop: true,
     margin: 24,

@@ -376,6 +376,17 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   display: flex;
   gap: clamp(16px, 3vw, 28px);
 }
+.services-track.no-owl{
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+.services-track.no-owl .service-card{
+  flex: 0 0 auto;
+  width: min(85vw, 420px);
+  scroll-snap-align: start;
+}
 .service-card{
   position: relative;
   overflow: hidden;
