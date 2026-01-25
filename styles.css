@@ -62,10 +62,11 @@
   --container: 1200px;
   --radius: 12px;
   --section-seam-gap: 40px;
-  --title-max-width: 22ch; 
-  --title-max-width-tight: 450px;
-  --text-max-width: 40ch;
+  --title-max-width: 450px; 
+  --title-max-width-tight: 250px;
+  --text-max-width: 40ch; 
   --heading-text-gap: 1.25rem;
+  --box-shadow: 0 18px 40px rgba(11, 18, 32, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -323,6 +324,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   height: clamp(220px, 52vw, 520px);
   object-fit: cover;
   object-position: center;
+  box-shadow: var(--box-shadow);
 }
 
 /* Metric card */
@@ -506,8 +508,10 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   align-items: center;
   justify-items: center;
   text-align: center;
-  background-color: var(--titanium-white);
+  background-color: rgba(11,18,32,0.06);
+  border: 1px solid var(--line);
   padding: 3rem;
+  box-shadow: var(--box-shadow);  
 }
 .portfolio-item.is-reversed{
   grid-template-columns: 1fr 1fr;
@@ -552,7 +556,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   font-family: var(--font-headings);
   font-size: var(--h3-size);
   letter-spacing: var(--ls-tight);
-  max-width: var(--title-max-width-tight);
+  max-width: var(--title-max-width);
   color: var(--light-gray);
 }
 .portfolio-content p{
@@ -701,7 +705,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
     order: 1; 
     margin-top: 0; 
     margin-bottom: 40px;
-   }
+  }
   .hero-top{ 
     order: 2; 
     flex-direction: column; 
@@ -784,6 +788,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   }
   .portfolio-subtitle{
     max-width: 100%;
+  }
+  .portfolio-content h3{
+    max-width: var(--title-max-width-tight)
   }
   .portfolio-item{
     grid-template-columns: 1fr;
