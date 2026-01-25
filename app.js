@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
       track.insertAdjacentElement("afterend", dots);
 
       let rafId = 0;
+      let autoTimer = 0;
+      let autoIndex = 0;
       const updateActiveDot = () => {
         rafId = 0;
         const cardWidth = cards[0].getBoundingClientRect().width;
@@ -63,11 +65,53 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       };
 
+      const reducedMotionQuery = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+      const mobileQuery = window.matchMedia("(max-width: 599px)");
+      const startAutoAdvance = () => {
+        if (autoTimer || reducedMotionQuery.matches || !mobileQuery.matches)
+          return;
+        autoTimer = window.setInterval(() => {
+          autoIndex = (autoIndex + 1) % cards.length;
+          const card = cards[autoIndex];
+          track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+        }, 4500);
+      };
+      const stopAutoAdvance = () => {
+        if (!autoTimer) return;
+        window.clearInterval(autoTimer);
+        autoTimer = 0;
+      };
+      const updateAutoAdvance = () => {
+        if (mobileQuery.matches && !reducedMotionQuery.matches) {
+          startAutoAdvance();
+        } else {
+          stopAutoAdvance();
+        }
+      };
+
       updateActiveDot();
       track.addEventListener("scroll", () => {
         if (rafId) return;
         rafId = requestAnimationFrame(updateActiveDot);
       });
+
+      track.addEventListener("mouseenter", stopAutoAdvance);
+      track.addEventListener("touchstart", stopAutoAdvance, { passive: true });
+      track.addEventListener("mouseleave", updateAutoAdvance);
+
+      updateAutoAdvance();
+      if (mobileQuery.addEventListener) {
+        mobileQuery.addEventListener("change", updateAutoAdvance);
+      } else if (mobileQuery.addListener) {
+        mobileQuery.addListener(updateAutoAdvance);
+      }
+      if (reducedMotionQuery.addEventListener) {
+        reducedMotionQuery.addEventListener("change", updateAutoAdvance);
+      } else if (reducedMotionQuery.addListener) {
+        reducedMotionQuery.addListener(updateAutoAdvance);
+      }
     }
     return;
   }
@@ -78,10 +122,28 @@ document.addEventListener("DOMContentLoaded", function () {
     margin: 24,
     nav: false,
     dots: true,
+    autoplay: false,
+    autoplayTimeout: 4500,
+    autoplayHoverPause: true,
     responsive: {
       0: { items: 1, nav: false, dots: true },
       600: { items: 2, nav: false, dots: true },
       1024: { items: 2, nav: false, dots: true },
     },
   });
+
+  const mobileQuery = window.matchMedia("(max-width: 599px)");
+  const setAutoplay = (event) => {
+    if (event.matches) {
+      $slider.trigger("play.owl.autoplay", [4500]);
+    } else {
+      $slider.trigger("stop.owl.autoplay");
+    }
+  };
+  setAutoplay(mobileQuery);
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener("change", setAutoplay);
+  } else if (mobileQuery.addListener) {
+    mobileQuery.addListener(setAutoplay);
+  }
 });
