@@ -732,7 +732,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
     margin-inline: auto; 
   }
   .cta-header{ 
-    margin-inline: auto; 
+    margin-left: auto; 
+    margin-right: 0; 
   }
   .cta-header{ 
     padding: 0 6px; gap: 0; 
@@ -745,6 +746,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   }
   .text-cta{ 
     gap: 32px; 
+  }
+  .nav{
+    justify-content: space-between;
   }
   .certifications-header{ 
     align-items: center; 
