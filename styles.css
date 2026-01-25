@@ -63,6 +63,7 @@
   --radius: 12px;
   --section-seam-gap: 40px;
   --title-max-width: 22ch; 
+  --title-max-width-tight: 450px;
   --text-max-width: 40ch;
   --heading-text-gap: 1.25rem;
 }
@@ -496,16 +497,20 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 }
 .portfolio-grid{
   display: grid;
-  gap: clamp(32px, 4vw, 60px);
+  gap: clamp(40px, 4vw, 60px);
 }
 .portfolio-item{
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(8px, 1vw, 12px);
   align-items: center;
+  justify-items: center;
+  text-align: center;
+  background-color: var(--titanium-white);
+  padding: 3rem;
 }
 .portfolio-item.is-reversed{
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 1fr;
 }
 .portfolio-item.is-reversed .portfolio-media{
   order: 2;
@@ -531,21 +536,24 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
 .portfolio-media img{
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: clamp(240px, 40vw, 420px);
+  width: 520px;
+  height: clamp(220px, 32vw, 320px);
   object-fit: cover;
 }
 .portfolio-content{
   display: grid;
   gap: 10px;
+  justify-items: center;
+  place-items: center;
+  text-align: center;
 }
 .portfolio-content h3{
   margin: 0;
   font-family: var(--font-headings);
   font-size: var(--h3-size);
   letter-spacing: var(--ls-tight);
-  max-width: 22ch;
-  color: var(--dark-gray);
+  max-width: var(--title-max-width-tight);
+  color: var(--light-gray);
 }
 .portfolio-content p{
   margin: 0;
@@ -766,6 +774,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .services-header .eyebrow{
     display: none;
   }
+  .portfolio-header{ 
+    align-items: center; 
+    text-align: center;  
+    padding-top: var(--section-seam-gap); 
+  }
+  .portfolio-header .eyebrow{
+    display: none;
+  }
   .portfolio-subtitle{
     max-width: 100%;
   }
@@ -775,14 +791,19 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):focus-visible{
   .portfolio-item.is-reversed{
     grid-template-columns: 1fr;
   }
-  .portfolio-item.is-reversed .portfolio-media,
-  .portfolio-item.is-reversed .portfolio-content{
-    order: unset;
+  .portfolio-item .portfolio-content{
+    order: 1;
+  }
+  .portfolio-item .portfolio-media{
+    order: 2;
   }
   .portfolio-media{
     overflow: hidden;
   }
   .portfolio-media::after{
+    display: none;
+  }
+  .portfolio-icon{
     display: none;
   }
 }
