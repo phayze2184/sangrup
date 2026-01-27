@@ -684,9 +684,6 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   height: clamp(352px, 35vw, 512px);
   object-fit: cover;
 }
-.services-cta{
-  margin-top: clamp(20px, 3vw, 40px);
-}
 /* ===== Portfolio ===== */
 .portfolio{
   display: flex;
@@ -903,7 +900,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 
 /* ===== Contact ===== */
 .contact{
-  padding: var(--section-seam-gap) 0;
+  padding-top: var(--section-seam-gap);
+  padding-bottom: 0px;
   border-top: 1px solid var(--line);
   background-color: #ef2b1f;
   background-image: repeating-linear-gradient(
@@ -994,8 +992,10 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 .contact-map{
   margin: 0;
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 /* ===== Footer ===== */
@@ -1153,6 +1153,23 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   .certifications-subtitle{
     margin-inline: auto;
   }
+  .contact{
+    padding-bottom: 0;
+  }
+  .contact-grid{
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .contact-map{
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+  .contact-map iframe{
+    display: block;
+  }
   .portfolio-title{
     max-width: var(--title-max-width-mobile);
   }
@@ -1172,6 +1189,10 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   .service-item{
     justify-items: center;
     text-align: center;
+  }
+  .contact-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .hero{ 
     display: flex; 
@@ -1288,6 +1309,18 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   }
   .contact-link{
     justify-content: center;
+  }
+  .contact{
+    padding-bottom: 0;
+  }
+  .contact-grid{
+    padding-bottom: 0;
+  }
+  .contact-map{
+    margin-bottom: 0;
+  }
+  .contact-map iframe{
+    margin-bottom: 0;
   }
 }
 /*---Mobile portrait and below---*/  
