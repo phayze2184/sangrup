@@ -23,6 +23,16 @@ if (revealTargets.length > 0) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelectorAll(".nav .nav-link");
+  if (navToggle && navLinks.length > 0) {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navToggle.checked = false;
+      });
+    });
+  }
+
   const track = document.querySelector(".services-track");
   if (!track) return;
 
