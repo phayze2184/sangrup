@@ -602,6 +602,11 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+.services-cta{
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(20px, 3vw, 40px);
+}
 .services-slider{
   position: relative;
   padding-inline: clamp(16px, 3vw, 28px);
@@ -679,7 +684,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   height: clamp(352px, 35vw, 512px);
   object-fit: cover;
 }
-
+.services-cta{
+  margin-top: clamp(20px, 3vw, 40px);
+}
 /* ===== Portfolio ===== */
 .portfolio{
   display: flex;
@@ -786,7 +793,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 .portfolio-cta{
   display: flex;
   justify-content: center;
-  margin-top: clamp(16px, 3vw, 28px);
+  margin-top: clamp(20px, 3vw, 40px);
 }
 
 
@@ -834,7 +841,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 .certifications-cta{
   display: flex;
   justify-content: center;
-  margin-top: clamp(16px, 3vw, 28px);
+  margin-top: clamp(20px, 3vw, 40px);
 }
 .certifications-marquee::before,
 .certifications-marquee::after{
@@ -1158,6 +1165,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   .despre-right{ width: 100%; place-items: stretch; }
   .kpi-grid{ grid-template-columns: 1fr; justify-items: stretch; width: 100%; }
   .kpi-card{ max-width: none; width: 100%; }
+  .despre-left{
+    padding-inline: clamp(16px, 4vw, 28px);
+  }
   .services-grid { grid-template-columns: 1fr; }
   .service-item{
     justify-items: center;
@@ -1166,7 +1176,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   .hero{ 
     display: flex; 
     flex-direction: column; 
-    padding-top: clamp(24px, 6vw, 60px);
+    padding-top: 0;
     padding-bottom: var(--section-seam-gap-mobile); 
   }
   .hero-media{ 
