@@ -67,9 +67,9 @@
   --radius: 12px;
   --section-seam-gap: 120px;
   --section-seam-gap-mobile: 80px;
-  --title-max-width: 60ch;
+  --title-max-width: 560px;
   --title-max-width-mobile: 80%; 
-  --text-max-width: 60ch; 
+  --text-max-width: 600px; 
   --text-max-width-mobile: 80%;
   --elements-gap: clamp(32px, 3vw, 60px);
   --heading-text-gap: 1.25rem;
