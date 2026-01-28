@@ -75,6 +75,7 @@
   --heading-text-gap: 1.25rem;
   --eyebrow-text-gap: 1rem;
   --box-shadow: 0 12px 28px rgba(11, 18, 32, 0.05);
+  --container-gutter: 48px;
 }
 * { box-sizing: border-box; }
 html,body{ height:100%; }
@@ -367,7 +368,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 .despre-decoration{
   position: absolute;
   top: 18px;
-  right: 10px;
+  right: calc((100% - min(var(--container), calc(100% - var(--container-gutter)))) / 2);
   width: clamp(180px, 28vw, 360px);
   color: rgba(11,18,32,0.1);
   pointer-events: none;
@@ -377,6 +378,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   display: block;
   width: 100%;
   height: auto;
+}
+.despre-noi .despre-decoration{
+  display: none;
 }
 .services > .container,
 .portfolio > .container,
@@ -1348,6 +1352,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 /*---Mobile portrait and below---*/  
 @media screen and (max-width: 479px){
   .container { width: min(var(--container), calc(100% - 28px)); }
+  :root{ --container-gutter: 28px; }
 }
 @media (prefers-reduced-motion: reduce){
   .reveal-up {
