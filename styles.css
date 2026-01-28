@@ -734,25 +734,6 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   object-fit: cover;
   display: block;
 }
-.portfolio-tag{
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(235,242,255,0.96);
-  color: #1d4ed8;
-  font-size: var(--subtext-size);
-  font-weight: var(--weight-semibold);
-}
-.portfolio-tag.is-green{
-  background: rgba(220,252,231,0.96);
-  color: #047857;
-}
-.portfolio-tag.is-red{
-  background: rgba(254,226,226,0.96);
-  color: #b91c1c;
-}
 .portfolio-body{
   display: grid;
   gap: 8px;
@@ -968,7 +949,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 2px;
+  gap: 8px;
 }
 .contact-item h3{
   margin: 0 0 8px;
