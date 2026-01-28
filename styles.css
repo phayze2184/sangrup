@@ -66,11 +66,11 @@
   --container: 1200px;
   --radius: 12px;
   --section-seam-gap: 120px;
-  --section-seam-gap-mobile: 80px;
+  --section-seam-gap-mobile: 100px;
   --title-max-width: 560px;
-  --title-max-width-mobile: 80%; 
+  --title-max-width-mobile: 320px; 
   --text-max-width: 600px; 
-  --text-max-width-mobile: 80%;
+  --text-max-width-mobile: 100%;
   --elements-gap: clamp(32px, 3vw, 60px);
   --heading-text-gap: 1.25rem;
   --eyebrow-text-gap: 1rem;
@@ -235,6 +235,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   font-weight: var(--weight-extrabold);
   line-height: var(--lh-title);
   letter-spacing: var(--ls-tight);
+  color: var(--soft-black);
   margin: 18px 0 0;
 }
 .hero-title {
@@ -354,12 +355,35 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 /* ===== About us ===== */
 .despre-noi{
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   padding: var(--section-seam-gap) 0;
   border-top: 1px solid var(--line);
   background: var(--bg);
+  overflow: hidden;
+}
+.despre-decoration{
+  position: absolute;
+  top: 18px;
+  right: -10px;
+  width: clamp(180px, 28vw, 360px);
+  color: rgba(11,18,32,0.1);
+  pointer-events: none;
+  z-index: 0;
+}
+.despre-decoration svg{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.services > .container,
+.portfolio > .container,
+.certifications > .container,
+.certifications-marquee{
+  position: relative;
+  z-index: 1;
 }
 .despre-top{
   display: grid;
@@ -386,7 +410,6 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 .despre-cta{
   grid-area: cta;
-  justify-self: start;
   margin-top: 4px;
 }
 .despre-title{
@@ -396,6 +419,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   letter-spacing: var(--ls-tight);
   line-height: var(--lh-title);
   max-width: var(--title-max-width);
+  color: var(--soft-black);
 }
 .despre-text{
   margin: 0;
@@ -445,12 +469,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 /* ===== Services ===== */
 .services{
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--section-seam-gap) 0;
   border-top: 1px solid var(--line);
   background: var(--linear-background);
   gap: var(--elements-gap);
+  overflow: hidden;
 }
 .services-header{
   display:flex;
@@ -649,12 +675,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 /* ===== Portfolio ===== */
 .portfolio{
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--elements-gap);
   padding: var(--section-seam-gap) 0;
   border-top: 1px solid var(--line);
   background: var(--bg);
+  overflow: hidden;
 }
 .portfolio-header{
   display:flex;
@@ -757,12 +785,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 /* ===== Certifications ===== */
 .certifications{
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--elements-gap);
   padding: var(--section-seam-gap) 0;
   border-top: 1px solid var(--line);
   background: var(--bg);
+  overflow: hidden;
 }
 .certifications-header{
   display:flex;
@@ -1010,6 +1040,25 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 .is-uppercase{
   text-transform: uppercase;
 }
+/* ===== Heading colors ===== */
+.hero-title,
+.despre-title,
+.services-title,
+.services-subtitle,
+.service-item h3,
+.service-overlay h3,
+.portfolio-title,
+.portfolio-subtitle,
+.certifications-title,
+.certifications-subtitle{  
+  color: var(--soft-black);
+}
+.kpi-title,
+.portfolio-card-title,
+.contact-title,
+.contact-subtitle{
+  color: var(--bg);
+}
 /* ===== RESPONSIVE ===== */
 /*---Tablet and below---*/
 @media (max-width: 991px){
@@ -1047,15 +1096,17 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
       "right"
       "cta";
     place-items: stretch;
-    gap: 1.25rem;
+    gap: var(--elements-gap);
     width: 100%;
+    padding-inline: clamp(16px, 4vw, 28px);
   }
   .despre-left{
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: var(--eyebrow-text-gap);
   }
   .despre-left .eyebrow{
-    align-self: center;
+    align-self: flex-start;
   }
   .despre-title{
     max-width: var(--title-max-width-mobile);
@@ -1065,7 +1116,6 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   }
   .despre-right{
     grid-template-columns: 1fr;
-    margin-top: 32px;
     display: grid;
     place-items: stretch;
     width: 100%;
@@ -1086,8 +1136,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     padding: var(--section-seam-gap-mobile) 0;
   }
   .services-header{ 
-    align-items: center; 
-    text-align: center;  
+    align-items: flex-start; 
+    text-align: left;  
   }
   .services-title{
     max-width: var(--title-max-width-mobile); 
@@ -1110,18 +1160,18 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     padding: var(--section-seam-gap-mobile) 0;
   }
   .portfolio-header{ 
-    align-items: center; 
-    text-align: center;  
+    align-items: flex-start; 
+    text-align: left;  
   }
   .certifications{
     padding: var(--section-seam-gap-mobile) 0;
   }
   .certifications-header{
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .certifications-subtitle{
-    margin-inline: auto;
+    margin-inline: 0;
   }
   .contact{
     padding-bottom: 0;
@@ -1158,8 +1208,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   }
   .services-grid { grid-template-columns: 1fr; }
   .service-item{
-    justify-items: center;
-    text-align: center;
+    justify-items: start;
+    text-align: left;
   }
   .contact-grid{
     grid-template-columns: 1fr;
@@ -1183,14 +1233,14 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   .hero-top{ 
     order: 2; 
     flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
+    align-items: flex-start; 
+    text-align: left; 
     gap: 24px; 
   }
   .hero-left{ 
     order: 1; 
     gap: 20px; 
-    align-items: center;
+    align-items: flex-start;
     padding-bottom: 0;
   }
   .hero-right{ 
@@ -1200,22 +1250,22 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     width: 100%; 
   }
   .hero-eyebrow{ 
-    margin-inline: auto; 
+    margin-inline: 0; 
   }
   .hero-title{ 
-    margin-inline: auto; 
+    margin-inline: 0; 
     margin: 0px; 
   }
   .hero-description{
     gap: 40px;
   } 
   .hero-text{ 
-    text-align: center; 
-    margin-inline: auto; 
+    text-align: left; 
+    margin-inline: 0; 
     max-width: 100%;
   }
   .hero .cta-hero{ 
-    margin-inline: auto; 
+    margin-inline: 0; 
   }
   .cta-header{ 
     margin-left: auto; 
@@ -1241,8 +1291,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     width: 100%;
   }
   .services-header{ 
-    align-items: center; 
-    text-align: center;  
+    align-items: flex-start; 
+    text-align: left;  
   }
   .services-title{
     max-width: var(--text-max-width-mobile);
@@ -1254,14 +1304,21 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     max-width: var(--text-max-width-mobile);
   }
   .portfolio-header{ 
-    align-items: center; 
-    text-align: center;  
+    align-items: flex-start; 
+    text-align: left;  
   }
   .portfolio-header .eyebrow{
     display: none;
   }
   .portfolio-subtitle{
     max-width: 100%;
+  }
+  .certifications-header{
+    align-items: flex-start;
+    text-align: left;
+  }
+  .certifications-subtitle{
+    margin-inline: 0;
   }
   .portfolio-grid{
     grid-template-columns: 1fr;
@@ -1302,8 +1359,8 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
     animation-duration: 30s;
   }
   .certifications-header{ 
-    align-items: center; 
-    text-align: center;  
+    align-items: flex-start; 
+    text-align: left;  
     padding-top: var(--section-seam-gap); 
   }
   .certifications-header .eyebrow{
