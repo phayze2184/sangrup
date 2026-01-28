@@ -1204,6 +1204,9 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 }
 /*---Mobile landscape and below---*/  
 @media screen and (max-width: 767px){
+  .despre-noi .despre-decoration{
+    display: block;
+  }
   .despre-right{ width: 100%; place-items: stretch; }
   .kpi-grid{ grid-template-columns: 1fr; justify-items: stretch; width: 100%; }
   .kpi-card{ max-width: none; width: 100%; }
