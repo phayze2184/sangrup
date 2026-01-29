@@ -51,7 +51,8 @@
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
-  --weight-extrabold: 800;
+  /* Space Grotesk max weight is 700; keep "extra bold" within available range */
+  --weight-extrabold: 700;
 /* Line height */
   --lh-tight: 1.05;
   --lh-title: 1.1;
@@ -236,13 +237,11 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
 .hero-title{
   font-family: var(--font-headings);
   font-size: var(--h1-size);
-  font-weight: var(--weight-extrabold);
+  font-weight: var(--weight-bold);
   line-height: var(--lh-title);
   letter-spacing: var(--ls-tight);
   color: var(--soft-black);
   margin: 18px 0 0;
-}
-.hero-title {
   max-width: 40rem; 
 }
 .hero-title .highlight{
