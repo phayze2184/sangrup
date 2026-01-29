@@ -207,6 +207,7 @@ a:not(.nav-link):not(.cta-header):not(.cta-hero):not(.service-button):focus-visi
   padding-bottom: 0px;
   background-color: var(--header-stripe-a);
   background-image: var(--hero-stripe-bg);
+  height: 100svh;
 }
 .hero-top{
   display:flex;
