@@ -16,409 +16,532 @@
 </head>
   <body>
     <!-- HEADER / NAV -->
-    <header class="site-header">
-      <div class="container header-inner">
+    <header class="navbar" role="banner">
+      <div class="container-padding nav">
+        <!--BRAND-->
         <a class="brand" href="#" aria-label="San Grup - Acasă">
           <img class="brand-logo" src="assets/logo-sangrup.svg" alt="Sangrup logo" />
         </a>
-        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Deschide meniul" />
-        <label class="nav-toggle-btn" for="nav-toggle" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-        <nav class="nav is-uppercase" data-nav>
-          <a class="nav-link" href="#despre">Despre noi</a>
-          <a class="nav-link" href="#servicii">Servicii</a>
-          <a class="nav-link" href="#portofoliu">Portofoliu</a>
-          <a class="nav-link" href="#parteneri">Parteneri</a>
-          <a class="nav-link" href="#contact">Contact</a>
-        </nav>
-        <a href="tel:0241627700" class="cta-header cta-hero">
-          <span class="cta-icon" aria-hidden="true">
-            <img src="assets/phone-icon.svg" alt="">
-          </span>
-          <span class="cta-text-wrap">
-            <span class="cta-text cta-text--top">+40 241 627 700</span>
-            <span class="cta-text cta-text--bottom">+40 241 627 700</span>
-          </span>
-        </a>
-     </div>
+        <!--NAVIGATION--> 
+        <navigation class="navigation is-uppercase" data-nav>
+          <div class="container-padding">
+            <a class="menu-link" href="#despre">Despre noi</a>
+            <a class="menu-link" href="#servicii">Servicii</a>
+            <a class="menu-link" href="#portofoliu">Portofoliu</a>
+            <a class="menu-link" href="#certificari">Certificari</a>
+            <a class="menu-link" href="#contact">Contact</a>
+          </div>
+        </navigation>
+        <!--NAV RIGHT SIDE-->
+        <div class="nav-right-side">
+          <div class="header-phone-wrapper">
+            <img class="icon phone" src="assets/phone-icon.svg" alt="" aria-label="Număr de telefon"/>
+            <a class="link header-phone" href="tel:0241627700">+40 748 20 50 40</a>
+          </div>
+           <input class="menu-button" type="checkbox" id="menu-button" aria-label="Deschide meniul" />
+           <label class="hamburger-icon" for="menu-button" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+      </div>
+    </div>
     </header> 
     <!-- HERO -->
     <main>
-      <section class="hero">
-        <div class="container hero-top">
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="decoration" aria-hidden="true">
+               <svg viewBox="0 0 320 220" role="presentation">
+               <g fill="none" stroke="currentColor" stroke-width="2">
+                   <path d="M12 28h92m20 0h40m16 0h96" />
+                   <path d="M24 76h64m24 0h120m16 0h52" />
+                   <path d="M40 124h120m20 0h84" />
+                   <path d="M18 172h92m18 0h56m20 0h84" />
+                   <path d="M248 16v188" />
+                   <path d="M92 16v188" />
+                </g>
+                <g fill="currentColor">
+                   <circle cx="92" cy="28" r="4" />
+                  <circle cx="124" cy="28" r="4" />
+                  <circle cx="204" cy="76" r="4" />
+                  <circle cx="160" cy="124" r="4" />
+                  <circle cx="92" cy="172" r="4" />
+                  <circle cx="248" cy="172" r="4" />
+                </g>
+                </svg>
+              </div>
           <!-- LEFT -->
-          <div class="hero-left">
-            <div class="eyebrow is-uppercase">
-              Inginerie și tehnologie feroviară
-            </div>
-            <h1 class="hero-title is-clipped">
-              Instalații
-              <span class="highlight">electrice</span>
-              pentru sisteme feroviare fiabile 
-            </h1>
-          </div>
-          <!-- RIGHT -->
-          <div class="hero-right">
-            <div class="hero-description">
-                <div class="text-cta">
-                  <p class="hero-text">
+          <div class="hero-content-left">
+             <div class="text-buttons">
+                <div class="title-text">
+                  <h1 class="all-h1-headings"> 
+                     Instalații <span class="highlight">electrice</span> pentru sisteme sigure și fiabile
+                  </h1>
+                  <div class="title-text">
+                    <p class="all-paragraphs">
                      Proiectăm, realizăm și modernizăm instalații feroviare folosind tehnologii de ultimă generație și expertiză solidă, pentru rețele de transport feroviar mai sigure, mai eficiente și mai performante.
-                  </p>
-                  <a class="cta-hero is-uppercase" href="#servicii">
-                       <span class="cta-icon" aria-hidden="true">→</span>
-                       <span class="cta-text-wrap">
-                         <span class="cta-text cta-text--top">Vezi soluțiile noastre</span>
-                         <span class="cta-text cta-text--bottom">Vezi soluțiile noastre</span>
+                    </p>
+                  </div>
+                </div>
+                <a class="button is-primary is-uppercase" href="#contact">
+                  <span class="button-icon" aria-hidden="true">→</span>
+                  <span class="button-text-wrap">
+                    <span class="button-text button-text--top">Cere o ofertă</span>
+                    <span class="button-text button-text--bottom">Cere o ofertă</span>
+                  </span>
+                </a>
+              </div>
+           </div>
+          <!-- RIGHT -->
+          <div class="hero-content-right">
+             <img class="hero-media" src="assets/hero-rail.webp"alt="Echipă în teren la instalații feroviare" loading="eager"/>
+             <div class="hero-kpi">
+               <div class="hero-kpi-value">23+</div>
+               <div class="hero-kpi-label">ani experiență</div>
+             </div>
+          </div>
+        </div>
+      </section>
+      <!-- CERTIFICATIONS -->
+      <section class="section" id="certificari">
+        <div class="certifications-wrapper overflow-hidden">
+          <div class="certifications-marquee" aria-label="Certificari si autorizatii">
+            <div class="marquee-track">
+              <div class="marquee-group">
+                <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
+              </div><div class="marquee-group">
+                <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
+              </div><div class="marquee-group">
+                <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
+                <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
+              <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
+            </div>
+          </div>
+         </div>
+        </div>
+      </section>
+      <!-- DESPRE NOI -->
+      <section class="section" id="despre">
+        <div class="container-padding">
+            <div class="despre-wrapper">
+              <div class="eyebrow is-uppercase">Despre noi</div>
+               <div class="despre-text">
+                  <div class="despre-left">
+                    <div class="decoration despre-left-decoration" aria-hidden="true">
+                      <svg viewBox="0 0 320 220" role="presentation">
+                        <g fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 28h92m20 0h40m16 0h96" />
+                          <path d="M24 76h64m24 0h120m16 0h52" />
+                          <path d="M40 124h120m20 0h84" />
+                          <path d="M18 172h92m18 0h56m20 0h84" />
+                          <path d="M248 16v188" />
+                          <path d="M92 16v188" />
+                        </g>
+                        <g fill="currentColor">
+                          <circle cx="92" cy="28" r="4" />
+                          <circle cx="124" cy="28" r="4" />
+                          <circle cx="204" cy="76" r="4" />
+                          <circle cx="160" cy="124" r="4" />
+                          <circle cx="92" cy="172" r="4" />
+                          <circle cx="248" cy="172" r="4" />
+                        </g>
+                      </svg>
+                    </div>
+                     <h2 class="all-h2-headings">Misiunea noastră</h2>
+                     <div class="description">
+                       <p class="all-paragraphs">Să oferim soluții complete de instalații electrice și tehnice de cea mai înaltă calitate, contribuind la <span class="highlight">dezvoltarea infrastructurii naționale</span> și asigurând siguranța și eficiența operațională pentru clienții noștri.
+                       </p>
+                       <p class="all-paragraphs">Printr-o abordare integrată de inginerie și execuție, asigurăm respectarea cerințelor tehnice și a standardelor aplicabile, livrând soluții fiabile și durabile, optimizate pentru <span class="highlight">exploatare sigură</span> și eficientă pe termen lung. </p>
+                      </div>
+                  </div>
+                  <div class="despre-right">
+                       <div class="decoration" aria-hidden="true">
+                          <svg viewBox="0 0 320 220" role="presentation">
+                          <g fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 28h92m20 0h40m16 0h96" />
+                          <path d="M24 76h64m24 0h120m16 0h52" />
+                          <path d="M40 124h120m20 0h84" />
+                          <path d="M18 172h92m18 0h56m20 0h84" />
+                          <path d="M248 16v188" />
+                          <path d="M92 16v188" />
+                          </g>
+                          <g fill="currentColor">
+                          <circle cx="92" cy="28" r="4" />
+                          <circle cx="124" cy="28" r="4" />
+                          <circle cx="204" cy="76" r="4" />
+                          <circle cx="160" cy="124" r="4" />
+                          <circle cx="92" cy="172" r="4" />
+                          <circle cx="248" cy="172" r="4" />
+                          </g>
+                          </svg>
+                        </div>
+                       <h2 class="all-h2-headings">Viziunea noastră</h2>
+                       <div class="description"> 
+                         <p class="all-paragraphs"> Urmărim dezvoltarea și implementarea unor sisteme electrice feroviare sigure, fiabile și scalabile, bazate pe expertiză inginerească solidă, <span class="highlight">control riguros al calității</span> și utilizarea tehnologiilor validate în exploatare.</p>
+                        <p class="all-paragraphs">Prin optimizarea soluțiilor tehnice, management eficient al riscurilor și respectarea termenelor contractuale, contribuim la realizarea unor <span class="highlight">infrastructuri durabile</span>, pregătite pentru cerințele operaționale actuale și viitoare ale transportului feroviar.</p>
+                      </div>
+                    </div>
+                 </div>
+                 <a class="button is-secondary is-uppercase" href="#despre">
+                    <span class="button-icon" aria-hidden="true">→</span>
+                    <span class="button-text-wrap">
+                       <span class="button-text button-text--top">Povestea noastră</span>
+                       <span class="button-text button-text--bottom">Povestea noastră</span>
+                    </span>
+                 </a>
+            </div>
+        </div>
+      </section>
+      <!-- SERVICES -->
+      <section class="section" id="servicii">
+         <div class="container-padding">
+           <div class="header">
+             <div class="decoration" aria-hidden="true">
+                <svg viewBox="0 0 320 220" role="presentation">
+                  <g fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 28h92m20 0h40m16 0h96" />
+                  <path d="M24 76h64m24 0h120m16 0h52" />
+                  <path d="M40 124h120m20 0h84" />
+                  <path d="M18 172h92m18 0h56m20 0h84" />
+                  <path d="M248 16v188" />
+                  <path d="M92 16v188" />
+                  </g>
+                  <g fill="currentColor">
+                  <circle cx="92" cy="28" r="4" />
+                  <circle cx="124" cy="28" r="4" />
+                  <circle cx="204" cy="76" r="4" />
+                  <circle cx="160" cy="124" r="4" />
+                  <circle cx="92" cy="172" r="4" />
+                  <circle cx="248" cy="172" r="4" />
+                 </g>
+               </svg>
+              </div>
+              <div class="eyebrow is-uppercase">Ce oferim</div>
+              <div class="title-text">
+                <h2 class="all-h2-headings">Soluții integrate pentru infrastructura feroviară și civilă</h2>
+                <p class="all-paragraphs">Oferim soluții tehnice integrate pentru infrastructură feroviară și civilă, de la proiectare până la implementare și mentenanță.</p>
+              </div>
+              </div>
+           <div class="services-grid" aria-label="Serviciile noastre">
+             <article class="service-item">
+               <div class="service-icon" aria-hidden="true">
+                 <img src="assets/train.svg" alt="" />
+               </div>
+               <h3 class="all-h3-headings">Instalații feroviare CCS-T, ELF, EA, LC, TTR-TC</h3>
+               <p class="all-paragraphs">Lucrări de construcții-montaj, modernizări, reparații și întreținere instalații feroviare.</p>
+             </article>
+             <article class="service-item">
+               <div class="service-icon" aria-hidden="true">
+                 <img src="assets/zap.svg" alt="" />
+               </div>
+               <h3 class="all-h3-headings">Instalații electrice de JT și MT</h3>
+               <p class="all-paragraphs">Executare de posturi de transformare, stații electrice și de lucrări la partea electrică a centralelor cu orice tensiuni nominale standardizate.</p>
+             </article>
+             <article class="service-item">
+               <div class="service-icon" aria-hidden="true">
+                 <img src="assets/shield.svg" alt="" />
+               </div>
+               <h3 class="all-h3-headings">Sisteme de securitate și incendiu</h3>
+               <p class="all-paragraphs">Instalare sisteme de semnalizare, alarmare și alertare în caz de incendiu.</p>
+             </article>
+             <article class="service-item">
+               <div class="service-icon" aria-hidden="true">
+                <img src="assets/compass.svg" alt="" />
+               </div>
+               <h3 class="all-h3-headings">Proiectare instalații tehnice</h3>
+               <p class="all-paragraphs">Proiectare instalații electrice și feroviare, aliniate la normative și cerințe tehnice.</p>
+              </article>
+             </div>
+        </div>
+      </section>
+      <!-- PORTFOLIU -->
+      <section class="section" id="portofoliu">
+         <div class="container-padding">
+             <div class="header">
+                <div class="decoration" aria-hidden="true">
+                 <svg viewBox="0 0 320 220" role="presentation">
+                    <g fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 28h92m20 0h40m16 0h96" />
+                      <path d="M24 76h64m24 0h120m16 0h52" />
+                      <path d="M40 124h120m20 0h84" />
+                      <path d="M18 172h92m18 0h56m20 0h84" />
+                      <path d="M248 16v188" />
+                      <path d="M92 16v188" />
+                    </g>
+                    <g fill="currentColor">
+                      <circle cx="92" cy="28" r="4" />
+                      <circle cx="124" cy="28" r="4" />
+                      <circle cx="204" cy="76" r="4" />
+                      <circle cx="160" cy="124" r="4" />
+                      <circle cx="92" cy="172" r="4" />
+                      <circle cx="248" cy="172" r="4" />
+                    </g>
+                 </svg>
+                </div>
+                <div class="eyebrow is-uppercase">Portofoliu</div>
+                <div class="title-text">  
+                <h2 class="all-h2-headings">Proiecte feroviare realizate</h2>
+                <p class="all-paragraphs">
+                  Intervenții complete pentru instalații feroviare, de la modernizări complexe la implementări la cheie, cu rezultate măsurabile.
+                </p>
+              </div>
+              <div class="portfolio-grid">
+                  <article class="portfolio-card">
+                    <div class="portfolio-media">
+                      <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
+                    </div>
+                    <div class="portfolio-body">
+                      <h4 class="all-h4-headings text-white">Modernizare Linie CF Gara Ciulnița</h4>
+                      <div class="portfolio-meta">
+                         <span class="portfolio-meta-item">
+                           <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                           București - Constanța
+                         </span>
+                        <span class="portfolio-meta-item">
+                          <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                          2023-prezent
+                        </span>
+                       </div>
+                    </div>
+                  </article>
+                  <article class="portfolio-card">
+                     <div class="portfolio-media">
+                       <img src="assets/portofoliu-2.webp" alt="Transport public ecologic" loading="lazy" />
+                     </div>
+                     <div class="portfolio-body">
+                       <h4 class="all-h4-headings text-white">Transport public ecologic. Sistem de tip bike sharing</h4>
+                       <div class="portfolio-meta">
+                       <span class="portfolio-meta-item">
+                        <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                         Municipiul Aiud
                        </span>
-                  </a>
+                       <span class="portfolio-meta-item">
+                         <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                         2023-2025
+                       </span>
+                     </div>
+                  </article>
+                  <article class="portfolio-card">
+                    <div class="portfolio-media">
+                      <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
+                    </div>
+                    <div class="portfolio-body">
+                      <h4 class="all-h4-headings text-white">Modernizare Linie CF Gara Ciulnița</h4>
+                      <div class="portfolio-meta">
+                         <span class="portfolio-meta-item">
+                           <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                           București - Constanța
+                         </span>
+                        <span class="portfolio-meta-item">
+                          <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                          2023-prezent
+                        </span>
+                       </div>
+                    </div>
+                  </article>
+                  <article class="portfolio-card">
+                    <div class="portfolio-media">
+                      <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
+                    </div>
+                    <div class="portfolio-body">
+                      <h4 class="all-h4-headings text-white">Modernizare Linie CF Gara Ciulnița</h4>
+                      <div class="portfolio-meta">
+                         <span class="portfolio-meta-item">
+                           <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                           București - Constanța
+                         </span>
+                        <span class="portfolio-meta-item">
+                          <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                          2023-prezent
+                        </span>
+                       </div>
+                    </div>
+                  </article>
+                  <article class="portfolio-card">
+                    <div class="portfolio-media">
+                      <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
+                    </div>
+                    <div class="portfolio-body">
+                      <h4 class="all-h4-headings text-white">Modernizare Linie CF Gara Ciulnița</h4>
+                      <div class="portfolio-meta">
+                         <span class="portfolio-meta-item">
+                           <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                           București - Constanța
+                         </span>
+                        <span class="portfolio-meta-item">
+                          <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                          2023-prezent
+                        </span>
+                       </div>
+                    </div>
+                  </article>
+                  <article class="portfolio-card">
+                    <div class="portfolio-media">
+                      <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
+                    </div>
+                    <div class="portfolio-body">
+                      <h4 class="all-h4-headings text-white">Modernizare Linie CF Gara Ciulnița</h4>
+                      <div class="portfolio-meta">
+                         <span class="portfolio-meta-item">
+                           <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
+                           București - Constanța
+                         </span>
+                        <span class="portfolio-meta-item">
+                          <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
+                          2023-prezent
+                        </span>
+                       </div>
+                    </div>
+                  </article>
+              </div>    
+           </div>
+      </section>
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+          <div class="contact-wrapper">
+            <div class="map-container">
+              <figure class="contact-map">
+                <iframe
+                  title="Harta San Electroterm Grup"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2861.3820224545757!2d28.59999279318542!3d44.17859524373664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40baef8ab31dd2b7%3A0x5cc8e3e23db7fe78!2sSan%20Electroterm%20Grup!5e0!3m2!1sro!2sro!4v1769372783990!5m2!1sro!2sro"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen>
+                </iframe>
+              </figure>
+            </div>
+            <div class="form-wrapper">
+              <div class="header">
+                <h2 class="all-h2-headings">Contactează-ne</h2>
+                <p class="all-paragraphs">
+                Discutăm cerințele proiectului tău și livrăm soluții electrice personalizate.
+                </p>
+              </div>
+              <form class="form-block" action="#" method="post">
+               <div class="form-content">
+                 <div class="form-inputs">
+                   <label class="form-field">
+                     <span class="form-label">Nume</span>
+                     <input class="form-input" type="text" name="name" autocomplete="name" required />
+                   </label>
+                   <label class="form-field">
+                     <span class="form-label">Telefon</span>
+                     <input class="form-input" type="tel" name="phone" autocomplete="tel" required />
+                   </label>
+                   <label class="form-field">
+                     <span class="form-label">Email</span>
+                   <input class="form-input" type="email" name="email" autocomplete="email" required />
+                   </label>
+                   <label class="form-field">
+                     <span class="form-label">Mesaj</span>
+                     <textarea class="form-input form-textarea" name="message" rows="4" required></textarea>
+                   </label>
+                 </div>
+                 <button class="button is-secondary is-uppercase" type="submit">
+                      <span class="button-icon" aria-hidden="true">→</span>
+                      <span class="button-text-wrap">
+                        <span class="button-text button-text--top">Trimite mesajul</span>
+                        <span class="button-text button-text--bottom">Trimite mesajul</span>
+                      </span>
+                  </button>
+                </div>
+               <div class="form-messages">
+                 <div class="success">
+                   <p class="form-message form-message--success all-paragraphs" role="status" aria-live="polite">Mesaj trimis cu succes.</p>
+                 </div>
+                 <div class="error">
+                   <p class="form-message form-message--error all-paragraphs" role="alert">A apărut o eroare. Încearcă din nou.</p>
+                 </div>
+               </div>
+              </form>
+            </div>
+          </div>
+      </section>
+    </main>
+   <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container-padding">
+        <div class="footer-wrapper">
+          <div class="footer-top">
+            <div class="footer-left">
+              <img class="footer-logo" src="assets/logo-footer.svg" alt="logo sangrup" aria-hidden="true">
+            </div>
+            <div class="footer-right">
+              <div class="text-wrapper">
+                <div class="text">
+                  <h4 class="all-h4-headings is-uppercase text-white">Contact</h4>
+                  <div class="contact-details">
+                    <div class="contact-item">
+                      <img class="footer-icon" src="assets/phone-white.svg" alt="telefon" />
+                      <a class="footer-link" href="tel:0241627700">+40 748 20 50 40</a>
+                    </div>
+                    <div class="contact-item">
+                      <img class="footer-icon" src="assets/email-white.svg" alt="email" />
+                      <a class="footer-link" href="mailto:office@sangrup.ro">office@sangrup.ro</a>
+                    </div>
+                    <div class="contact-item">
+                      <img class="footer-icon" src="assets/linkedin-icon.svg" alt="linkedin icon" />
+                      <a class="footer-link" href="https://www.linkedin.com/company/san-electroterm-grup-srl/">LinkedIn</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-wrapper">
+                <div class="text">
+                  <h4 class="all-h4-headings is-uppercase text-white">Meniu</h4>
+                  <div class="footer-links">
+                    <a class="footer-link" href="#despre">Despre noi</a>
+                    <a class="footer-link" href="#servicii">Servicii</a>
+                    <a class="footer-link" href="#portofoliu">Portofoliu</a>
+                    <a class="footer-link" href="#certificari">Certificari</a>
+                    <a class="footer-link" href="#contact">Contact</a>
+                  </div>
+                </div>
+              </div>
+              <div class="text-wrapper">
+                <div class="text">
+                  <h4 class="all-h4-headings is-uppercase text-white">Adresă</h4>
+                  <div class="address-wrapper">
+                    <a class="footer-link" href="https://maps.app.goo.gl/En5bNJqj5rtg1JsC8" target="_blank" rel="noopener">
+                      <img class="footer-icon" src="assets/location-white.svg" alt="Deschide adresa pe hartă" />
+                    </a>
+                    <p class="all-paragraphs text-white">Str. Interioară nr. 2, 900229 Constanța, România</p>
+                  </div>
+                </div>
+              </div>
+              <div class="text-wrapper">
+                <div class="text">
+                  <h4 class="all-h4-headings is-uppercase text-white">INFO</h4>
+                  <p class="all-paragraphs text-white">CIF 15344614</p>
+                  <p class="all-paragraphs text-white">J13/1197/2003</p>
                 </div>
               </div>
             </div>
           </div>
-        <!-- HERO IMAGE -->
-        <div class="hero-media">
-          <img
-            src="assets/hero-rail.webp"alt="Echipă în teren la instalații feroviare" loading="eager"/>
-        </div>
-      </section>
-      <!-- DESPRE NOI -->
-      <section class="despre-noi" id="despre">
-        <div class="despre-decoration" aria-hidden="true">
-          <svg viewBox="0 0 320 220" role="presentation">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 28h92m20 0h40m16 0h96" />
-              <path d="M24 76h64m24 0h120m16 0h52" />
-              <path d="M40 124h120m20 0h84" />
-              <path d="M18 172h92m18 0h56m20 0h84" />
-              <path d="M248 16v188" />
-              <path d="M92 16v188" />
-            </g>
-            <g fill="currentColor">
-              <circle cx="92" cy="28" r="4" />
-              <circle cx="124" cy="28" r="4" />
-              <circle cx="204" cy="76" r="4" />
-              <circle cx="160" cy="124" r="4" />
-              <circle cx="92" cy="172" r="4" />
-              <circle cx="248" cy="172" r="4" />
-            </g>
-          </svg>
-        </div>
-        <div class="container despre-top">
-          <div class="despre-left">
-            <div class="eyebrow is-uppercase">Despre noi</div>
-            <h2 class="despre-title">Misiunea  noastră</h2>
-            <p class="despre-text">
-              Să oferim soluții complete de instalații electrice și tehnice de cea mai înaltă calitate, contribuind la dezvoltarea infrastructurii naționale și asigurând siguranța și eficiența operațională pentru clienții noștri.
-            </p>
-          </div>
-          <div class="despre-right">
-            <div class="kpi-grid" aria-label="Indicatori cheie">
-              <div class="kpi-card">
-                <h3 class="kpi-title">23+</h3>
-                <p class="kpi-label">ani experiență</p>
-              </div>
-              <div class="kpi-card">
-                <h3 class="kpi-title">120+</h3>
-                <p class="kpi-label">proiecte livrate</p>
-              </div>
-              <div class="kpi-card">
-                <h3 class="kpi-title">150+</h3>
-                <p class="kpi-label">angajați specializați</p>
-              </div>
-              <div class="kpi-card">
-                <h3 class="kpi-title">30+</h3>
-                <p class="kpi-label">clienți industriali</p>
-              </div>
-            </div>
-          </div>
-          <a class="cta-hero is-uppercase despre-cta" href="#contact">
-            <span class="cta-icon" aria-hidden="true">→</span>
-            <span class="cta-text-wrap">
-              <span class="cta-text cta-text--top">Povestea noastră</span>
-              <span class="cta-text cta-text--bottom">Povestea noastră</span>
-            </span>
-          </a>
-        </div>
-      </section>
-      <!-- SERVICES -->
-      <section class="services" id="servicii">
-        <div class="despre-decoration" aria-hidden="true">
-          <svg viewBox="0 0 320 220" role="presentation">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 28h92m20 0h40m16 0h96" />
-              <path d="M24 76h64m24 0h120m16 0h52" />
-              <path d="M40 124h120m20 0h84" />
-              <path d="M18 172h92m18 0h56m20 0h84" />
-              <path d="M248 16v188" />
-              <path d="M92 16v188" />
-            </g>
-            <g fill="currentColor">
-              <circle cx="92" cy="28" r="4" />
-              <circle cx="124" cy="28" r="4" />
-              <circle cx="204" cy="76" r="4" />
-              <circle cx="160" cy="124" r="4" />
-              <circle cx="92" cy="172" r="4" />
-              <circle cx="248" cy="172" r="4" />
-            </g>
-          </svg>
-        </div>
-        <div class="container services-header">
-          <div class="eyebrow is-uppercase">Ce oferim</div>
-          <h2 class="services-title">Soluții integrate pentru infrastructura feroviară și civilă</h2>
-          <p class="services-description">Oferim soluții tehnice integrate pentru infrastructura feroviară și civilă, de la proiectare până la implementare și mentenanță.</p>
-        </div>
-        <div class="container services-grid" aria-label="Serviciile noastre">
-          <article class="service-item">
-            <div class="service-icon" aria-hidden="true">
-              <img src="assets/train.svg" alt="" />
-            </div>
-            <h3>Instalații feroviare CCS-T, ELF, EA, LC, TTR-TC</h3>
-            <p>Lucrări de construcții-montaj, modernizări, reparații și întreținere instalații feroviare.</p>
-            <a class="service-button is-uppercase" href="#contact">Află mai multe</a>
-          </article>
-          <article class="service-item">
-            <div class="service-icon" aria-hidden="true">
-              <img src="assets/zap.svg" alt="" />
-            </div>
-            <h3>Instalații electrice de JT și MT</h3>
-            <p>Executare de posturi de transformare, stații electrice și de lucrări la partea electrică a centralelor cu orice tensiuni nominale standardizate.</p>
-            <a class="service-button is-uppercase" href="#contact">Află mai multe</a>
-          </article>
-          <article class="service-item">
-            <div class="service-icon" aria-hidden="true">
-              <img src="assets/shield.svg" alt="" />
-            </div>
-            <h3>Sisteme de securitate și incendiu</h3>
-            <p>Instalare sisteme de semnalizare, alarmare și alertare în caz de incendiu.</p>
-            <a class="service-button is-uppercase" href="#contact">Află mai multe</a>
-          </article>
-          <article class="service-item">
-            <div class="service-icon" aria-hidden="true">
-              <img src="assets/compass.svg" alt="" />
-            </div>
-            <h3>Proiectare instalații tehnice</h3>
-            <p>Proiectare instalații electrice și feroviare, aliniate la normative și cerințe tehnice.</p>
-            <a class="service-button is-uppercase" href="#contact">Află mai multe</a>
-          </article>
-        </div>
-        <div class="container services-cta">
-          <a class="cta-hero is-uppercase" href="#contact">
-            <span class="cta-icon" aria-hidden="true">→</span>
-            <span class="cta-text-wrap">
-              <span class="cta-text cta-text--top">Vezi toate serviciile</span>
-              <span class="cta-text cta-text--bottom">Vezi toate serviciile</span>
-            </span>
-          </a>
-        </div>
-      </section>
-      <!-- PORTFOLIU -->
-      <section class="portfolio" id="portofoliu">
-        <div class="despre-decoration" aria-hidden="true">
-          <svg viewBox="0 0 320 220" role="presentation">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 28h92m20 0h40m16 0h96" />
-              <path d="M24 76h64m24 0h120m16 0h52" />
-              <path d="M40 124h120m20 0h84" />
-              <path d="M18 172h92m18 0h56m20 0h84" />
-              <path d="M248 16v188" />
-              <path d="M92 16v188" />
-            </g>
-            <g fill="currentColor">
-              <circle cx="92" cy="28" r="4" />
-              <circle cx="124" cy="28" r="4" />
-              <circle cx="204" cy="76" r="4" />
-              <circle cx="160" cy="124" r="4" />
-              <circle cx="92" cy="172" r="4" />
-              <circle cx="248" cy="172" r="4" />
-            </g>
-          </svg>
-        </div>
-        <div class="container portfolio-header">
-          <div class="eyebrow is-uppercase">Portofoliu</div>
-          <h2 class="portfolio-title">Proiecte feroviare realizate</h2>
-          <p class="portfolio-subtitle">
-            Intervenții complete pentru instalații feroviare, de la modernizări complexe la implementări la cheie, cu rezultate măsurabile.
-          </p>
-        </div>
-        <div class="container portfolio-grid">
-          <article class="portfolio-card">
-            <div class="portfolio-media">
-              <img src="assets/portofoliu-1.webp  " alt="Modernizare linie feroviară" loading="lazy" />
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-card-title">Modernizare Linie CF Gara Ciulnița</h3>
-              <div class="portfolio-meta">
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
-                  București - Constanța
-                </span>
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
-                  2023-prezent
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-media">
-              <img src="assets/portofoliu-2.webp" alt="Transport public ecologic" loading="lazy" />
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-card-title">Transport public ecologic. Sistem de tip bike sharing</h3>
-              <div class="portfolio-meta">
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
-                  Municipiul Aiud
-                </span>
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
-                  2023-2025
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-media">
-              <img src="assets/portofoliu-3.webp" alt="Sistem securitate integrat" loading="lazy" />
-            </div>
-            <div class="portfolio-body">
-              <h3 class="portfolio-card-title">Lucrări la sistemul integrat de securitate </h3>
-              <div class="portfolio-meta">
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/pin-location-white.svg" alt="" />
-                  Isaccea
-                </span>
-                <span class="portfolio-meta-item">
-                  <img class="portfolio-meta-icon" src="assets/calendar-white.svg" alt="" />
-                  2022
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="container portfolio-cta">
-          <a class="cta-hero is-uppercase" href="#contact">
-            <span class="cta-icon" aria-hidden="true">→</span>
-            <span class="cta-text-wrap">
-              <span class="cta-text cta-text--top">Vezi mai multe proiecte</span>
-              <span class="cta-text cta-text--bottom">Vezi mai multe proiecte</span>
-            </span>
-          </a>
-        </div>
-      </section>
-      <!-- CERTIFICATIONS -->
-      <section class="certifications" id="certificari">
-        <div class="despre-decoration" aria-hidden="true">
-          <svg viewBox="0 0 320 220" role="presentation">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 28h92m20 0h40m16 0h96" />
-              <path d="M24 76h64m24 0h120m16 0h52" />
-              <path d="M40 124h120m20 0h84" />
-              <path d="M18 172h92m18 0h56m20 0h84" />
-              <path d="M248 16v188" />
-              <path d="M92 16v188" />
-            </g>
-            <g fill="currentColor">
-              <circle cx="92" cy="28" r="4" />
-              <circle cx="124" cy="28" r="4" />
-              <circle cx="204" cy="76" r="4" />
-              <circle cx="160" cy="124" r="4" />
-              <circle cx="92" cy="172" r="4" />
-              <circle cx="248" cy="172" r="4" />
-            </g>
-          </svg>
-        </div>
-        <div class="container certifications-header">
-            <p class="eyebrow is-uppercase">Standardele noastre tehnice</p>
-            <h2 class="certifications-title">Certificări și autorizații</h2>
-            <p class="certifications-subtitle">
-              Deținem toate certificările și autorizațiile necesare pentru a opera legal și în siguranță, respectând standardele naționale și europene de calitate, mediu și conformitate.
-            </p>
-        </div>
-        <div class="certifications-marquee" aria-label="Certificari si autorizatii">
-          <div class="marquee-track">
-            <div class="marquee-group">
-              <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
-            </div><div class="marquee-group">
-              <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
-            </div><div class="marquee-group">
-              <img class="certifications-logo" src="assets/cert-1.png" alt="Certificare 1" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-2.png" alt="Certificare 2" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-3.png" alt="Certificare 3" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-4.png" alt="Certificare 4" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-5.png" alt="Certificare 5" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-6.png" alt="Certificare 6" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-7.png" alt="Certificare 7" loading="lazy" />
-              <img class="certifications-logo" src="assets/cert-8.png" alt="Certificare 8" loading="lazy" />
-            </div>
+          <div class="footer-bottom">
+            <p class="all-paragraphs text-white">© 2026 Sangrup. Toate drepturile rezervate.</p>
           </div>
         </div>
-        <div class="container certifications-cta">
-          <a class="cta-hero is-uppercase" href="#contact">
-            <span class="cta-icon" aria-hidden="true">→</span>
-            <span class="cta-text-wrap">
-              <span class="cta-text cta-text--top">Vezi toate certificările</span>
-              <span class="cta-text cta-text--bottom">Vezi toate certificările</span>
-            </span>
-          </a>
-        </div>
-      </section>
-      <!-- CONTACT -->
-      <section class="contact" id="contact">
-        <div class="container contact-grid">
-          <div class="contact-header">
-            <h2 class="contact-title">Suntem aici pentru proiectul tău</h2>
-            <p class="contact-subtitle">
-            Oferim suport specializat pe tot parcursul derulării proiectelor, asigurând conformitate, profesionalism și implementare eficientă, în acord cu cerințele legale și obiectivele stabilite.
-            </p>
-          </div>
-          <div class="contact-items">
-            <div class="contact-item">
-              <img class="location-icon" src="assets/location-white.svg" alt="" />
-              <p>Str. Interioară nr. 2, 900229 Constanța, România</p>
-            </div>
-            <div class="contact-item">
-              <img class="phone-icon" src="assets/phone-white.svg" alt="" />
-              <a href="tel:0241627700">+40 241 627 700</a>
-            </div>
-            <div class="contact-item">
-              <img class="email-icon" src="assets/email-white.svg" alt="" />
-              <a href="mailto:office@sangrup.ro">office@sangrup.ro</a>
-            </div>
-          </div>
-          <p class="contact-legal">CUI 15344614 | Nr. Reg. Com. J13/1197/2003</p>
-        </div>
-        <figure class="contact-map">
-          <iframe
-            title="Harta San Electroterm Grup"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2861.3820224545757!2d28.59999279318542!3d44.17859524373664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40baef8ab31dd2b7%3A0x5cc8e3e23db7fe78!2sSan%20Electroterm%20Grup!5e0!3m2!1sro!2sro!4v1769372783990!5m2!1sro!2sro"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          ></iframe>
-        </figure>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="footer-text">© 2026 Sangrup. Toate drepturile rezervate.</p>
       </div>
     </footer>
   </body>
