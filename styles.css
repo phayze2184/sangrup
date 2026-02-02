@@ -296,7 +296,6 @@ a {
   inset: 0;
   z-index: 10;
   display: none;
-  min-height: 100dvh;
   margin-top: 0px;
   padding-top: 64px;
   flex-flow: column;
@@ -430,12 +429,12 @@ a {
 /* ===== Hero ===== */
 .hero-section {
   position: relative;
-  min-height: 100svh;
 }
 @media screen and (max-width: 991px) {
   .hero-section {
     position: relative;
     min-height: auto;
+    min-height: 100dvh;
   }
 }
 .hero-content {
