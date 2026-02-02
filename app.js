@@ -31,43 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     setNavState();
   }
-
-  const navbar = document.querySelector(".navbar");
-  const heroSection = document.querySelector(".hero-section");
-
-  const setNavbarScrolled = (isScrolled) => {
-    if (!navbar) return;
-    navbar.classList.toggle("is-scrolled", isScrolled);
-  };
-
-  if (navbar && heroSection && "IntersectionObserver" in window) {
-    const navHeight = navbar.offsetHeight || 0;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const heroHeight = entry.boundingClientRect.height || 1;
-        const visible = entry.intersectionRect.height / heroHeight;
-        setNavbarScrolled(visible < 0.85);
-      },
-      {
-        threshold: [0.85],
-        rootMargin: `-${navHeight}px 0px 0px 0px`,
-      }
-    );
-    observer.observe(heroSection);
-  } else if (navbar) {
-    const updateOnScroll = () => {
-      const rect = heroSection ? heroSection.getBoundingClientRect() : { top: 0, height: window.innerHeight };
-      const heroTop = rect.top + window.scrollY;
-      const heroHeight = rect.height || window.innerHeight;
-      const threshold = heroTop + heroHeight * 0.4;
-      setNavbarScrolled(window.scrollY >= threshold);
-    };
-    updateOnScroll();
-    window.addEventListener("scroll", updateOnScroll, { passive: true });
-    window.addEventListener("resize", updateOnScroll);
-    window.addEventListener("load", updateOnScroll);
-  }
-
   // Custom validation copy (Romanian) for form fields
   const requiredFields = document.querySelectorAll(
     ".form-input[required], .form-textarea[required]"

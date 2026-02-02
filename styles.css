@@ -210,31 +210,6 @@ a {
   background-color: var(--bg);
   top: 0;
   border-bottom: 1px solid var(--line);
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.navbar.is-scrolled {
-  background:
-    radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
-    radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
-    radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
-    linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
-  border-bottom-color: rgba(255,255,255,0.22);
-}
-.navbar.is-scrolled,
-.navbar.is-scrolled a {
-  color: var(--white);
-}
-.navbar.is-scrolled .brand-logo,
-.navbar.is-scrolled .icon.phone {
-  filter: brightness(0) invert(1);
-}
-.navbar.is-scrolled .hamburger-icon {
-  background: transparent;
-  border-color: rgba(255,255,255,0.4);
-  box-shadow: none;
-}
-.navbar.is-scrolled .hamburger-icon span {
-  background: var(--white);
 }
 .nav {
   position: static;
