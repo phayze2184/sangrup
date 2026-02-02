@@ -633,8 +633,6 @@ a {
 }
 @media screen and (max-width: 767px) {
   .hero-kpi {
-    width: 120px;
-    height: 120px;
     right: 16px;
     bottom: 16px;
   }
