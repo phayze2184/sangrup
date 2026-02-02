@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const rect = heroSection ? heroSection.getBoundingClientRect() : { top: 0, height: window.innerHeight };
       const heroTop = rect.top + window.scrollY;
       const heroHeight = rect.height || window.innerHeight;
-      const threshold = heroTop + heroHeight * 0.1;
+      const threshold = heroTop + heroHeight * 0.4;
       setNavbarScrolled(window.scrollY >= threshold);
     };
     updateOnScroll();
