@@ -1183,7 +1183,8 @@ a {
 }
 /* ===== Footer ===== */
 .footer {
- padding: var(--section-seam-gap) 0px;
+ padding-top: var(--section-seam-gap);
+ padding-bottom: 32px;
   background:
     radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
     radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
@@ -1194,7 +1195,8 @@ a {
 }
 @media screen and (max-width: 991px){
   .footer {
-    padding: var(--section-seam-gap-mobile) 0px;
+    padding-top: var(--section-seam-gap-mobile);
+    padding-bottom: 24px;
   }
 }
 .footer-wrapper {
@@ -1207,7 +1209,7 @@ a {
 .footer-top {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   gap: clamp(48px, 4vw, 64px);
   align-items: flex-start;
@@ -1223,16 +1225,27 @@ a {
   display: grid;
   grid-template-columns: repeat(4, minmax(160px, 1fr));
   grid-auto-rows: minmax(140px, auto);
-  gap: clamp(32px, 2.7vw, 48px);
+  gap: clamp(40px, 3.2vw, 60px);
   align-items: start;
   justify-items: start;
   text-align: left;
+}
+.footer-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .footer-left {
+    align-self: center;
+  }
 }
 @media screen and (max-width: 991px) {
 .footer-right {
     grid-template-columns: repeat(2, minmax(140px, 1fr));
     grid-template-rows: repeat(2, minmax(140px, 1fr));
-    justify-items: center;
+    justify-items: start;
+    align-items: start;
   }
 }
 .footer-logo {
@@ -1245,36 +1258,38 @@ a {
   flex-flow: column;
   gap: 12px;
   min-width: 0;
-}
-@media screen and (max-width: 991px) {
-  .text-wrapper {
-    justify-content: flex-start;
-    align-items: center;
-  }
+  align-items: flex-start;
 }
 .details {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
 }
 .contact-item {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 8px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 12px;
 }
 .menu-footer {
   padding-inline: 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .menu-footer {
+    padding-inline: 0px;
+  }
 }
 .footer-icon{
   width: 24px;
   min-width: 24px;
   height: 24px;
   display: block;
-  padding-top: 2px;
+  padding-top: 0;
+  align-self: flex-end;
 }
 .footer-links {
   display: flex;
@@ -1284,6 +1299,8 @@ a {
   gap: 8px;
 }
 .footer-link {
+  display: inline-flex;
+  align-items: flex-end;
   color: var(--white);
   font-family: var(--body-font);
   font-size: var(--subtext);
