@@ -1345,7 +1345,8 @@ a {
 }
 @media screen and (max-width: 991) {
   .section {
-    padding: var(--section-seam-gap-mobile);
+    padding-block: var(--section-seam-gap-mobile);
+    padding-inline: clamp(16px, 4vw, 28px);
   }
 }
 .overflow-hidden {
