@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ([entry]) => {
         const heroHeight = entry.boundingClientRect.height || 1;
         const visible = entry.intersectionRect.height / heroHeight;
-        setNavbarScrolled(visible < 0.9);
+        setNavbarScrolled(visible < 0.75);
       },
-      { threshold: [0.9] }
+      { threshold: [0.75] }
     );
     observer.observe(heroSection);
   } else if (navbar) {
