@@ -434,7 +434,6 @@ a {
   .hero-section {
     position: relative;
     min-height: auto;
-    min-height: 100dvh;
   }
 }
 .hero-content {
