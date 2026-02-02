@@ -41,13 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   if (navbar && heroSection && "IntersectionObserver" in window) {
+    const navHeight = navbar.offsetHeight || 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
         const heroHeight = entry.boundingClientRect.height || 1;
         const visible = entry.intersectionRect.height / heroHeight;
-        setNavbarScrolled(visible < 0.75);
+        setNavbarScrolled(visible < 0.85);
       },
-      { threshold: [0.75] }
+      {
+        threshold: [0.85],
+        rootMargin: `-${navHeight}px 0px 0px 0px`,
+      }
     );
     observer.observe(heroSection);
   } else if (navbar) {

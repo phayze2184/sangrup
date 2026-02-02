@@ -76,6 +76,7 @@
   --eyebrow-text-gap: 1.5rem;
   --box-shadow: 0 12px 28px rgba(11, 18, 32, 0.05);
   --container-gutter: 48px;
+  --nav-height: 72px;
   --marquee-gap: clamp(24px, 4vw, 52px);
   --cert-4-5-gap: clamp(12px, 2vw, 28px);
   --duration: 30s;
@@ -429,11 +430,13 @@ a {
 /* ===== Hero ===== */
 .hero-section {
   position: relative;
+  min-height: 100svh;
 }
 @media screen and (max-width: 991px) {
   .hero-section {
     position: relative;
-    min-height: auto;
+    min-height: 100vh;
+    min-height: calc(100dvh - var(--nav-height, 64px));
   }
 }
 .hero-content {
