@@ -729,6 +729,12 @@ a {
   text-align: left;
   z-index: 1;
 }
+.despre-left {
+  position: relative;
+}
+.despre-left .decoration {
+  display: none;
+}
 .despre-right {
   position: relative;
 }
@@ -737,9 +743,6 @@ a {
     position: static;
   }
 }
-.despre-left .decoration {
-  display: none;
-}
 @media screen and (max-width: 991px) {
   .despre-left .decoration {
     display: block;
@@ -747,8 +750,6 @@ a {
     right: 0;
     left: auto;
   }
-}
-@media screen and (max-width: 991px) {
   .despre-left > :not(.decoration) {
     position: relative;
     z-index: 1;
