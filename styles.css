@@ -718,6 +718,7 @@ a {
   align-items: center;
   gap: var(--eyebrow-text-gap);
   width: 100%;
+  padding-inline: clamp(16px, 4vw, 28px);
  }
  @media screen and (max-width: 991px) {
   .despre-wrapper {
@@ -813,6 +814,7 @@ a {
     linear-gradient(180deg, rgba(11,18,32,0.06), rgba(11,18,32,0)),
     var(--bg);
   gap: var(--elements-gap);
+  padding-inline: clamp(16px, 4vw, 28px);
 }
 #servicii .container-padding {
   display: flex;
@@ -883,6 +885,7 @@ a {
   border-top: 1px solid var(--line);
   background: var(--bg);
   overflow: hidden;
+  padding-inline: clamp(16px, 4vw, 28px);
 }
 .portfolio-grid {
   display: grid;
@@ -952,6 +955,7 @@ a {
     linear-gradient(180deg, rgba(11,18,32,0.06), rgba(11,18,32,0)),
     var(--bg);
     padding: 0px;
+    padding-inline: clamp(16px, 4vw, 28px);
 }
 #contact.section {
   /* remove horizontal padding so the map touches the edge */
@@ -1185,13 +1189,14 @@ a {
 .footer {
  padding-top: var(--section-seam-gap);
  padding-bottom: 32px;
-  background:
+ background:
     radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
     radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
     radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
     linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
   color: var(--white);
   margin: 0 auto;
+  padding-inline: clamp(16px, 4vw, 28px);
 }
 @media screen and (max-width: 991px){
   .footer {
@@ -1211,21 +1216,20 @@ a {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: clamp(48px, 4vw, 64px);
+  gap: 60px;
   align-items: flex-start;
 }
 @media screen and (max-width: 767px) {
  .footer-top {
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 4.16vh, 60px);
  }
 }
 .footer-right {
   display: grid;
   grid-template-columns: repeat(4, minmax(160px, 1fr));
   grid-auto-rows: minmax(140px, auto);
-  gap: clamp(40px, 3.2vw, 60px);
+  gap: clamp(60px, 5vw, 80px);
   align-items: start;
   justify-items: start;
   text-align: left;
