@@ -436,6 +436,7 @@ a {
   .hero-section {
     position: relative;
     min-height: auto;
+    height: 100svh;
   }
 }
 .hero-content {
