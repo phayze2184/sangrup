@@ -22,6 +22,11 @@
     var(--header-stripe-b) var(--header-stripe-size),
     var(--header-stripe-b) calc(var(--header-stripe-size) * 2)
   );
+  --blue-dark-gradient: 
+    radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
+    radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
+    radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
+    linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
   --line: rgba(11,18,32,.08);
   --border: rgba(11,18,32,.18);
   --shadow: rgba(11,18,32,.12); 
@@ -210,6 +215,11 @@ p {
   background-color: var(--bg);
   top: 0;
   border-bottom: 1px solid var(--line);
+  transition: background 240ms ease, border-color 240ms ease;
+}
+.navbar.scrolled {
+  background: var(--blue-dark-gradient) !important;
+  border-bottom-color: rgba(255,255,255,0.24);
 }
 .nav {
   position: static;
@@ -584,11 +594,7 @@ p {
   min-height: clamp(120px, 10vh, 160px);
   padding: 24px;
   color: var(--white);
-  background:
-    radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
-    radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
-    radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
-    linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
+  background: var(--blue-dark-gradient);
   border: 1px solid rgba(255,255,255,0.22);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -883,11 +889,7 @@ p {
   display: grid;
   gap: 14px;
   padding: 12px;
-  background:
-    radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
-    radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
-    radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
-    linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
+  background: var(--blue-dark-gradient);
   }
 .portfolio-media {
   position: relative;
@@ -1172,11 +1174,7 @@ p {
 .footer {
  padding-top: var(--section-seam-gap);
  padding-bottom: 32px;
- background:
-    radial-gradient(120% 140% at 90% 10%, rgba(80,140,255,0.32), rgba(80,140,255,0) 55%),
-    radial-gradient(140% 160% at 15% 85%, rgba(60,120,255,0.2), rgba(60,120,255,0) 62%),
-    radial-gradient(130% 150% at 85% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%),
-    linear-gradient(135deg, rgba(18,28,58,0.92), rgba(9,17,34,0.98));
+ background: var(--blue-dark-gradient);
   color: var(--white);
   margin: 0;
   margin-bottom: 0px;
