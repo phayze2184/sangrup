@@ -445,7 +445,6 @@ p {
 }
 .hero-image-a {
   position: relative;
-  isolation: isolate;
   min-height: calc(100vh - var(--nav-height, 64px));
   min-height: calc(100dvh - var(--nav-height, 64px));
   display: grid;
@@ -454,18 +453,6 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.hero-image-a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(9,17,34,0.34), rgba(9,17,34,0.22));
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-image-a > * {
-  position: relative;
-  z-index: 1;
 }
 @media screen and (max-width: 767px) {
   .hero-image-a {
