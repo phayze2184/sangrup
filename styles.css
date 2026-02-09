@@ -216,42 +216,16 @@ p {
   padding-left: 0px;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(
-      106deg,
-      transparent 0 32%,
-      rgba(11,18,32,0.16) 32%,
-      transparent 32% 100%
-    ),
-    linear-gradient(
-      106deg,
-      var(--bg) 0 32%,
-      transparent 32% 100%
-    ),
-    var(--blue-dark-gradient);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background: var(--bg);
   top: 0;
-  border-bottom: 1px solid var(--blue-dark-gradient);
-  color: var(--white);
+  border-bottom: 1px solid var(--line);
+  color: var(--soft-black);
+  transition: background 240ms ease, border-color 240ms ease, color 240ms ease;
 }
-@media screen and (max-width: 479px) {
-  .navbar {
-    background-image:
-    linear-gradient(
-      106deg,
-      transparent 0 40%,
-      rgba(11,18,32,0.16) 40%,
-      transparent 40% 100%
-    ),
-    linear-gradient(
-      106deg,
-      var(--bg) 0 40%,
-      transparent 40% 100%
-    ),
-    var(--blue-dark-gradient);
-  }
+.navbar.scrolled {
+  background: var(--blue-dark-gradient);
+  border-bottom-color: rgba(255,255,255,0.24);
+  color: var(--white);
 }
 .nav {
   position: static;
@@ -275,6 +249,10 @@ p {
   width: 100%;
   height: 44px;
   object-fit: cover;
+  transition: filter 240ms ease;
+}
+.navbar.scrolled .brand-logo {
+  filter: brightness(0) invert(1);
 }
 .nav-right-side{
   display: inline-flex;
@@ -296,10 +274,10 @@ p {
   padding-right: 0px;
   gap: 4px;
   order: -1;
-  color: var(--white);
+  color: inherit;
 }
 .header-phone {
-  color: var(--white);
+  color: inherit;
 }
 @media screen and (max-width: 479px) {
   .header-phone-wrapper {
@@ -312,6 +290,9 @@ p {
   flex-shrink: 0;
   padding-bottom: 0px;
   margin-bottom: 2px;
+  transition: filter 240ms ease;
+}
+.navbar.scrolled .icon.phone {
   filter: brightness(0) invert(1);
 }
 .navigation {
@@ -412,20 +393,28 @@ p {
   max-height: 44px;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid rgba(255,255,255,0.34);
-  background: transparent;
+  border: 1px solid rgba(11,18,32,0.24);
+  background: rgba(255,255,255,0.55);
   gap: 6px;
   box-shadow: none;
   grid-column: 3;
   justify-self: end;
+  transition: border-color 240ms ease, background-color 240ms ease;
 }
 .hamburger-icon span {
   display: block;
   width: 24px;
   height: 2.5px;
-  background: var(--white);
+  background: var(--soft-black);
   border-radius: 999px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 240ms ease;
+}
+.navbar.scrolled .hamburger-icon {
+  border-color: rgba(255,255,255,0.34);
+  background: transparent;
+}
+.navbar.scrolled .hamburger-icon span {
+  background: var(--white);
 }
 .menu-button:focus-visible + .hamburger-icon {
   outline: 2px solid var(--accent);
@@ -449,12 +438,14 @@ p {
 .hamburger-icon.is-open span:nth-child(3){
   transform: translateY(-8px) rotate(-45deg);
 }
-/* ===== Hero ===== */
+/* ===== About Hero ===== */
 .hero-section {
   position: relative;
  
 }
 .hero-image-a {
+  position: relative;
+  isolation: isolate;
   min-height: calc(100vh - var(--nav-height, 64px));
   min-height: calc(100dvh - var(--nav-height, 64px));
   display: grid;
@@ -463,6 +454,18 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.hero-image-a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9,17,34,0.34), rgba(9,17,34,0.22));
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-image-a > * {
+  position: relative;
+  z-index: 1;
 }
 @media screen and (max-width: 767px) {
   .hero-image-a {
@@ -545,7 +548,7 @@ p {
 }
 .management-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: clamp(18px, 1.8vw, 24px);
 }
 .management-card {
@@ -624,11 +627,6 @@ p {
 }
 .news-left h2 {
   max-width: 9ch;
-}
-.news-left p,
-.news-right p {
-  margin: 0;
-  color: var(--soft-black);
 }
 .news-image {
   width: min(100%, 640px);

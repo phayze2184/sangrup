@@ -31,6 +31,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     setNavState();
   }
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    const getScrollTop = () =>
+      window.scrollY ||
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    const syncNavbarScrollState = () => {
+      navbar.classList.toggle("scrolled", getScrollTop() > 2);
+    };
+
+    window.addEventListener("scroll", syncNavbarScrollState, { passive: true });
+    document.addEventListener("scroll", syncNavbarScrollState, {
+      passive: true,
+      capture: true,
+    });
+    window.addEventListener("load", syncNavbarScrollState, { passive: true });
+    window.addEventListener("resize", syncNavbarScrollState, { passive: true });
+    requestAnimationFrame(syncNavbarScrollState);
+    syncNavbarScrollState();
+  }
   // Custom validation copy (Romanian) for form fields
   const requiredFields = document.querySelectorAll(
     ".form-input[required], .form-textarea[required]"
