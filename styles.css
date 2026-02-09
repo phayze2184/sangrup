@@ -247,8 +247,8 @@ p {
     ),
     linear-gradient(
       106deg,
-      var(--bg) 0 32%,
-      transparent 32% 100%
+      var(--bg) 0 40%,
+      transparent 40% 100%
     ),
     var(--blue-dark-gradient);
   }
