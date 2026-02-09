@@ -555,7 +555,7 @@ p {
   position: relative;
   aspect-ratio: 1 / 1;
   background: var(--bg);
-  border: 6px solid #ff3b22;
+  border: 6px solid var(--accent);
 }
 .management-card img {
   width: 100%;
