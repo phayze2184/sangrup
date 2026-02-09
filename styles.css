@@ -464,18 +464,6 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.hero-image-a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(9,17,34,0.28), rgba(9,17,34,0.16));
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-image-a > * {
-  position: relative;
-  z-index: 1;
-}
 @media screen and (max-width: 767px) {
   .hero-image-a {
     background-image: url("assets/hero-image-a-mobile.webp");
