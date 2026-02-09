@@ -236,6 +236,23 @@ p {
   border-bottom: 1px solid var(--blue-dark-gradient);
   color: var(--white);
 }
+@media screen and (max-width: 479px) {
+  .navbar {
+    background-image:
+    linear-gradient(
+      106deg,
+      transparent 0 40%,
+      rgba(11,18,32,0.16) 40%,
+      transparent 40% 100%
+    ),
+    linear-gradient(
+      106deg,
+      var(--bg) 0 32%,
+      transparent 32% 100%
+    ),
+    var(--blue-dark-gradient);
+  }
+}
 .nav {
   position: static;
   display: flex;
