@@ -489,7 +489,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: clamp(20px, 2.2vw, 30px);
-  min-height: clamp(320px, 33vw, 460px);
+  min-height: clamp(280px, 33vw, 320px);
   padding: clamp(24px, 2.4vw, 36px);
   background: rgba(255, 255, 255, 0.58);
   border: 1px solid rgba(11, 18, 32, 0.06);
