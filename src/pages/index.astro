@@ -8,6 +8,7 @@ import {
   portfolioProjects,
   services,
 } from "../data/site";
+import { base } from "../utils/base";
 ---
 
 <BaseLayout currentPath="/" title="San Electroterm Grup">
@@ -39,7 +40,7 @@ import {
         <div class="hero-content-right">
           <img
             class="hero-media"
-            src="/assets/hero-rail.webp"
+            src={`${base}assets/hero-rail.webp`}
             alt="Echipă în teren la instalații feroviare"
             loading="eager"
           />
@@ -55,7 +56,7 @@ import {
       <div class="certifications-wrapper overflow-hidden">
         <a
           class="certifications-marquee"
-          href="/certificari"
+          href={`${base}certificari`}
           aria-label="Vezi pagina de certificări și autorizații"
         >
           <div class="marquee-track">
@@ -100,7 +101,7 @@ import {
               </div>
             </div>
           </div>
-          <a class="button is-secondary is-uppercase" href="/about">
+          <a class="button is-secondary is-uppercase" href={`${base}about`}>
             <span class="button-icon" aria-hidden="true">→</span>
             <span class="button-text-wrap">
               <span class="button-text button-text--top">Despre noi</span>
@@ -165,11 +166,11 @@ import {
                     <h4 class="text-white">{project.title}</h4>
                     <div class="portfolio-meta">
                       <span class="portfolio-meta-item">
-                        <img class="portfolio-meta-icon" src="/assets/pin-location-white.svg" alt="" />
+                        <img class="portfolio-meta-icon" src={`${base}assets/pin-location-white.svg`} alt="" />
                         {project.location}
                       </span>
                       <span class="portfolio-meta-item">
-                        <img class="portfolio-meta-icon" src="/assets/calendar-white.svg" alt="" />
+                        <img class="portfolio-meta-icon" src={`${base}assets/calendar-white.svg`} alt="" />
                         {project.year}
                       </span>
                     </div>
@@ -202,7 +203,7 @@ import {
               Discutăm cerințele proiectului tău și livrăm soluții electrice personalizate.
             </p>
           </div>
-          <form class="form-block" action="/contact.php" method="post" novalidate>
+          <form class="form-block" action={`${base}contact.php`} method="post" novalidate>
             <div class="form-content">
               <div class="form-inputs">
                 <label class="form-field">

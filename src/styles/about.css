@@ -20,7 +20,6 @@
     padding-inline: var(--_hero-padding-inline);
     padding-block-start: var(--_hero-padding-block-start);
     padding-block-end: var(--_hero-padding-block-end);
-    background-image: url("/assets/hero-image-a.jpeg");
     background-position: center 30%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -127,7 +126,6 @@
   @media screen and (max-width: 47.9375rem) { /* 767px */
     .hero-image-a {
       --_hero-padding-block-end: var(--section-seam-gap-mobile);
-      background-image: url("/assets/hero-image-a-mobile.webp");
       background-position: center;
     }
 

@@ -12,10 +12,12 @@ interface Props {
   navigationLinks?: HeaderNavItem[];
 }
 
+const base = import.meta.env.BASE_URL;
+
 const {
   currentPath,
-  homeHref = "/",
-  logoSrc = "/assets/logo-sangrup.svg",
+  homeHref = base,
+  logoSrc = `${base}assets/logo-sangrup.svg`,
   logoAlt = "Sangrup logo",
   brandLabel = "San Grup - Acasă",
   menuId = "menu-button",
@@ -48,7 +50,7 @@ const links = navigationLinks.map((link) => ({
     </nav>
     <div class="nav-right-side">
       <div class="header-phone-wrapper">
-        <img class="icon phone" src="/assets/phone-icon.svg" alt="" aria-label="Număr de telefon" />
+        <img class="icon phone" src={`${base}assets/phone-icon.svg`} alt="" aria-label="Număr de telefon" />
         <a class="link header-phone" href={siteMeta.phoneHref}>
           {siteMeta.phoneDisplay}
         </a>

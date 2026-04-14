@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CircuitDecoration from "../components/CircuitDecoration.astro";
 import "../styles/about.css";
 import { aboutHistory, managementTeam } from "../data/site";
+import { base } from "../utils/base";
 
 const historyCards = aboutHistory.map((paragraph, index) => ({
   paragraph,
@@ -13,9 +14,24 @@ const teamMembers = managementTeam.map((member) => ({
   ...member,
   alt: `${member.name}, ${member.role}`,
 }));
+
+const heroDesktop = `url("${base}assets/hero-image-a.jpeg")`;
+const heroMobile = `url("${base}assets/hero-image-a-mobile.webp")`;
 ---
 
 <BaseLayout currentPath="/about" title="Despre noi | San Electroterm Grup">
+  <style define:vars={{ heroDesktop, heroMobile }}>
+    .hero-image-a {
+      background-image: var(--heroDesktop);
+    }
+
+    @media screen and (max-width: 47.9375rem) {
+      .hero-image-a {
+        background-image: var(--heroMobile);
+      }
+    }
+  </style>
+
   <main id="main-content" tabindex="-1">
     <div class="hero-section hero-image-a" id="about" aria-labelledby="about-page-title">
       <div class="hero-copy">
@@ -79,7 +95,7 @@ const teamMembers = managementTeam.map((member) => ({
               </p>
               <div class="news-image">
                 <img
-                  src="/assets/Altpro-numarator-osii-800px.jpg"
+                  src={`${base}assets/Altpro-numarator-osii-800px.jpg`}
                   alt="Senzor de numărare a osiilor montat pe șină"
                   loading="lazy"
                 />

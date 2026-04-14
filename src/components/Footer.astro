@@ -1,5 +1,6 @@
 ---
 import { siteMeta } from "../data/site";
+import { withBase } from "../utils/base";
 
 interface FooterNavItem {
   label: string;
@@ -20,10 +21,11 @@ interface Props {
 }
 
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const {
   currentPath,
-  logoSrc = "/assets/logo-footer.svg",
+  logoSrc = `${base}assets/logo-footer.svg`,
   logoAlt = "logo sangrup",
   contactTitle = "Contact",
   menuTitle = "Meniu",
@@ -32,21 +34,21 @@ const {
   footerNavItems = [
     {
       label: "Servicii",
-      href: "/#servicii",
+      href: withBase("/#servicii"),
       homeHref: "#servicii",
     },
     {
       label: "Portofoliu",
-      href: "/#portofoliu",
+      href: withBase("/#portofoliu"),
       homeHref: "#portofoliu",
     },
     {
       label: "Certificări",
-      href: "/certificari",
+      href: withBase("/certificari"),
     },
     {
       label: "Despre noi",
-      href: "/about",
+      href: withBase("/about"),
     },
   ],
   copyright,
@@ -71,15 +73,15 @@ const footerLinks = footerNavItems.map((link) => ({
             <h4 class="is-uppercase text-white">{contactTitle}</h4>
             <div class="details">
               <div class="contact-item">
-                <img class="footer-icon" src="/assets/phone-white.svg" alt="telefon" />
+                <img class="footer-icon" src={`${base}assets/phone-white.svg`} alt="telefon" />
                 <a class="footer-link" href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>
               </div>
               <div class="contact-item">
-                <img class="footer-icon" src="/assets/email-white.svg" alt="email" />
+                <img class="footer-icon" src={`${base}assets/email-white.svg`} alt="email" />
                 <a class="footer-link" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
               </div>
               <div class="contact-item">
-                <img class="footer-icon" src="/assets/linkedin-icon.svg" alt="linkedin icon" />
+                <img class="footer-icon" src={`${base}assets/linkedin-icon.svg`} alt="linkedin icon" />
                 <a class="footer-link" href={siteMeta.linkedin}>LinkedIn</a>
               </div>
             </div>

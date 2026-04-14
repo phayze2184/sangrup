@@ -1,3 +1,5 @@
+import { withBase } from "../utils/base";
+
 export const siteMeta = {
   name: "San Electroterm Grup",
   title: "San Electroterm Grup",
@@ -38,104 +40,104 @@ export interface CertificationDocument {
 export const headerNavItems: HeaderNavItem[] = [
   {
     label: "Despre noi",
-    href: "/about",
+    href: withBase("/about"),
   },
   {
     label: "Servicii",
-    href: "/#servicii",
+    href: withBase("/#servicii"),
     homeHref: "#servicii",
   },
   {
     label: "Portofoliu",
-    href: "/#portofoliu",
+    href: withBase("/#portofoliu"),
     homeHref: "#portofoliu",
   },
   {
     label: "Certificări",
-    href: "/certificari",
+    href: withBase("/certificari"),
   },
   {
     label: "Contact",
-    href: "/#contact",
+    href: withBase("/#contact"),
     homeHref: "#contact",
   },
 ];
 
 export const certificationDocuments: CertificationDocument[] = [
-    {
+  {
     id: "certificare-afer",
     title: "Autorizație furnizor feroviar emisă de AFER",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/certificare%20afer.pdf",
+    filePath: withBase("/assets/certificare%20afer.pdf"),
     fileType: "PDF",
   },
-   {
+  {
     id: "certificat-iso-2025",
     title: "Certificat SR EN ISO 9001:2015",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/certificat-iso-2025.pdf",
+    filePath: withBase("/assets/certificat-iso-2025.pdf"),
     fileType: "PDF",
   },
   {
     id: "atestat-anre-c1a",
     title: "Atestat ANRE C1A",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/atestat-anre-C1A.pdf",
+    filePath: withBase("/assets/atestat-anre-C1A.pdf"),
     fileType: "PDF",
   },
   {
     id: "atestat-anre-e2",
     title: "Atestat ANRE tip E2",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/atestat-anre-tip-e2.pdf",
+    filePath: withBase("/assets/atestat-anre-tip-e2.pdf"),
     fileType: "PDF",
   },
   {
     id: "autorizatie-igsu",
     title: "Autorizație IGSU",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/autorizatie-igsu.pdf",
+    filePath: withBase("/assets/autorizatie-igsu.pdf"),
     fileType: "PDF",
   },
   {
     id: "autorizatie-igsu-efect-sera",
     title: "Autorizație IGSU efect de seră",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/autorizatie-igsu-efect-sera.pdf",
+    filePath: withBase("/assets/autorizatie-igsu-efect-sera.pdf"),
     fileType: "PDF",
   },
   {
     id: "autorizatie-igsu-gaze-fierbinti",
     title: "Autorizație IGSU gaze fierbinți",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/autorizatie-igsu-gaze-fierbinti.pdf",
+    filePath: withBase("/assets/autorizatie-igsu-gaze-fierbinti.pdf"),
     fileType: "PDF",
   },
   {
     id: "autorizatie-igsu-gaze-fierbinti-exceptie",
     title: "Autorizație IGSU gaze fierbinți excepție gaz natural",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/autorizatie-igsu-gaze-fierbinti-exceptie-gaz-natural.pdf",
+    filePath: withBase("/assets/autorizatie-igsu-gaze-fierbinti-exceptie-gaz-natural.pdf"),
     fileType: "PDF",
   },
   {
     id: "certificare-ncage",
     title: "Certificare NCAGE",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/certificare-ncage.pdf",
+    filePath: withBase("/assets/certificare-ncage.pdf"),
     fileType: "PDF",
   },
   {
     id: "licenta-igp-2025",
     title: "Licență IGP 2025",
     description: "Document oficial disponibil pentru descărcare în format PDF.",
-    filePath: "/assets/lienta-igp-2025.pdf",
+    filePath: withBase("/assets/lienta-igp-2025.pdf"),
     fileType: "PDF",
   },
 ];
 
 export const certifications = Array.from({ length: 8 }, (_, index) => ({
-  src: `/assets/cert-${index + 1}.png`,
+  src: withBase(`/assets/cert-${index + 1}.png`),
   alt: `Certificare ${index + 1}`,
 }));
 
@@ -144,25 +146,25 @@ export const services = [
     title: "Instalații feroviare CCS-T, ELF, EA, LC, TTR-TC",
     description:
       "Lucrări de construcții-montaj, modernizări, reparații și întreținere instalații feroviare.",
-    icon: "/assets/train.svg",
+    icon: withBase("/assets/train.svg"),
   },
   {
     title: "Proiectare instalații tehnice",
     description:
       "Proiectare instalații electrice și feroviare, aliniate la normative și cerințe tehnice.",
-    icon: "/assets/compass.svg",
+    icon: withBase("/assets/compass.svg"),
   },
   {
     title: "Instalații electrice de JT și MT",
     description:
       "Executare de posturi de transformare, stații electrice și de lucrări la partea electrică a centralelor cu orice tensiuni nominale standardizate.",
-    icon: "/assets/zap.svg",
+    icon: withBase("/assets/zap.svg"),
   },
   {
     title: "Sisteme de securitate și incendiu",
     description:
       "Instalare sisteme de semnalizare, alarmare și alertare în caz de incendiu.",
-    icon: "/assets/shield.svg",
+    icon: withBase("/assets/shield.svg"),
   },
 ];
 
@@ -172,9 +174,9 @@ export const portfolioProjects = [
     location: "Gara Ciulnița",
     year: "2025-în derulare",
     image: {
-      jpg: "/assets/portofoliu-1.jpg",
-      webp: "/assets/portofoliu-1.webp",
-      avif: "/assets/portofoliu-1.avif",
+      jpg: withBase("/assets/portofoliu-1.jpg"),
+      webp: withBase("/assets/portofoliu-1.webp"),
+      avif: withBase("/assets/portofoliu-1.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -183,8 +185,8 @@ export const portfolioProjects = [
     location: "Babadag",
     year: "2020",
     image: {
-      jpg: "/assets/portofoliu-2.jpg",
-      webp: "/assets/portofoliu-2.webp",
+      jpg: withBase("/assets/portofoliu-2.jpg"),
+      webp: withBase("/assets/portofoliu-2.webp"),
     },
     alt: "Transport public ecologic",
   },
@@ -193,9 +195,9 @@ export const portfolioProjects = [
     location: "Bolintin",
     year: "2022",
     image: {
-      jpg: "/assets/portofoliu-3.jpg",
-      webp: "/assets/portofoliu-3.webp",
-      avif: "/assets/portofoliu-3.avif",
+      jpg: withBase("/assets/portofoliu-3.jpg"),
+      webp: withBase("/assets/portofoliu-3.webp"),
+      avif: withBase("/assets/portofoliu-3.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -204,9 +206,9 @@ export const portfolioProjects = [
     location: "Medgidia",
     year: "2025",
     image: {
-      jpg: "/assets/portofoliu-4.jpg",
-      webp: "/assets/portofoliu-4.webp",
-      avif: "/assets/portofoliu-4.avif",
+      jpg: withBase("/assets/portofoliu-4.jpg"),
+      webp: withBase("/assets/portofoliu-4.webp"),
+      avif: withBase("/assets/portofoliu-4.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -215,9 +217,9 @@ export const portfolioProjects = [
     location: "Ploiești",
     year: "2019",
     image: {
-      jpg: "/assets/portofoliu-5.jpg",
-      webp: "/assets/portofoliu-5.webp",
-      avif: "/assets/portofoliu-5.avif",
+      jpg: withBase("/assets/portofoliu-5.jpg"),
+      webp: withBase("/assets/portofoliu-5.webp"),
+      avif: withBase("/assets/portofoliu-5.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -226,9 +228,9 @@ export const portfolioProjects = [
     location: "Corbu",
     year: "2019",
     image: {
-      jpg: "/assets/portofoliu-6.jpg",
-      webp: "/assets/portofoliu-6.webp",
-      avif: "/assets/portofoliu-6.avif",
+      jpg: withBase("/assets/portofoliu-6.jpg"),
+      webp: withBase("/assets/portofoliu-6.webp"),
+      avif: withBase("/assets/portofoliu-6.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -237,9 +239,9 @@ export const portfolioProjects = [
     location: "CNCFR",
     year: "---",
     image: {
-      jpg: "/assets/portofoliu-7.jpg",
-      webp: "/assets/portofoliu-7.webp",
-      avif: "/assets/portofoliu-7.avif",
+      jpg: withBase("/assets/portofoliu-7.jpg"),
+      webp: withBase("/assets/portofoliu-7.webp"),
+      avif: withBase("/assets/portofoliu-7.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -248,9 +250,9 @@ export const portfolioProjects = [
     location: "Municipiul Aiud",
     year: "2023-2025",
     image: {
-      jpg: "/assets/portofoliu-8.jpg",
-      webp: "/assets/portofoliu-8.webp",
-      avif: "/assets/portofoliu-8.avif",
+      jpg: withBase("/assets/portofoliu-8.jpg"),
+      webp: withBase("/assets/portofoliu-8.webp"),
+      avif: withBase("/assets/portofoliu-8.avif"),
     },
     alt: "Modernizare linie feroviară",
   },
@@ -266,21 +268,21 @@ export const managementTeam = [
   {
     name: "Ioan Buzău",
     role: "Managing Director",
-    image: "/assets/person-1.webp",
+    image: withBase("/assets/person-1.webp"),
   },
   {
     name: "Sergiu Neagu",
     role: "Managing Director",
-    image: "/assets/person-2.webp",
+    image: withBase("/assets/person-2.webp"),
   },
   {
     name: "Radu Mitu",
     role: "Chief Operating Officer",
-    image: "/assets/person-3.webp",
+    image: withBase("/assets/person-3.webp"),
   },
   {
     name: "Alina Napu",
     role: "Commercial Director",
-    image: "/assets/person-4.webp",
+    image: withBase("/assets/person-4.webp"),
   },
 ];
