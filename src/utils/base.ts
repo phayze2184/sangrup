@@ -1,4 +1,6 @@
-export const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+
+export const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
 export const withBase = (path: string) => {
   if (!path || path.startsWith("#") || /^[a-z]+:/i.test(path) || path.startsWith("//")) {

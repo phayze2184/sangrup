@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CircuitDecoration from "../components/CircuitDecoration.astro";
 import "../styles/about.css";
 import { aboutHistory, managementTeam } from "../data/site";
-import { base } from "../utils/base";
+import { withBase } from "../utils/base";
 
 const historyCards = aboutHistory.map((paragraph, index) => ({
   paragraph,
@@ -15,8 +15,8 @@ const teamMembers = managementTeam.map((member) => ({
   alt: `${member.name}, ${member.role}`,
 }));
 
-const heroDesktop = `url("${base}assets/hero-image-a.jpeg")`;
-const heroMobile = `url("${base}assets/hero-image-a-mobile.webp")`;
+const heroDesktop = `url("${withBase("/assets/hero-image-a.jpeg")}")`;
+const heroMobile = `url("${withBase("/assets/hero-image-a-mobile.webp")}")`;
 ---
 
 <BaseLayout currentPath="/about" title="Despre noi | San Electroterm Grup">
@@ -95,7 +95,7 @@ const heroMobile = `url("${base}assets/hero-image-a-mobile.webp")`;
               </p>
               <div class="news-image">
                 <img
-                  src={`${base}assets/Altpro-numarator-osii-800px.jpg`}
+                  src={withBase("/assets/Altpro-numarator-osii-800px.jpg")}
                   alt="Senzor de numărare a osiilor montat pe șină"
                   loading="lazy"
                 />

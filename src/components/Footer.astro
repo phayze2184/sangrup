@@ -21,11 +21,10 @@ interface Props {
 }
 
 const currentYear = new Date().getFullYear();
-const base = import.meta.env.BASE_URL;
 
 const {
   currentPath,
-  logoSrc = `${base}assets/logo-footer.svg`,
+  logoSrc = withBase("/assets/logo-footer.svg"),
   logoAlt = "logo sangrup",
   contactTitle = "Contact",
   menuTitle = "Meniu",
@@ -73,15 +72,15 @@ const footerLinks = footerNavItems.map((link) => ({
             <h4 class="is-uppercase text-white">{contactTitle}</h4>
             <div class="details">
               <div class="contact-item">
-                <img class="footer-icon" src={`${base}assets/phone-white.svg`} alt="telefon" />
+                <img class="footer-icon" src={withBase("/assets/phone-white.svg")} alt="telefon" />
                 <a class="footer-link" href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>
               </div>
               <div class="contact-item">
-                <img class="footer-icon" src={`${base}assets/email-white.svg`} alt="email" />
+                <img class="footer-icon" src={withBase("/assets/email-white.svg")} alt="email" />
                 <a class="footer-link" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
               </div>
               <div class="contact-item">
-                <img class="footer-icon" src={`${base}assets/linkedin-icon.svg`} alt="linkedin icon" />
+                <img class="footer-icon" src={withBase("/assets/linkedin-icon.svg")} alt="linkedin icon" />
                 <a class="footer-link" href={siteMeta.linkedin}>LinkedIn</a>
               </div>
             </div>

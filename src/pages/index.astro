@@ -8,7 +8,7 @@ import {
   portfolioProjects,
   services,
 } from "../data/site";
-import { base } from "../utils/base";
+import { withBase } from "../utils/base";
 ---
 
 <BaseLayout currentPath="/" title="San Electroterm Grup">
@@ -40,7 +40,7 @@ import { base } from "../utils/base";
         <div class="hero-content-right">
           <img
             class="hero-media"
-            src={`${base}assets/hero-rail.webp`}
+            src={withBase("/assets/hero-rail.webp")}
             alt="Echipă în teren la instalații feroviare"
             loading="eager"
           />
@@ -56,7 +56,7 @@ import { base } from "../utils/base";
       <div class="certifications-wrapper overflow-hidden">
         <a
           class="certifications-marquee"
-          href={`${base}certificari`}
+          href={withBase("/certificari")}
           aria-label="Vezi pagina de certificări și autorizații"
         >
           <div class="marquee-track">
@@ -101,7 +101,7 @@ import { base } from "../utils/base";
               </div>
             </div>
           </div>
-          <a class="button is-secondary is-uppercase" href={`${base}about`}>
+          <a class="button is-secondary is-uppercase" href={withBase("/about")}>
             <span class="button-icon" aria-hidden="true">→</span>
             <span class="button-text-wrap">
               <span class="button-text button-text--top">Despre noi</span>
@@ -166,11 +166,11 @@ import { base } from "../utils/base";
                     <h4 class="text-white">{project.title}</h4>
                     <div class="portfolio-meta">
                       <span class="portfolio-meta-item">
-                        <img class="portfolio-meta-icon" src={`${base}assets/pin-location-white.svg`} alt="" />
+                        <img class="portfolio-meta-icon" src={withBase("/assets/pin-location-white.svg")} alt="" />
                         {project.location}
                       </span>
                       <span class="portfolio-meta-item">
-                        <img class="portfolio-meta-icon" src={`${base}assets/calendar-white.svg`} alt="" />
+                        <img class="portfolio-meta-icon" src={withBase("/assets/calendar-white.svg")} alt="" />
                         {project.year}
                       </span>
                     </div>
@@ -203,7 +203,7 @@ import { base } from "../utils/base";
               Discutăm cerințele proiectului tău și livrăm soluții electrice personalizate.
             </p>
           </div>
-          <form class="form-block" action={`${base}contact.php`} method="post" novalidate>
+          <form class="form-block" action={withBase("/contact.php")} method="post" novalidate>
             <div class="form-content">
               <div class="form-inputs">
                 <label class="form-field">
