@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>San Electroterm Grup</title>
   <meta name="description" content="Sisteme electrice feroviare, instalatii SCB, TTR, curenti slabi, sisteme de securitate" />  
-  <link rel="stylesheet" href="styles.css?v=20260209-2" />
+  <link rel="stylesheet" href="styles.css" />
   <!-- Fonts (Inter for menu/body, Space Grotesk for headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-  <script src="app.js?v=20260209-2" defer></script>
+  <script src="app.js" defer></script>
 </head>
   <body>
     <!-- HEADER / NAV -->
@@ -482,7 +482,7 @@
                 Discutăm cerințele proiectului tău și livrăm soluții electrice personalizate.
                 </p>
               </div>
-              <form class="form-block" action="#" method="post">
+              <form class="form-block" action="contact.php" method="post" novalidate>
                <div class="form-content">
                  <div class="form-inputs">
                    <label class="form-field">
@@ -491,18 +491,18 @@
                    </label>
                    <label class="form-field">
                      <span class="form-label">Telefon</span>
-                     <input class="form-input" type="tel" name="phone" autocomplete="tel" required />
+                     <input class="form-input" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="14" required />
                    </label>
                    <label class="form-field">
                      <span class="form-label">Email</span>
-                   <input class="form-input" type="email" name="email" autocomplete="email" required />
+                   <input class="form-input" type="email" name="email" autocomplete="email" pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" data-email-message="Te rugăm să introduci o adresă de email validă, care să includă caracterul @." required />
                    </label>
                    <label class="form-field">
                      <span class="form-label">Mesaj</span>
                      <textarea class="form-input form-textarea" name="message" rows="4" required></textarea>
                    </label>
                  </div>
-                 <button class="button is-secondary is-uppercase" type="submit">
+                 <button class="button is-secondary is-uppercase" type="button" data-contact-submit>
                       <span class="button-icon" aria-hidden="true">→</span>
                       <span class="button-text-wrap">
                         <span class="button-text button-text--top">Trimite mesajul</span>
@@ -510,12 +510,12 @@
                       </span>
                   </button>
                 </div>
-               <div class="form-messages">
-                 <div class="success">
-                   <p class="form-message form-message--success" role="status" aria-live="polite">Mesaj trimis cu succes.</p>
+               <div class="form-messages" hidden>
+                 <div class="success" hidden>
+                   <p class="form-message form-message--success" role="status" aria-live="polite">Mesajul a fost trimis cu succes. Revenim cât mai curând.</p>
                  </div>
-                 <div class="error">
-                   <p class="form-message form-message--error" role="alert">A apărut o eroare. Încearcă din nou.</p>
+                 <div class="error" hidden>
+                   <p class="form-message form-message--error" role="alert">A apărut o eroare la trimitere. Încearcă din nou sau scrie-ne la office@sangrup.ro.</p>
                  </div>
                </div>
               </form>
@@ -523,6 +523,30 @@
           </div>
       </section>
     </main>
+    <div class="feedback-popup" data-feedback-popup hidden aria-hidden="true">
+      <div class="feedback-popup__backdrop" data-feedback-popup-close></div>
+      <div
+        class="feedback-popup__panel"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="feedback-popup-title"
+        aria-describedby="feedback-popup-message"
+      >
+        <button class="feedback-popup__close" type="button" data-feedback-popup-close aria-label="Închide notificarea">
+          ×
+        </button>
+        <div class="feedback-popup__status" aria-hidden="true"></div>
+        <h3 class="feedback-popup__title" id="feedback-popup-title">Notificare</h3>
+        <p class="feedback-popup__message" id="feedback-popup-message"></p>
+        <button class="button is-secondary is-uppercase feedback-popup__action" type="button" data-feedback-popup-close>
+          <span class="button-icon" aria-hidden="true">→</span>
+          <span class="button-text-wrap">
+            <span class="button-text button-text--top">Am înțeles</span>
+            <span class="button-text button-text--bottom">Am înțeles</span>
+          </span>
+        </button>
+      </div>
+    </div>
    <!-- FOOTER -->
     <footer class="footer">
       <div class="container-padding">
