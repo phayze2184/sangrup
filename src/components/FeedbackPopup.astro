@@ -1,0 +1,53 @@
+---
+interface Props {
+  className?: string;
+  popupTitle?: string;
+  actionLabel?: string;
+  closeLabel?: string;
+  titleId?: string;
+  messageId?: string;
+  dialogRole?: "alertdialog" | "dialog";
+}
+
+const {
+  className = "",
+  popupTitle = "Notificare",
+  actionLabel = "Am înțeles",
+  closeLabel = "Închide notificarea",
+  titleId = "feedback-popup-title",
+  messageId = "feedback-popup-message",
+  dialogRole = "alertdialog",
+} = Astro.props;
+
+const popupClasses = ["feedback-popup", className].filter(Boolean).join(" ");
+---
+
+<div class={popupClasses} data-feedback-popup hidden aria-hidden="true">
+  <div class="feedback-popup__backdrop" data-feedback-popup-close></div>
+  <div
+    class="feedback-popup__panel"
+    role={dialogRole}
+    aria-modal="true"
+    aria-labelledby={titleId}
+    aria-describedby={messageId}
+  >
+    <button
+      class="feedback-popup__close"
+      type="button"
+      data-feedback-popup-close
+      aria-label={closeLabel}
+    >
+      ×
+    </button>
+    <div class="feedback-popup__status" aria-hidden="true"></div>
+    <h3 class="feedback-popup__title" id={titleId}>{popupTitle}</h3>
+    <p class="feedback-popup__message" id={messageId}></p>
+    <button class="button is-secondary is-uppercase feedback-popup__action" type="button" data-feedback-popup-close>
+      <span class="button-icon" aria-hidden="true">→</span>
+      <span class="button-text-wrap">
+        <span class="button-text button-text--top">{actionLabel}</span>
+        <span class="button-text button-text--bottom">{actionLabel}</span>
+      </span>
+    </button>
+  </div>
+</div>

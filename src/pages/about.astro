@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CircuitDecoration from "../components/CircuitDecoration.astro";
+import "../styles/about.css";
+import { aboutHistory, managementTeam } from "../data/site";
+
+const historyCards = aboutHistory.map((paragraph, index) => ({
+  paragraph,
+  classes: ["about-history-card", index === 1 && "about-history-card-center"].filter(Boolean).join(" "),
+}));
+
+const teamMembers = managementTeam.map((member) => ({
+  ...member,
+  alt: `${member.name}, ${member.role}`,
+}));
+---
+
+<BaseLayout currentPath="/about" title="Despre noi | San Electroterm Grup">
+  <main id="main-content" tabindex="-1">
+    <div class="hero-section hero-image-a" id="about" aria-labelledby="about-page-title">
+      <div class="hero-copy">
+        <div class="eyebrow is-uppercase text-white">San Electroterm Grup</div>
+        <h1 class="hero-title text-white extra-large-text" id="about-page-title">Despre noi</h1>
+      </div>
+    </div>
+
+    <section class="section section-about-history" id="istoric" aria-labelledby="history-title">
+      <div class="container-padding">
+        <div class="about-history-content">
+          <div class="header">
+            <div class="eyebrow is-uppercase">Scurt istoric</div>
+            <h2 id="history-title">Evoluție constantă</h2>
+          </div>
+          <div class="about-history-grid" aria-label="Evoluția companiei San Electroterm Grup">
+            {
+              historyCards.map((card) => (
+                <article class={card.classes}>
+                  <CircuitDecoration className="about-decoration" />
+                  <p set:html={card.paragraph}></p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-management" id="management" aria-labelledby="management-title">
+      <div class="container-padding">
+        <div class="management-wrapper">
+          <div class="header">
+            <div class="eyebrow is-uppercase">Echipa managerială</div>
+            <h2 id="management-title">Management orientat spre performanță</h2>
+          </div>
+          <div class="management-grid" aria-label="Echipa managerială">
+            {
+              teamMembers.map((member) => (
+                <article class="management-card">
+                  <img src={member.image} alt={member.alt} loading="lazy" />
+                  <p class="management-name">{member.name}</p>
+                  <p class="management-role">{member.role}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-news" id="news" aria-labelledby="news-title">
+      <div class="container-padding">
+        <div class="news-wrapper">
+          <div class="news-grid">
+            <div class="news-left">
+              <div class="eyebrow is-uppercase">Parteneriate</div>
+              <h2 id="news-title">Colaborări și încredere</h2>
+              <p>
+                Colaborăm cu <span class="highlight">autorități publice</span> și <span class="highlight">companii private</span> oferind soluții personalizate care respectă termenele, bugetele și standardele de calitate ale proiectelor complexe de infrastructură și instalații.
+              </p>
+              <div class="news-image">
+                <img
+                  src="/assets/Altpro-numarator-osii-800px.jpg"
+                  alt="Senzor de numărare a osiilor montat pe șină"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="news-right">
+              <p>
+                San Electroterm Grup SRL este reprezentant oficial în România al companiei <span class="highlight">Altpro d.o.o.</span>, producător recunoscut la nivel european de echipamente pentru siguranța și controlul traficului feroviar.
+              </p>
+              <p>
+                Prin acest parteneriat, San Electroterm Grup asigură furnizarea, integrarea și suportul tehnic pentru <span class="highlight">dulapuri electronice de tip TN</span> <span class="highlight">și sisteme de numărare a osiilor</span>, soluții esențiale pentru monitorizarea și securizarea infrastructurii feroviare moderne.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

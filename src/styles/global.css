@@ -1,0 +1,519 @@
+@layer reset, tokens, base, layout, components, utilities, accessibility;
+
+@layer tokens {
+  :root {
+    /* Primitives: typography */
+    --font-family-heading: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-family-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-family-eyebrow: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* Primitives: color */
+    --color-neutral-0: oklch(100% 0 0);
+    --color-neutral-50: oklch(98.8% 0.004 95);
+    --color-neutral-100: oklch(96.8% 0.004 264);
+    --color-neutral-500: oklch(56% 0.02 255);
+    --color-neutral-550: oklch(47% 0.03 256);
+    --color-neutral-600: oklch(46% 0.01 260);
+    --color-neutral-650: oklch(43% 0.02 258);
+    --color-neutral-700: oklch(28% 0.02 260);
+    --color-neutral-800: oklch(22% 0.03 264);
+    --color-neutral-900: oklch(18% 0.03 264);
+    --color-brand-100: oklch(90% 0.035 20);
+    --color-brand-500: oklch(63% 0.24 30);
+    --color-brand-glow-1: oklch(66% 0.17 262);
+    --color-brand-glow-2: oklch(61% 0.19 262);
+    --color-brand-deep-1: oklch(27% 0.05 275);
+    --color-info-500: oklch(47% 0.08 210);
+    --color-success-500: oklch(48% 0.12 160);
+    --color-success-400: oklch(62% 0.14 160);
+    --color-error-500: oklch(47% 0.17 28);
+    --color-error-400: oklch(58% 0.21 28);
+    --color-black: oklch(0% 0 0);
+    --color-white: var(--color-neutral-0);
+
+    /* Primitive sizes */
+    --h1-extra-size: clamp(2.5rem, 5vw, 4.5rem); /* 40px to 72px */
+    --h1-size: clamp(2rem, 4.1vw, 4rem); /* 32px to 64px */
+    --h2-size: clamp(1.75rem, 3.2vw, 3.5rem); /* 28px to 56px */
+    --h3-size: clamp(1.25rem, 2.6vw, 2.5rem); /* 20px to 40px */
+    --h4-size: clamp(1.125rem, 2.2vw, 1.625rem); /* 18px to 26px */
+    --h5-size: clamp(1.125rem, 1.6vw, 1.625rem); /* 18px to 26px */
+    --h6-size: clamp(1rem, 1.3vw, 1.375rem); /* 16px to 22px */
+    --p-size: clamp(0.9375rem, 1.2vw, 1.125rem); /* 15px to 18px */
+    --menu-size: clamp(0.8125rem, 1.1vw, 0.9375rem); /* 13px to 15px */
+    --button-size: 1rem; /* 16px */
+    --subtext-size: 0.8125rem; /* 13px */
+
+    /* Typography weights */
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 700;
+
+    /* Line height */
+    --lh-tight: 1.05;
+    --lh-title: 1.1;
+    --lh-body: 1.5;
+    --lh-relaxed: 1.6;
+
+    /* Letter spacing */
+    --ls-tight: -0.03em;
+    --ls-normal: 0;
+    --ls-wide: 0.02em;
+    --ls-wider: 0.2em;
+
+    /* Primitives: spacing and radius */
+    --space-0: 0;
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem; /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.5rem; /* 24px */
+    --space-6: 2rem; /* 32px */
+    --space-7: 2.5rem; /* 40px */
+    --space-8: 3rem; /* 48px */
+    --space-9: 3.75rem; /* 60px */
+    --space-10: 5rem; /* 80px */
+    --space-11: 7.5rem; /* 120px */
+    --radius-xs: 0.125rem; /* 2px */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem; /* 8px */
+    --radius-lg: 0.75rem; /* 12px */
+    --radius-xl: 1rem; /* 16px */
+    --radius-2xl: 1.5rem; /* 24px */
+    --radius-pill: 1000rem;
+    
+    --stroke-thin: 0.0625rem; /* 1px */
+    --stroke-focus: 0.125rem; /* 2px */
+    --stroke-strong: 0.375rem; /* 6px */
+
+    /* Primitives: shadow */
+    --shadow-soft-color: color-mix(in oklch, var(--color-neutral-900) 5%, transparent);
+    --shadow-default-color: color-mix(in oklch, var(--color-neutral-900) 12%, transparent);
+    --shadow-panel-color: color-mix(in oklch, var(--color-neutral-900) 22%, transparent);
+
+    /* Primitives: layout */
+    --container: 77.5rem; /* 1240px */
+    --section-seam-gap: 7.5rem; /* 120px */
+    --section-seam-gap-mobile: 5rem; /* 80px */
+    --title-max-width: 40.625rem; /* 650px */
+    --title-max-width-mobile: 20ch;
+    --text-max-width: 80ch;
+    --text-max-width-mobile: 100%;
+    --elements-gap: clamp(2rem, 3vw, 3.75rem); /* 32px to 60px */
+    --elements-gap-big: clamp(3.75rem, 5vh, 5rem); /* 60px to 80px */
+    --eyebrow-text-gap: 1.5rem; /* 24px */
+    --container-gutter: 3rem; /* 48px */
+    --nav-height: 4.5rem; /* 72px */
+    --marquee-gap: clamp(1.5rem, 4vw, 3.25rem); /* 24px to 52px */
+    --cert-4-5-gap: clamp(0.75rem, 2vw, 1.75rem); /* 12px to 28px */
+    --duration: 30s;
+    --title-text-gap: clamp(0.75rem, 0.9vw, 1.25rem); /* 12px to 20px */
+
+    /* Semantic tokens */
+    --font-heading: var(--font-family-heading);
+    --font-body: var(--font-family-body);
+    --font-eyebrow: var(--font-family-eyebrow);
+    --font-ui: var(--font-family-body);
+    --radius: var(--radius-lg);
+    --box-shadow: 0 0.75rem 1.75rem var(--shadow-soft-color); /* 12px 28px */
+    --color-bg: var(--color-neutral-50);
+    --color-surface: var(--color-neutral-0);
+    --color-surface-muted: var(--color-neutral-100);
+    --color-surface-accent-soft: var(--color-brand-100);
+    --color-surface-glass: color-mix(in oklch, var(--color-neutral-0) 55%, transparent);
+    --color-surface-glass-strong: color-mix(in oklch, var(--color-neutral-0) 75%, transparent);
+    --color-surface-glass-stronger: color-mix(in oklch, var(--color-neutral-0) 95%, transparent);
+    --color-surface-card: color-mix(in oklch, var(--color-neutral-0) 58%, transparent);
+    --color-surface-panel: color-mix(in oklch, var(--color-neutral-50) 98%, transparent);
+    --color-surface-overlay: color-mix(in oklch, var(--color-neutral-900) 48%, transparent);
+    --color-surface-overlay-soft: color-mix(in oklch, var(--color-neutral-900) 6%, transparent);
+    --color-text: var(--color-neutral-800);
+    --color-text-strong: var(--color-neutral-900);
+    --color-text-muted: var(--color-neutral-550);
+    --color-text-subtle: var(--color-neutral-600);
+    --color-text-soft: var(--color-neutral-500);
+    --color-text-field: var(--color-neutral-700);
+    --color-text-label: var(--color-neutral-650);
+    --color-text-accent: var(--color-brand-500);
+    --color-text-info: var(--color-info-500);
+    --color-text-inverse: var(--color-neutral-0);
+    --color-text-inverse-muted: color-mix(in oklch, var(--color-neutral-0) 72%, transparent);
+    --color-accent: var(--color-brand-500);
+    --color-border-subtle: color-mix(in oklch, var(--color-neutral-900) 8%, transparent);
+    --color-border: color-mix(in oklch, var(--color-neutral-900) 18%, transparent);
+    --color-border-strong: color-mix(in oklch, var(--color-neutral-900) 25%, transparent);
+    --color-border-stronger: color-mix(in oklch, var(--color-neutral-900) 35%, transparent);
+    --color-border-card: color-mix(in oklch, var(--color-neutral-900) 6%, transparent);
+    --color-border-panel: color-mix(in oklch, var(--color-neutral-900) 10%, transparent);
+    --color-border-inverse: color-mix(in oklch, var(--color-neutral-0) 18%, transparent);
+    --color-border-inverse-strong: color-mix(in oklch, var(--color-neutral-0) 24%, transparent);
+    --color-border-inverse-stronger: color-mix(in oklch, var(--color-neutral-0) 34%, transparent);
+    --color-border-kpi: color-mix(in oklch, var(--color-neutral-0) 22%, transparent);
+    --color-decoration: color-mix(in oklch, var(--color-neutral-900) 10%, transparent);
+    --color-icon-muted: color-mix(in oklch, var(--color-neutral-900) 35%, transparent);
+    --color-focus-ring: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
+    --color-input-shadow: color-mix(in oklch, var(--color-black) 3%, transparent);
+    --color-success: var(--color-success-500);
+    --color-success-surface: color-mix(in oklch, var(--color-success-400) 12%, transparent);
+    --color-success-surface-strong: color-mix(in oklch, var(--color-success-400) 14%, transparent);
+    --color-error: var(--color-error-500);
+    --color-error-surface: color-mix(in oklch, var(--color-error-400) 12%, transparent);
+    --color-error-surface-strong: color-mix(in oklch, var(--color-error-400) 14%, transparent);
+    --color-overlay-about-hero-top: color-mix(in oklch, var(--color-neutral-900) 4%, transparent);
+    --color-overlay-about-hero-bottom: color-mix(in oklch, var(--color-neutral-900) 50%, transparent);
+    --color-overlay-about-hero-accent-start: color-mix(in oklch, var(--color-brand-deep-1) 10%, transparent);
+    --color-overlay-about-hero-accent-end: color-mix(in oklch, var(--color-neutral-900) 20%, transparent);
+    --color-overlay-about-hero-glow: color-mix(in oklch, var(--color-brand-glow-1) 14%, transparent);
+    --color-surface-about-history: color-mix(in oklch, var(--color-neutral-0) 88%, var(--color-bg));
+    --color-surface-portfolio-media: color-mix(in oklch, var(--color-neutral-0) 10%, transparent);
+    --color-border-about-hero-eyebrow: color-mix(in oklch, var(--color-neutral-0) 28%, transparent);
+    --color-surface-about-hero-eyebrow: color-mix(in oklch, var(--color-neutral-0) 10%, transparent);
+    --shadow-about-hero-eyebrow: 0 0.75rem 1.75rem color-mix(in oklch, var(--color-neutral-900) 8%, transparent); /* 12px 28px */
+    --shadow-about-hero-title: 0 0.625rem 1.75rem color-mix(in oklch, var(--color-neutral-900) 18%, transparent); /* 10px 28px */
+    --color-border-about-history-card: color-mix(in oklch, var(--color-neutral-900) 4%, var(--color-neutral-0));
+    --shadow-about-history-card: 0 0.75rem 2rem color-mix(in oklch, var(--color-neutral-900) 3%, transparent); /* 12px 32px */
+    --color-text-about-history-card: color-mix(in oklch, var(--color-text) 88%, var(--color-neutral-900));
+    --color-decoration-about-history-card: color-mix(in oklch, var(--color-neutral-900) 20%, transparent);
+    --color-surface-management-card: color-mix(in oklch, var(--color-neutral-0) 92%, transparent);
+    --surface-brand-gradient:
+      radial-gradient(120% 140% at 90% 10%, color-mix(in oklch, var(--color-brand-glow-1) 32%, transparent), color-mix(in oklch, var(--color-brand-glow-1) 0%, transparent) 55%),
+      radial-gradient(140% 160% at 15% 85%, color-mix(in oklch, var(--color-brand-glow-2) 20%, transparent), color-mix(in oklch, var(--color-brand-glow-2) 0%, transparent) 62%),
+      radial-gradient(130% 150% at 85% 15%, color-mix(in oklch, var(--color-neutral-0) 22%, transparent), color-mix(in oklch, var(--color-neutral-0) 0%, transparent) 55%),
+      linear-gradient(135deg, color-mix(in oklch, var(--color-brand-deep-1) 92%, transparent), color-mix(in oklch, var(--color-neutral-900) 98%, transparent));
+    --surface-section-tint:
+      radial-gradient(120% 140% at 90% 10%, color-mix(in oklch, var(--color-brand-glow-1) 12%, transparent), color-mix(in oklch, var(--color-brand-glow-1) 0%, transparent) 55%),
+      radial-gradient(140% 160% at 15% 85%, color-mix(in oklch, var(--color-brand-glow-2) 10%, transparent), color-mix(in oklch, var(--color-brand-glow-2) 0%, transparent) 62%),
+      radial-gradient(130% 150% at 85% 15%, color-mix(in oklch, var(--color-neutral-0) 22%, transparent), color-mix(in oklch, var(--color-neutral-0) 0%, transparent) 55%),
+      linear-gradient(180deg, color-mix(in oklch, var(--color-neutral-900) 6%, transparent), color-mix(in oklch, var(--color-neutral-900) 0%, transparent)),
+      var(--color-bg);
+    --surface-fade-left: linear-gradient(90deg, var(--color-bg), color-mix(in oklch, var(--color-bg) 0%, transparent));
+    --surface-fade-right: linear-gradient(270deg, var(--color-bg), color-mix(in oklch, var(--color-bg) 0%, transparent));
+    --linear-background: linear-gradient(180deg, color-mix(in oklch, var(--color-neutral-900) 6%, transparent), color-mix(in oklch, var(--color-neutral-900) 0%, transparent));
+  }
+}
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--p-size);
+    font-weight: var(--weight-regular);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.18s ease;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: var(--stroke-focus) solid var(--color-accent);
+    outline-offset: 0.1875rem; /* 3px */
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--h1-size);
+    font-weight: var(--weight-bold);
+    line-height: var(--lh-title);
+    letter-spacing: var(--ls-tight);
+  }
+
+  .highlight {
+    display: inline-block;
+    padding: 0 var(--space-2);
+    background: var(--color-text);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-sm);
+  }
+
+  h2 {
+    margin: 0;
+    max-width: var(--title-max-width);
+    color: var(--color-text-strong);
+    font-family: var(--font-heading);
+    font-size: var(--h2-size);
+    font-weight: var(--weight-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    h2 {
+      max-width: var(--title-max-width-mobile);
+    }
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--color-text-subtle);
+    font-family: var(--font-heading);
+    font-size: var(--h3-size);
+    line-height: var(--lh-tight);
+  }
+
+  h4 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--h4-size);
+    line-height: var(--lh-title);
+  }
+
+  h5 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--h5-size);
+    line-height: var(--lh-relaxed);
+  }
+
+  p {
+    margin: 0;
+    max-width: var(--text-max-width);
+    color: var(--color-text-muted);
+    font-size: var(--p-size);
+    line-height: var(--lh-body);
+  }
+
+  .skip-link {
+    position: fixed;
+    top: var(--space-4);
+    left: var(--space-4);
+    z-index: 200;
+    padding: var(--space-3) var(--space-4);
+    border: 0.0625rem solid var(--color-border-strong); /* 1px */
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text-strong);
+    transform: translateY(calc(-100% - var(--space-4)));
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .text-white {
+    color: var(--color-text-inverse);
+  }
+
+  .extra-large-text {
+    font-size: var(--h1-extra-size);
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .is-uppercase {
+    text-transform: uppercase;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(1.5rem); /* 24px */
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: transform, opacity;
+  }
+
+  .reveal-up.is-inview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer accessibility {
+  @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .marquee-track {
+      animation: none !important;
+      transform: none !important;
+    }
+
+    .feedback-popup__backdrop {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .reveal-up {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    :root {
+      --color-text: var(--color-neutral-900);
+      --color-text-strong: var(--color-neutral-900);
+      --color-text-muted: var(--color-neutral-700);
+      --color-text-subtle: var(--color-neutral-700);
+      --color-text-label: var(--color-neutral-700);
+      --color-border-subtle: color-mix(in oklch, var(--color-neutral-900) 18%, transparent);
+      --color-border: color-mix(in oklch, var(--color-neutral-900) 28%, transparent);
+      --color-border-strong: color-mix(in oklch, var(--color-neutral-900) 40%, transparent);
+      --color-border-panel: color-mix(in oklch, var(--color-neutral-900) 24%, transparent);
+      --color-focus-ring: color-mix(in oklch, var(--color-brand-500) 28%, transparent);
+    }
+
+    .navbar {
+      border-bottom-width: 0.125rem; /* 2px */
+    }
+
+    .eyebrow,
+    .form-input,
+    .form-textarea,
+    .is-secondary,
+    .feedback-popup__panel {
+      border-width: 0.125rem; /* 2px */
+    }
+
+    .feedback-popup__close,
+    .feedback-popup__status {
+      border: 0.125rem solid currentColor; /* 2px */
+    }
+
+    .button {
+      font-weight: var(--weight-bold);
+    }
+
+    .menu-link::after {
+      width: 40%;
+      height: 0.1875rem; /* 3px */
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+      outline-color: Highlight;
+    }
+
+    a:not(.button) {
+      color: LinkText;
+    }
+
+    .navbar,
+    .navigation,
+    .section,
+    .eyebrow,
+    .form-input,
+    .form-textarea,
+    .is-primary,
+    .is-secondary,
+    .feedback-popup__panel,
+    .feedback-popup__close {
+      background: Canvas;
+      color: CanvasText;
+      border: 0.0625rem solid CanvasText; /* 1px */
+      box-shadow: none;
+    }
+
+    .feedback-popup__backdrop {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .feedback-popup__status {
+      background: Canvas;
+      color: CanvasText;
+      border: 0.0625rem solid CanvasText; /* 1px */
+    }
+
+    .feedback-popup.is-success .feedback-popup__status,
+    .feedback-popup.is-error .feedback-popup__status {
+      background: Highlight;
+      color: HighlightText;
+      border-color: Highlight;
+    }
+
+    .button-icon {
+      background: ButtonText;
+      color: ButtonFace;
+    }
+
+    .hamburger-icon {
+      background: Canvas;
+      border: 0.0625rem solid ButtonText; /* 1px */
+    }
+
+    .hamburger-icon span,
+    .menu-link::after {
+      background: ButtonText;
+    }
+
+    .certifications-marquee::before,
+    .certifications-marquee::after {
+      display: none;
+    }
+
+    .brand-logo,
+    .icon.phone {
+      filter: none;
+    }
+  }
+}

@@ -1,0 +1,138 @@
+---
+import { siteMeta } from "../data/site";
+
+interface FooterNavItem {
+  label: string;
+  href: string;
+  homeHref?: string;
+}
+
+interface Props {
+  currentPath: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  contactTitle?: string;
+  menuTitle?: string;
+  addressTitle?: string;
+  infoTitle?: string;
+  footerNavItems?: FooterNavItem[];
+  copyright?: string;
+}
+
+const currentYear = new Date().getFullYear();
+
+const {
+  currentPath,
+  logoSrc = "/assets/logo-footer.svg",
+  logoAlt = "logo sangrup",
+  contactTitle = "Contact",
+  menuTitle = "Meniu",
+  addressTitle = "Adresă",
+  infoTitle = "INFO",
+  footerNavItems = [
+    {
+      label: "Servicii",
+      href: "/#servicii",
+      homeHref: "#servicii",
+    },
+    {
+      label: "Portofoliu",
+      href: "/#portofoliu",
+      homeHref: "#portofoliu",
+    },
+    {
+      label: "Certificări",
+      href: "/certificari",
+    },
+    {
+      label: "Despre noi",
+      href: "/about",
+    },
+  ],
+  copyright,
+} = Astro.props;
+
+const isHome = currentPath === "/";
+const footerLinks = footerNavItems.map((link) => ({
+  ...link,
+  resolvedHref: isHome && link.homeHref ? link.homeHref : link.href,
+}));
+---
+
+<footer class="footer">
+  <div class="container-padding">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <div class="footer-left">
+          <img class="footer-logo" src={logoSrc} alt={logoAlt} aria-hidden="true" />
+        </div>
+        <div class="footer-right">
+          <div class="text-wrapper">
+            <h4 class="is-uppercase text-white">{contactTitle}</h4>
+            <div class="details">
+              <div class="contact-item">
+                <img class="footer-icon" src="/assets/phone-white.svg" alt="telefon" />
+                <a class="footer-link" href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>
+              </div>
+              <div class="contact-item">
+                <img class="footer-icon" src="/assets/email-white.svg" alt="email" />
+                <a class="footer-link" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+              </div>
+              <div class="contact-item">
+                <img class="footer-icon" src="/assets/linkedin-icon.svg" alt="linkedin icon" />
+                <a class="footer-link" href={siteMeta.linkedin}>LinkedIn</a>
+              </div>
+            </div>
+          </div>
+          <div class="text-wrapper menu-footer">
+            <h4 class="is-uppercase text-white">{menuTitle}</h4>
+            <div class="details">
+              {
+                footerLinks.map((link) => (
+                  <a class="footer-link" href={link.resolvedHref}>
+                    {link.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+          <div class="text-wrapper">
+            <h4 class="is-uppercase text-white">{addressTitle}</h4>
+            <div class="details">
+              {
+                siteMeta.addressLines.map((line) => (
+                  <a class="footer-link" href={siteMeta.addressUrl} target="_blank" rel="noopener">
+                    {line}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+          <div class="text-wrapper">
+            <h4 class="is-uppercase text-white">{infoTitle}</h4>
+            <div class="details">
+              {siteMeta.companyInfo.map((line) => <p class="text-white">{line}</p>)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        {
+          copyright ? (
+            <p class="text-white">{copyright}</p>
+          ) : (
+            <p class="text-white">
+              © <span data-current-year>{currentYear}</span> Sangrup. Toate drepturile rezervate.
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  for (const yearNode of document.querySelectorAll("[data-current-year]")) {
+    yearNode.textContent = String(new Date().getFullYear());
+  }
+</script>

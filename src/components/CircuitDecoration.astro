@@ -1,0 +1,42 @@
+---
+interface Props {
+  className?: string;
+  viewBox?: string;
+  strokeWidth?: number;
+}
+
+const {
+  className = "",
+  viewBox = "0 0 320 220",
+  strokeWidth = 2,
+} = Astro.props;
+
+const classes = ["decoration", className].filter(Boolean).join(" ");
+const circuitPaths = [
+  "M12 28h92m20 0h40m16 0h96",
+  "M24 76h64m24 0h120m16 0h52",
+  "M40 124h120m20 0h84",
+  "M18 172h92m18 0h56m20 0h84",
+  "M248 16v188",
+  "M92 16v188",
+];
+const circuitDots = [
+  { cx: 92, cy: 28, r: 4 },
+  { cx: 124, cy: 28, r: 4 },
+  { cx: 204, cy: 76, r: 4 },
+  { cx: 160, cy: 124, r: 4 },
+  { cx: 92, cy: 172, r: 4 },
+  { cx: 248, cy: 172, r: 4 },
+];
+---
+
+<div class={classes} aria-hidden="true">
+  <svg viewBox={viewBox} role="presentation">
+    <g fill="none" stroke="currentColor" stroke-width={strokeWidth}>
+      {circuitPaths.map((path) => <path d={path} />)}
+    </g>
+    <g fill="currentColor">
+      {circuitDots.map((dot) => <circle cx={dot.cx} cy={dot.cy} r={dot.r} />)}
+    </g>
+  </svg>
+</div>

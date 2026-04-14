@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/certificari.css";
+import { certificationDocuments } from "../data/site";
+
+const documents = certificationDocuments.map((document, index) => ({
+  ...document,
+  fileName: decodeURIComponent(document.filePath.split("/").pop() ?? `${document.id}.pdf`),
+  previewPath: `${document.filePath}#toolbar=0&navpanes=0&scrollbar=1`,
+  buttonId: `${document.id}-button`,
+  panelId: `${document.id}-panel`,
+  isOpen: index === 0,
+}));
+---
+
+<BaseLayout
+  currentPath="/certificari"
+  title="Certificări | San Electroterm Grup"
+  description="Descărcați certificările și documentele oficiale San Electroterm Grup."
+>
+  <main id="main-content" tabindex="-1">
+    <section class="section section-certification-library" aria-labelledby="certificari-library-title">
+      <div class="container-padding">
+        <div class="certification-library">
+          <div class="header">
+            <div class="eyebrow is-uppercase">Documente oficiale</div>
+            <div class="title-text">
+              <h2 id="certificari-library-title">Arhivă certificări</h2>
+              <p>
+                Fiecare document poate fi extins pentru previzualizare și descărcat individual
+                direct din listă.
+              </p>
+            </div>
+          </div>
+
+          <div class="certification-accordion" data-certifications-accordion>
+            {
+              documents.length > 0 ? (
+                documents.map((document) => (
+                  <article class:list={["certification-item", document.isOpen && "is-open"]} data-accordion-item>
+                    <div class="certification-item__header">
+                      <button
+                        class="certification-trigger"
+                        type="button"
+                        id={document.buttonId}
+                        aria-expanded={document.isOpen ? "true" : "false"}
+                        aria-controls={document.panelId}
+                        data-accordion-trigger
+                      >
+                        <span class="certification-trigger__title">{document.title}</span>
+                        <span class="certification-trigger__meta">Previzualizare</span>
+                      </button>
+
+                      <a class="certification-download" href={document.filePath} download={document.fileName}>
+                        <span>Descarcă</span>
+                        <span class="certification-download__format">PDF</span>
+                      </a>
+                    </div>
+
+                    <div
+                      class="certification-panel"
+                      id={document.panelId}
+                      role="region"
+                      aria-labelledby={document.buttonId}
+                      hidden={!document.isOpen}
+                      data-accordion-panel
+                    >
+                      <div class="certification-panel__body">
+                        <figure class="certification-preview">
+                          <iframe
+                            src={document.previewPath}
+                            title={`Previzualizare ${document.title}`}
+                            loading="lazy"
+                          ></iframe>
+                        </figure>
+
+                        <div class="certification-panel__copy">
+                          <p>{document.description}</p>
+                          <a
+                            class="certification-panel__action"
+                            href={document.filePath}
+                            download={document.fileName}
+                          >
+                            Descarcă documentul PDF
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <p>Nu există documente PDF disponibile în acest moment.</p>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const accordions = document.querySelectorAll("[data-certifications-accordion]");
+
+  const syncAccordionItem = (item: Element, expanded: boolean) => {
+    const trigger = item.querySelector("[data-accordion-trigger]");
+    const panel = item.querySelector("[data-accordion-panel]");
+
+    if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) {
+      return;
+    }
+
+    trigger.setAttribute("aria-expanded", expanded ? "true" : "false");
+    panel.hidden = !expanded;
+    item.classList.toggle("is-open", expanded);
+  };
+
+  accordions.forEach((accordion) => {
+    const items = Array.from(accordion.querySelectorAll("[data-accordion-item]"));
+
+    items.forEach((item) => {
+      const trigger = item.querySelector("[data-accordion-trigger]");
+
+      if (!(trigger instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      trigger.addEventListener("click", () => {
+        const willExpand = trigger.getAttribute("aria-expanded") !== "true";
+
+        items.forEach((candidate) => {
+          syncAccordionItem(candidate, candidate === item ? willExpand : false);
+        });
+      });
+    });
+  });
+</script>
