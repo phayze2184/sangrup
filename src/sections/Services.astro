@@ -1,0 +1,130 @@
+---
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { services } from "../data/site";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+const t = ui.services;
+---
+
+<Section id="servicii" background="tint" class="section-services">
+  <Container>
+    <div class="services-content">
+      <SectionHeader eyebrow={t.eyebrow[locale]} decoration>
+        <div class="title-text">
+          <h2>{t.heading[locale]}</h2>
+          <p>
+            {t.intro[locale]}
+          </p>
+        </div>
+      </SectionHeader>
+      <div class="services-grid" aria-label={t.gridAriaLabel[locale]}>
+        {
+          services[locale].map((service) => (
+            <article class="service-item">
+              <div class="service-icon" aria-hidden="true">
+                <img src={service.icon} alt="" />
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .services-content {
+    display: grid;
+    gap: var(--gap-component-xxl);
+
+    @media screen and (max-width: 47.9375rem) { /* 767px */
+      gap: var(--gap-component-md);
+    }
+  }
+
+  .title-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--title-text-gap);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(18.75rem, 1fr)); /* 300px min */
+    gap: clamp(1rem, 3vw, 1.75rem); /* 16px to 28px */
+  }
+
+  .service-item {
+    --_service-surface: var(--color-bg);
+    --_service-border: var(--color-border-subtle);
+    --_service-border-hover: var(--color-border-strong);
+    --_service-shadow: var(--box-shadow);
+    --_service-shadow-hover: 0 1.125rem 2.5rem var(--shadow-default-color); /* 18px 40px */
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    align-content: start;
+    gap: var(--space-24);
+    padding: clamp(1.5rem, 2.4vw, 2.5rem); /* 24px to 40px */
+    border: var(--stroke-thin) solid var(--_service-border); /* 1px */
+    border-radius: var(--radius-lg);
+    background: var(--_service-surface);
+    box-shadow: var(--_service-shadow);
+    transition:
+      transform 240ms ease,
+      border-color 240ms ease,
+      box-shadow 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .service-item > h3,
+  .service-item > p {
+    max-width: none;
+  }
+
+  .service-item:hover {
+    transform: translateY(-0.125rem); /* -2px */
+    border-color: var(--_service-border-hover);
+    box-shadow: var(--_service-shadow-hover);
+  }
+
+  .service-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    border-radius: var(--radius-md);
+    background: var(--color-surface-accent-soft);
+    color: var(--color-text-strong);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .service-icon img {
+    display: block;
+    width: 1.625rem; /* 26px */
+    height: 1.625rem; /* 26px */
+    transition: filter 0.25s ease;
+  }
+
+  .service-item:hover .service-icon,
+  .service-icon:hover {
+    background: var(--color-accent);
+    color: var(--color-text-inverse);
+  }
+
+  .service-item:hover .service-icon img,
+  .service-icon:hover img {
+    filter: brightness(0) invert(1);
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); /* 300px min */
+    }
+  }
+</style>

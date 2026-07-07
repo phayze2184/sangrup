@@ -1,0 +1,138 @@
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Section from "../components/Section.astro";
+import { certifications } from "../data/site";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+---
+
+<Section id="certificari" padding="compact" overflow="hidden" class="section-certifications">
+  <div class="certifications-wrapper overflow-hidden">
+    <a
+      class="certifications-marquee"
+      href={getRelativeLocaleUrl(locale, "certificari")}
+      aria-label={ui.certificationsMarquee.ariaLabel[locale]}
+    >
+      <div class="marquee-track">
+        {Array.from({ length: 3 }).map(() => (
+          <div class="marquee-group">
+            {certifications[locale].map((item) => (
+              <Image class="certifications-logo" src={item.src} alt={item.alt} loading="lazy" height={136} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </a>
+  </div>
+</Section>
+
+<style>
+
+  .certifications-wrapper {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    background: var(--color-bg);
+    user-select: none;
+  }
+
+  .certifications-marquee {
+    position: relative;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .certifications-marquee::before,
+  .certifications-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 5.625rem; /* 90px */
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .certifications-marquee::before {
+    left: 0;
+    background: var(--surface-fade-left);
+  }
+
+  .certifications-marquee::after {
+    right: 0;
+    background: var(--surface-fade-right);
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    width: max-content;
+    gap: var(--marquee-gap);
+    white-space: nowrap;
+    font-size: 0;
+    animation: marquee var(--duration) linear infinite;
+    transform: translate3d(0%, 0, 0);
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: var(--marquee-gap);
+    font-size: var(--p-size);
+  }
+
+  .certifications-logo {
+    width: auto;
+    height: clamp(2.875rem, 6vw, 4.25rem); /* 46px to 68px */
+    object-fit: contain;
+    filter: grayscale(90%);
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+
+  .marquee-group .certifications-logo:nth-child(4) {
+    margin-right: calc(var(--cert-4-5-gap) - var(--marquee-gap));
+  }
+
+  .certifications-logo:hover {
+    filter: grayscale(0%);
+  }
+
+  .certifications-marquee:hover .marquee-track,
+  .marquee-track:hover {
+    animation-play-state: paused !important;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+
+  @media screen and (max-width: 29.9375rem) { /* 479px */
+    .marquee-track {
+      animation-duration: 30s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .certifications-marquee::before,
+    .certifications-marquee::after {
+      display: none;
+    }
+  }
+</style>

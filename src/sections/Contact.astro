@@ -1,0 +1,484 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Section from "../components/Section.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FormField from "../components/FormField.astro";
+import Button from "../components/Button.astro";
+import FeedbackPopup from "../components/FeedbackPopup.astro";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+const t = ui.contact;
+---
+
+<Section id="contact" background="tint" padding="none" class="section-contact">
+  <div class="contact-wrapper">
+    <div class="map-container">
+      <figure class="contact-map">
+        <iframe
+          title={t.mapTitle[locale]}
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2861.3820224545757!2d28.59999279318542!3d44.17859524373664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40baef8ab31dd2b7%3A0x5cc8e3e23db7fe78!2sSan%20Electroterm%20Grup!5e0!3m2!1sro!2sro!4v1769372783990!5m2!1sro!2sro"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </figure>
+    </div>
+    <div class="form-wrapper">
+      <SectionHeader>
+        <h2>{t.heading[locale]}</h2>
+        <p>
+          {t.intro[locale]}
+        </p>
+      </SectionHeader>
+      <form
+        class="form-block"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        novalidate
+        data-required-message={t.genericRequiredMessage[locale]}
+        data-email-message={t.genericEmailMessage[locale]}
+        data-pattern-message={t.genericPatternMessage[locale]}
+        data-invalid-message={t.genericInvalidMessage[locale]}
+        data-network-error-message={t.networkErrorMessage[locale]}
+      >
+        <input type="hidden" name="access_key" value="66dab177-db8e-4a26-be30-95fa2e5cf72b" />
+        <input type="hidden" name="subject" value={t.subjectHiddenValue[locale]} />
+        <input
+          type="checkbox"
+          name="botcheck"
+          style="display: none;"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+        <div class="form-content">
+          <div class="form-inputs">
+            <FormField label={t.fieldName[locale]} name="name" autocomplete="name" required />
+            <FormField
+              label={t.fieldPhone[locale]}
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              maxlength="14"
+              required
+            />
+            <FormField
+              label={t.fieldEmail[locale]}
+              name="email"
+              type="email"
+              autocomplete="email"
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              data-email-message={t.emailInvalidMessage[locale]}
+              required
+            />
+            <FormField label={t.fieldMessage[locale]} name="message" multiline rows={4} required />
+            <label class="form-field form-consent">
+              <input
+                class="form-consent-checkbox"
+                type="checkbox"
+                name="consent"
+                required
+                data-required-message={t.consentRequiredMessage[locale]}
+              />
+              <span class="form-consent-text">
+                {t.consentTextPrefix[locale]}
+                {" "}
+                <a
+                  class="form-consent-link"
+                  href={getRelativeLocaleUrl(locale, "politica-de-confidentialitate")}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {t.consentLinkText[locale]}
+                </a>.
+              </span>
+            </label>
+          </div>
+          <Button variant="secondary" label={t.submitLabel[locale]} type="button" data-contact-submit />
+        </div>
+        <div class="form-messages" hidden>
+          <div class="success" hidden>
+            <p class="form-message form-message--success" role="status" aria-live="polite">
+              {t.successMessage[locale]}
+            </p>
+          </div>
+          <div class="error" hidden>
+            <p class="form-message form-message--error" role="alert">
+              {t.errorMessage[locale]}
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</Section>
+
+<FeedbackPopup />
+
+<style>
+  .contact-wrapper {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-items: flex-start;
+    justify-items: stretch;
+    width: 100vw;
+    height: auto;
+    gap: var(--space-40);
+    margin: 0 auto;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 95%;
+    gap: clamp(1.5rem, 3vw, 2.25rem); /* 24px to 36px */
+    padding: var(--section-block-md);
+    padding-inline: var(--padding-inline-section);
+
+    @media screen and (max-width: 47.9375rem) { /* 767px */
+      padding-inline: var(--space-16);
+    }
+  }
+
+  .form-block {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 95%;
+    max-width: 37.5rem; /* 600px */
+    gap: var(--space-60);
+  }
+
+  .form-content {
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: clamp(1.25rem, 2.5vw, 1.75rem); /* 20px to 28px */
+  }
+
+  .form-inputs {
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: clamp(1rem, 2.1vw, 1.5rem); /* 16px to 24px */
+  }
+
+  .form-consent {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 0;
+    gap: var(--space-12);
+  }
+
+  .form-consent-checkbox {
+    flex: none;
+    inline-size: 1.125rem; /* 18px */
+    block-size: 1.125rem; /* 18px */
+    margin-top: 0.1875rem; /* 3px */
+    accent-color: var(--color-accent);
+  }
+
+  .form-consent-text {
+    color: var(--color-text-label);
+    font-size: 0.9rem;
+  }
+
+  .form-consent-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .form-messages {
+    display: grid;
+    gap: var(--space-12);
+    margin-top: var(--space-24);
+  }
+
+  .form-messages[hidden],
+  .form-messages > [hidden] {
+    display: none;
+  }
+
+  .form-message {
+    margin: 0;
+    padding: var(--space-16);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem; /* 15.2px */
+  }
+
+  .form-message--success {
+    background: var(--color-success-surface);
+    color: var(--color-success);
+  }
+
+  .form-message--error {
+    background: var(--color-error-surface);
+    color: var(--color-error);
+  }
+
+  .map-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contact-map {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+  }
+
+  .contact-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 25rem; /* 400px */
+    border: 0;
+  }
+
+  @media (prefers-contrast: more) {
+    .form-consent-checkbox {
+      border-width: 0.125rem; /* 2px */
+    }
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .contact-wrapper {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      gap: var(--space-24);
+    }
+
+    .form-wrapper {
+      order: -9999;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 auto;
+    }
+
+    .form-wrapper :global(.button) {
+      align-self: center;
+    }
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    .form-wrapper,
+    .form-block,
+    .form-content,
+    .form-inputs {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .form-wrapper :global(.form-field),
+    .form-wrapper :global(.form-input),
+    .form-wrapper :global(.form-textarea) {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .form-content,
+    .form-inputs {
+      align-items: stretch;
+    }
+
+    .map-container {
+      height: 25rem; /* 400px */
+      min-height: 37.5rem; /* 600px */
+    }
+  }
+
+  @media screen and (max-width: 29.9375rem) { /* 479px */
+    .map-container {
+      height: 25rem; /* 400px */
+      min-height: 25rem; /* 400px */
+    }
+  }
+</style>
+
+<script>
+  import { showFeedbackPopup } from "../scripts/feedback-popup.js";
+
+  const contactForm = document.querySelector<HTMLFormElement>(".form-block");
+
+  const requiredFields = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+    ".form-input[required], .form-textarea[required], .form-consent-checkbox[required]"
+  );
+
+  requiredFields.forEach((field) => {
+    const messages = {
+      required:
+        field.dataset.requiredMessage || contactForm?.dataset.requiredMessage || "",
+      email:
+        field.dataset.emailMessage || contactForm?.dataset.emailMessage || "",
+      pattern:
+        field.dataset.patternMessage || contactForm?.dataset.patternMessage || "",
+      generic:
+        field.dataset.invalidMessage || contactForm?.dataset.invalidMessage || "",
+    };
+
+    field.addEventListener("invalid", (event) => {
+      const f = event.target;
+      if (!(f instanceof HTMLInputElement || f instanceof HTMLTextAreaElement)) {
+        return;
+      }
+      if (f.validity.valueMissing) {
+        f.setCustomValidity(messages.required);
+      } else if (f.validity.typeMismatch && f.type === "email") {
+        f.setCustomValidity(messages.email);
+      } else if (f.validity.patternMismatch) {
+        f.setCustomValidity(messages.pattern);
+      } else {
+        f.setCustomValidity(messages.generic);
+      }
+    });
+
+    ["input", "change", "blur"].forEach((evt) => {
+      field.addEventListener(evt, (event) => {
+        const target = event.target;
+        if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+          target.setCustomValidity("");
+        }
+      });
+    });
+  });
+
+  if (contactForm) {
+    const formMessages = contactForm.querySelector<HTMLElement>(".form-messages");
+    const successWrapper = contactForm.querySelector<HTMLElement>(".success");
+    const errorWrapper = contactForm.querySelector<HTMLElement>(".error");
+    const successText = contactForm.querySelector(".form-message--success");
+    const errorText = contactForm.querySelector(".form-message--error");
+    const submitButton = contactForm.querySelector<HTMLButtonElement>("[data-contact-submit]");
+    const submitEndpoint =
+      contactForm.getAttribute("action") || "https://api.web3forms.com/submit";
+    const defaultSuccessMessage = successText?.textContent?.trim() || "";
+    const defaultErrorMessage = errorText?.textContent?.trim() || "";
+
+    const setFormStatus = (status: "success" | "error" | null, message?: string) => {
+      if (!formMessages || !successWrapper || !errorWrapper) {
+        if (status) {
+          showFeedbackPopup(
+            status,
+            message ||
+              (status === "success"
+                ? defaultSuccessMessage
+                : defaultErrorMessage)
+          );
+        }
+        return;
+      }
+
+      formMessages.hidden = true;
+      successWrapper.hidden = true;
+      errorWrapper.hidden = true;
+
+      if (status === "success" && successText) {
+        successText.textContent = message || defaultSuccessMessage;
+      }
+
+      if (status === "error" && errorText) {
+        errorText.textContent = message || defaultErrorMessage;
+      }
+
+      if (status) {
+        showFeedbackPopup(
+          status,
+          message ||
+            (status === "success"
+              ? defaultSuccessMessage
+              : defaultErrorMessage)
+        );
+      }
+    };
+
+    setFormStatus(null);
+
+    const handleContactSubmit = async () => {
+      setFormStatus(null);
+
+      if (!contactForm.reportValidity()) {
+        return;
+      }
+
+      const scrollPosition = window.scrollY;
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+      contactForm.setAttribute("aria-busy", "true");
+
+      try {
+        const response = await fetch(submitEndpoint, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: new FormData(contactForm),
+        });
+
+        const responseText = await response.text();
+        let result: { success?: boolean; message?: string } | null = null;
+
+        try {
+          result = responseText ? JSON.parse(responseText) : null;
+        } catch (parseError) {
+          result = null;
+        }
+
+        if (!response.ok || !result?.success) {
+          throw new Error(result?.message || defaultErrorMessage);
+        }
+
+        contactForm.reset();
+        setFormStatus("success", result.message || defaultSuccessMessage);
+      } catch (error) {
+        const message =
+          error instanceof TypeError
+            ? contactForm.dataset.networkErrorMessage || defaultErrorMessage
+            : error instanceof Error && error.message
+              ? error.message
+              : defaultErrorMessage;
+
+        setFormStatus("error", message);
+      } finally {
+        window.scrollTo({ top: scrollPosition });
+        contactForm.removeAttribute("aria-busy");
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    };
+
+    if (submitButton) {
+      submitButton.addEventListener("click", () => {
+        handleContactSubmit();
+      });
+    }
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      handleContactSubmit();
+    });
+  }
+</script>

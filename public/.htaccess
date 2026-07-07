@@ -1,0 +1,46 @@
+# Cache lifetimes for static assets.
+# Astro's build hashes filenames in /_astro/ (e.g. hero-rail.D_Ax0NPf_PHMTH.webp),
+# so those files are safe to cache indefinitely — a content change always produces
+# a new filename, never a stale cache.
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Hashed, immutable build output — cache for 1 year.
+  <FilesMatch "\.(?:css|js|avif|webp|woff2)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+
+  # Images (icons, OG images, PDFs) — not filename-hashed, so a shorter cache.
+  <FilesMatch "\.(?:png|jpg|jpeg|svg|ico|pdf)$">
+    ExpiresDefault "access plus 1 month"
+  </FilesMatch>
+
+  # HTML pages — short cache so content updates show up quickly.
+  <FilesMatch "\.html$">
+    ExpiresDefault "access plus 1 hour"
+  </FilesMatch>
+
+  # Sitemap / robots — short cache, these can change on every deploy.
+  <FilesMatch "\.(?:xml|txt)$">
+    ExpiresDefault "access plus 1 hour"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:css|js|avif|webp|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:png|jpg|jpeg|svg|ico|pdf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:xml|txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>

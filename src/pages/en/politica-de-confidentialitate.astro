@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import Container from "../../components/Container.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { siteMeta } from "../../data/site";
+---
+
+<BaseLayout
+  currentPath="/en/politica-de-confidentialitate"
+  title="Privacy Policy | San Electroterm Grup"
+  description="San Electroterm Grup SRL's privacy policy regarding the processing of personal data."
+>
+  <main id="main-content" tabindex="-1">
+    <Section aria-labelledby="privacy-title">
+      <Container>
+        <div class="legal-content">
+          <SectionHeader eyebrow="Privacy">
+            <div class="title-text">
+              <h1 id="privacy-title">Privacy Policy</h1>
+            </div>
+            <p class="legal-updated">Last updated: July 1, 2026</p>
+          </SectionHeader>
+
+          <div class="legal-section">
+            <h2>1. Data controller</h2>
+            <p>
+              {siteMeta.companyInfo[0]}, {siteMeta.companyInfo[1]}, {siteMeta.companyInfo[2]}, with
+              registered office at {siteMeta.addressLines.join(", ")}, is the data controller for
+              the personal data collected through this website.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>2. What data we collect</h2>
+            <p>
+              Through the contact form, we collect the data you provide directly to us: your
+              name, phone number, email address, and the content of the message sent. We do not
+              use tracking cookies and do not collect any other personal data through the
+              website.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>3. Purpose of processing</h2>
+            <p>
+              The data is used exclusively to respond to your requests and to prepare quotes or
+              information related to our services.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>4. Legal basis</h2>
+            <p>
+              Processing is based on your explicit consent, expressed by ticking the consent
+              checkbox in the contact form, in accordance with Article 6(1)(a) of Regulation
+              (EU) 2016/679 (GDPR). You may withdraw your consent at any time by contacting us
+              using the details below, without affecting the lawfulness of processing carried
+              out before the withdrawal.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>5. Data recipients</h2>
+            <p>
+              The contact form is processed through the third-party service Web3Forms, whose
+              sole role is to forward your message to our email address. Your data is not sold,
+              rented, or used for third-party marketing purposes.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>6. Retention period</h2>
+            <p>
+              We retain the data submitted through the form for as long as necessary to resolve
+              your request, but no longer than 24 months from your last interaction, unless the
+              law requires a longer retention period (for example, in the case of concluding a
+              contract).
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>7. Your rights</h2>
+            <p>Under the GDPR, you have the right to request:</p>
+            <ul>
+              <li>access to your personal data;</li>
+              <li>rectification of inaccurate or incomplete data;</li>
+              <li>erasure of your data ("the right to be forgotten");</li>
+              <li>restriction of processing;</li>
+              <li>data portability;</li>
+              <li>objection to processing;</li>
+              <li>withdrawal of consent, at any time.</li>
+            </ul>
+            <p>
+              You also have the right to lodge a complaint with the Romanian National
+              Supervisory Authority for Personal Data Processing (ANSPDCP) if you believe your
+              rights have been violated.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>8. How to exercise your rights</h2>
+            <p>
+              For any request regarding your personal data, you can contact us at the email
+              address <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a> or the phone
+              number <a href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>9. Changes to this policy</h2>
+            <p>
+              This policy may be updated periodically to reflect any legal changes or changes in
+              how we process data. The date of the last update is shown at the top of this page.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .title-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--title-text-gap);
+  }
+
+  .legal-content {
+    display: grid;
+    gap: var(--space-32);
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+
+  .legal-section {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .legal-section p,
+  .legal-section li {
+    max-width: none;
+  }
+
+  .legal-section ul {
+    display: grid;
+    gap: var(--space-8);
+    margin: 0;
+    padding-inline-start: 1.25rem; /* 20px */
+    color: var(--color-text-muted);
+    font-size: var(--p-size);
+    line-height: var(--lh-body);
+  }
+
+  .legal-updated {
+    color: var(--color-text-subtle);
+    font-size: var(--subtext-size);
+  }
+</style>

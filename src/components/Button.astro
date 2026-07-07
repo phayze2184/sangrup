@@ -1,0 +1,137 @@
+---
+interface Props {
+  variant?: "primary" | "secondary";
+  label: string;
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  icon?: string;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  label,
+  href,
+  type = "button",
+  icon = "→",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const Tag = href ? "a" : "button";
+const classes = ["button", `is-${variant}`, "is-uppercase", className].filter(Boolean).join(" ");
+---
+
+<Tag class={classes} href={href} type={href ? undefined : type} {...rest}>
+  <span class="button-icon" aria-hidden="true">{icon}</span>
+  <span class="button-text-wrap">
+    <span class="button-text button-text--top">{label}</span>
+    <span class="button-text button-text--bottom">{label}</span>
+  </span>
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-component-sm);
+    width: fit-content;
+    height: 3.5rem; /* 56px */
+    padding: var(--space-16);
+    padding-inline: var(--padding-inline-tn) var(--padding-inline-sm);
+    font-family: var(--font-ui);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--ls-normal);
+  }
+
+  .button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .is-primary {
+    /* Darkened from --color-accent: white text on the raw accent red is only
+       a 3.92:1 contrast ratio (fails WCAG AA's 4.5:1 for this text size). */
+    background: color-mix(in oklch, var(--color-accent), black 15%);
+    border-color: var(--color-border);
+    color: var(--color-text-inverse);
+  }
+
+  .is-secondary {
+    background: var(--color-surface-glass-strong);
+    border: var(--stroke-thin) solid var(--color-border); /* 1px */
+    color: var(--color-text-strong);
+  }
+
+  .is-primary .button-icon,
+  .is-secondary .button-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    border-radius: 0;
+  }
+
+  .is-primary .button-icon {
+    background: var(--color-text-inverse);
+    color: var(--color-accent);
+  }
+
+  .is-secondary .button-icon {
+    background: var(--color-accent);
+    color: var(--color-text-inverse);
+  }
+
+  .button-text-wrap {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1.2em;
+    line-height: 1.2;
+  }
+
+  .button-text {
+    display: block;
+    transition: transform 0.28s ease;
+  }
+
+  .button-text--bottom {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  .button:hover .button-text--top {
+    transform: translateY(-100%);
+  }
+
+  .button:hover .button-text--bottom {
+    transform: translateY(-100%);
+  }
+
+  @media (prefers-contrast: more) {
+    .is-secondary {
+      border-width: 0.125rem; /* 2px */
+    }
+
+    .button {
+      font-weight: var(--weight-bold);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .is-primary,
+    .is-secondary {
+      background: Canvas;
+      color: CanvasText;
+      border: var(--stroke-thin) solid CanvasText; /* 1px */
+      box-shadow: none;
+    }
+
+    .button-icon {
+      background: ButtonText;
+      color: ButtonFace;
+    }
+  }
+</style>

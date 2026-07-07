@@ -1,0 +1,116 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CircuitDecoration from "../components/CircuitDecoration.astro";
+import Button from "../components/Button.astro";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+const t = ui.despre;
+---
+
+<Section id="despre">
+  <Container>
+    <div class="despre-wrapper">
+      <SectionHeader eyebrow={t.eyebrow[locale]} decoration>
+        <div class="despre-text">
+          <div class="despre-left">
+            <CircuitDecoration variant="hidden" />
+            <h2>{t.missionHeading[locale]}</h2>
+            <div class="description">
+              <p set:html={t.missionParagraph1[locale]} />
+              <p set:html={t.missionParagraph2[locale]} />
+            </div>
+          </div>
+          <div class="despre-right">
+            <h2>{t.visionHeading[locale]}</h2>
+            <div class="description">
+              <p set:html={t.visionParagraph1[locale]} />
+              <p set:html={t.visionParagraph2[locale]} />
+            </div>
+          </div>
+        </div>
+      </SectionHeader>
+      <Button variant="secondary" label={t.ctaLabel[locale]} href={getRelativeLocaleUrl(locale, "about")} />
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .despre-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--eyebrow-text-gap);
+  }
+
+  .despre-text {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    gap: var(--elements-gap-big);
+  }
+
+  .despre-left,
+  .despre-right {
+    display: flex;
+    flex: 1 0 15.625rem; /* 250px basis */
+    flex-direction: column;
+    min-width: 15.625rem; /* 250px */
+    gap: var(--title-text-gap);
+    text-align: left;
+    z-index: 1;
+  }
+
+  .despre-left {
+    position: relative;
+  }
+
+  .despre-right {
+    position: relative;
+  }
+
+  .despre-right > :not(.decoration) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .description {
+    display: flex;
+    flex-flow: column;
+    gap: clamp(1.5rem, 2.22vh, 2rem); /* 24px to 32px */
+  }
+
+  .despre-wrapper > :global(.button) {
+    align-self: center;
+    margin-top: var(--space-24);
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .despre-wrapper {
+      justify-content: flex-start;
+    }
+
+    .despre-text {
+      flex-flow: column;
+    }
+
+    .despre-right {
+      position: static;
+    }
+
+    .despre-wrapper > :global(.button) {
+      align-self: center;
+    }
+  }
+</style>

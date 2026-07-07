@@ -1,0 +1,183 @@
+---
+import { Picture } from "astro:assets";
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { portfolioProjects } from "../data/site";
+import { withBase } from "../utils/base";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+const t = ui.portfolio;
+---
+
+<Section id="portofoliu" class="section-portfolio">
+  <Container>
+    <div class="portfolio-content">
+      <SectionHeader eyebrow={t.eyebrow[locale]} decoration>
+        <div class="title-text">
+          <h2>{t.heading[locale]}</h2>
+          <p>
+            {t.intro[locale]}
+          </p>
+        </div>
+      </SectionHeader>
+      <div class="portfolio-grid">
+        {
+          portfolioProjects[locale].map((project) => (
+            <article class="portfolio-card">
+              <div class="portfolio-media">
+                <Picture
+                  src={project.image}
+                  formats={["avif", "webp"]}
+                  alt={project.alt}
+                  loading="lazy"
+                  widths={[350, 460, 576, 800]}
+                  sizes="(min-width: 40rem) 576px, 90vw"
+                />
+              </div>
+              <div class="portfolio-body">
+                <h3 class="portfolio-title text-white">{project.title}</h3>
+                <div class="portfolio-meta">
+                  <span class="portfolio-meta-item">
+                    <img class="portfolio-meta-icon" src={withBase("/assets/pin-location-white.svg")} alt="" />
+                    {project.location}
+                  </span>
+                  <span class="portfolio-meta-item">
+                    <img class="portfolio-meta-icon" src={withBase("/assets/calendar-white.svg")} alt="" />
+                    {project.year}
+                  </span>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .portfolio-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--elements-gap);
+  }
+
+  .title-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--title-text-gap);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28.75rem), 1fr)); /* 460px max min */
+    align-items: start;
+    justify-items: start;
+    width: 100%;
+    gap: clamp(1rem, 3vw, 1.75rem); /* 16px to 28px */
+    margin: 0 auto;
+  }
+
+  .portfolio-body {
+    display: grid;
+    align-content: start;
+    gap: var(--space-12);
+  }
+
+  .portfolio-card {
+    --_portfolio-surface: var(--surface-brand-gradient);
+    --_portfolio-border: var(--color-border-inverse);
+    --_portfolio-border-hover: var(--color-border-inverse-stronger);
+    --_portfolio-shadow: 0 1.125rem 2.5rem var(--shadow-default-color); /* 18px 40px */
+    --_portfolio-shadow-hover: 0 1.625rem 3.5rem var(--shadow-panel-color); /* 26px 56px */
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    inline-size: min(100%, 36rem); /* 576px max */
+    gap: var(--space-16);
+    padding: var(--space-24);
+    overflow: clip;
+    content-visibility: auto;
+    contain-intrinsic-size: 36rem 40rem; /* 576px 640px */
+    border: var(--stroke-thin) solid var(--_portfolio-border); /* 1px */
+    border-radius: var(--radius-xl);
+    background: var(--_portfolio-surface);
+    box-shadow: var(--_portfolio-shadow);
+    transition:
+      transform 240ms ease,
+      border-color 240ms ease,
+      box-shadow 240ms ease;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-0.1875rem); /* -3px */
+    border-color: var(--_portfolio-border-hover);
+    box-shadow: var(--_portfolio-shadow-hover);
+  }
+
+  .portfolio-media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: var(--stroke-thin) solid var(--color-border-subtle);
+    border-radius: calc(var(--radius-xl) - var(--space-8));
+    background: var(--color-surface-portfolio-media);
+  }
+
+  .portfolio-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .portfolio-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 320ms ease, filter 320ms ease;
+  }
+
+  .portfolio-card:hover .portfolio-media img {
+    transform: scale(1.03);
+    filter: saturate(1.05) contrast(1.02);
+  }
+
+  .portfolio-title {
+    font-size: var(--h4-size);
+    line-height: var(--lh-title);
+  }
+
+  .portfolio-body > h3,
+  .portfolio-body > p {
+    max-width: none;
+  }
+
+  .portfolio-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-16);
+    color: var(--color-text-inverse-muted);
+    font-size: var(--subtext-size);
+    line-height: var(--lh-body);
+  }
+
+  .portfolio-meta-item {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 1.5rem; /* 24px */
+    gap: var(--space-4);
+    color: var(--color-text-inverse);
+  }
+
+  .portfolio-meta-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    opacity: 0.88;
+  }
+</style>

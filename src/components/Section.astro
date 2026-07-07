@@ -1,0 +1,93 @@
+---
+// New background needed? Add it here rather than overriding .background-*
+// from a page via :global() — a page-level override competing with this
+// component's own class at equal specificity silently lost a bundle-order
+// race once already (about-history's tint went missing).
+interface Props {
+  id?: string;
+  background?: "default" | "tint" | "about-history" | "none";
+  padding?: "default" | "compact" | "none";
+  overflow?: "visible" | "hidden";
+  class?: string;
+}
+
+const {
+  id,
+  background = "default",
+  padding = "default",
+  overflow = "visible",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const classes = [
+  "section",
+  `background-${background}`,
+  `padding-${padding}`,
+  overflow === "hidden" && "is-overflow-hidden",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<section id={id} class={classes} {...rest}>
+  <slot />
+</section>
+
+<style>
+  .section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: var(--stroke-thin) solid var(--color-border-subtle);
+  }
+
+  .is-overflow-hidden {
+    overflow: hidden;
+  }
+
+  .background-default {
+    background: var(--color-bg);
+  }
+
+  .background-tint {
+    background: var(--surface-section-tint);
+  }
+
+  .background-about-history {
+    background: var(--color-surface-about-history);
+  }
+
+  .background-none {
+    background: none;
+  }
+
+  .padding-default {
+    padding: var(--section-block-lg) 0;
+  }
+
+  .padding-compact {
+    padding: var(--space-40);
+  }
+
+  .padding-none {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .padding-default {
+      padding-block: var(--section-block-md);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .section {
+      background: Canvas;
+      color: CanvasText;
+      border: var(--stroke-thin) solid CanvasText; /* 1px */
+      box-shadow: none;
+    }
+  }
+</style>

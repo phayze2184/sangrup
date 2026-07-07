@@ -1,0 +1,476 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Container from "../components/Container.astro";
+import { headerNavItems, siteMeta, type HeaderNavItem } from "../data/site";
+import { withBase } from "../utils/base";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+interface Props {
+  currentPath: string;
+  homeHref?: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  brandLabel?: string;
+  menuId?: string;
+  navLabel?: string;
+  navigationLinks?: HeaderNavItem[];
+}
+
+const locale = getLocale(Astro.currentLocale);
+const otherLocale = locale === "ro" ? "en" : "ro";
+
+const {
+  currentPath,
+  homeHref = getRelativeLocaleUrl(locale),
+  logoSrc = withBase("/assets/logo-sangrup.svg"),
+  logoAlt = ui.header.logoAlt[locale],
+  brandLabel = ui.header.brandLabel[locale],
+  menuId = "menu-button",
+  navLabel = ui.header.navLabel[locale],
+  navigationLinks = headerNavItems[locale],
+} = Astro.props;
+
+const homePathForLocale = locale === "ro" ? "/" : `/${locale}`;
+const isHome = currentPath === homePathForLocale;
+const links = navigationLinks.map((link) => ({
+  ...link,
+  resolvedHref: isHome && link.homeHref ? link.homeHref : link.href,
+}));
+
+const localeAgnosticPath = currentPath.replace(/^\/en(\/|$)/, "/");
+const switchHref =
+  localeAgnosticPath === "/"
+    ? getRelativeLocaleUrl(otherLocale)
+    : getRelativeLocaleUrl(otherLocale, localeAgnosticPath.replace(/^\//, ""));
+---
+
+<header class="navbar" id="navbar" role="banner">
+  <Container class="nav">
+    <a class="brand" href={homeHref} aria-label={brandLabel}>
+      <img class="brand-logo" src={logoSrc} alt={logoAlt} />
+    </a>
+    <nav class="navigation is-uppercase" data-nav aria-label={navLabel}>
+      <Container>
+        {
+          links.map((link) => (
+            <a class="menu-link" href={link.resolvedHref}>
+              {link.label}
+            </a>
+          ))
+        }
+      </Container>
+    </nav>
+    <div class="nav-right-side">
+      <div class="header-phone-wrapper">
+        <img class="icon phone" src={withBase("/assets/phone-icon.svg")} alt="" aria-label={ui.header.phoneAriaLabel[locale]} />
+        <a class="link header-phone" href={siteMeta.phoneHref}>
+          {siteMeta.phoneDisplay}
+        </a>
+      </div>
+      <div class="nav-controls">
+        <a class="lang-switch" href={switchHref} hreflang={otherLocale} lang={otherLocale}>
+          {otherLocale.toUpperCase()}
+        </a>
+        <input class="menu-button" type="checkbox" id={menuId} aria-label={ui.header.menuAriaLabel[locale]} />
+        <label class="hamburger-icon" for={menuId} aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </Container>
+</header>
+
+<script>
+  const menuButton = document.querySelector<HTMLInputElement>(".menu-button");
+  const navigation = document.querySelector(".navigation");
+  const hamburgerIcon = document.querySelector(".hamburger-icon");
+
+  if (menuButton && navigation) {
+    const setNavState = () => {
+      navigation.classList.toggle("is-open", menuButton.checked);
+      if (hamburgerIcon) {
+        hamburgerIcon.classList.toggle("is-open", menuButton.checked);
+      }
+      menuButton.setAttribute(
+        "aria-expanded",
+        menuButton.checked ? "true" : "false"
+      );
+    };
+    menuButton.addEventListener("change", setNavState);
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.checked = false;
+        setNavState();
+      });
+    });
+    setNavState();
+  }
+
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    const getScrollTop = () =>
+      window.scrollY ||
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    const syncNavbarScrollState = () => {
+      navbar.classList.toggle("scrolled", getScrollTop() > 2);
+    };
+
+    window.addEventListener("scroll", syncNavbarScrollState, { passive: true });
+    document.addEventListener("scroll", syncNavbarScrollState, {
+      passive: true,
+      capture: true,
+    });
+    window.addEventListener("load", syncNavbarScrollState, { passive: true });
+    window.addEventListener("resize", syncNavbarScrollState, { passive: true });
+    requestAnimationFrame(syncNavbarScrollState);
+    syncNavbarScrollState();
+  }
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    inset: 0 0 auto;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem; /* 64px */
+    padding-inline: 0;
+    background: var(--color-bg);
+    border-bottom: var(--stroke-thin) solid var(--color-border-subtle); /* 1px */
+    color: var(--color-text-strong);
+    transition: background 240ms ease, border-color 240ms ease, color 240ms ease;
+  }
+
+  .navbar.scrolled {
+    background: var(--surface-brand-gradient);
+    border-bottom-color: var(--color-border-inverse-strong);
+    color: var(--color-text-inverse);
+  }
+
+  :global(.nav) {
+    position: static;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: center;
+    margin-block: var(--space-8);
+    font-family: var(--font-ui);
+    font-size: var(--menu-size);
+    font-weight: var(--weight-semibold);
+    line-height: var(--lh-tight);
+    letter-spacing: 0.02em;
+  }
+
+  .brand {
+    position: static;
+    order: -1;
+  }
+
+  .brand-logo {
+    width: 100%;
+    height: 2.75rem; /* 44px */
+    object-fit: cover;
+    transition: filter 240ms ease;
+  }
+
+  .navbar.scrolled .brand-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-right-side {
+    position: relative;
+    z-index: 30;
+    display: inline-flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-24);
+  }
+
+  .nav-controls {
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+    gap: var(--space-24);
+  }
+
+  .header-phone-wrapper {
+    display: flex;
+    order: -1;
+    width: 100%;
+    max-width: 12.0625rem; /* 193px */
+    justify-content: flex-start;
+    align-items: center;
+    padding-inline: 0;
+    gap: var(--space-4);
+    color: inherit;
+  }
+
+  .header-phone {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem; /* 44px */
+    color: inherit;
+  }
+
+  .header-phone:hover,
+  .header-phone:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+
+  .icon.phone {
+    flex-shrink: 0;
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+    margin-bottom: 0.125rem; /* 2px */
+    padding-bottom: 0;
+    transition: filter 240ms ease;
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 2.75rem; /* 44px */
+    min-block-size: 2.75rem; /* 44px */
+    padding-inline: var(--space-8);
+    border: var(--stroke-thin) solid currentColor; /* 1px */
+    border-radius: var(--radius-sm);
+    color: inherit;
+    font-family: var(--font-ui);
+    font-size: var(--subtext-size);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.04em;
+  }
+
+  .lang-switch:hover,
+  .lang-switch:focus-visible {
+    background: var(--color-surface-glass);
+  }
+
+  .navbar.scrolled .lang-switch:hover,
+  .navbar.scrolled .lang-switch:focus-visible {
+    background: var(--color-surface-overlay-soft);
+  }
+
+  .navbar.scrolled .icon.phone {
+    filter: brightness(0) invert(1);
+  }
+
+  .navigation {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--space-24);
+    margin-top: 0;
+    padding-top: var(--nav-height);
+    background-color: var(--color-bg);
+    overflow-y: auto;
+  }
+
+  .navigation.is-open {
+    display: flex;
+  }
+
+  .navigation :global(.container-padding) {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-strong);
+  }
+
+  .menu-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem; /* 44px */
+    margin: 0 0 var(--space-24);
+    padding: 0;
+    font-family: var(--font-ui);
+    font-size: var(--h3-size);
+    font-weight: var(--weight-semibold);
+    line-height: var(--lh-tight);
+  }
+
+  .menu-link::after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 0.125rem); /* 2px */
+    left: 0;
+    width: 30%;
+    height: 0.125rem; /* 2px */
+    background: var(--color-accent);
+    transform-origin: left center;
+    transform: scaleX(0.75);
+    transition: transform 220ms ease;
+  }
+
+  .menu-link:hover::after,
+  .menu-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .menu-button {
+    display: grid;
+    grid-column: 3;
+    justify-content: center;
+    align-items: center;
+    justify-self: end;
+    overflow: hidden;
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    inline-size: var(--stroke-thin); /* 1px */
+    block-size: var(--stroke-thin); /* 1px */
+    margin: -var(--stroke-thin); /* -1px */
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .hamburger-icon {
+    --_bar-width: 2rem; /* 32px */
+    --_middle-bar-width: 1.25rem; /* 20px */
+    --_bar-height: 0.125rem; /* 2px */
+    --_bar-gap: var(--space-8);
+    --_close-offset: calc(var(--_bar-gap) + var(--_bar-height));
+    --_border-color: var(--color-border-strong);
+    --_surface: var(--color-surface-glass);
+    --_bar-color: var(--color-text-strong);
+    position: relative;
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    justify-self: end;
+    inline-size: 2.75rem; /* 44px */
+    block-size: 2.75rem; /* 44px */
+    min-inline-size: 2.75rem; /* 44px */
+    min-block-size: 2.75rem; /* 44px */
+    padding: var(--space-8);
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    gap: var(--_bar-gap);
+    cursor: pointer;
+    transition: background-color 240ms ease;
+  }
+
+  .hamburger-icon span {
+    display: block;
+    inline-size: var(--_bar-width);
+    block-size: var(--_bar-height);
+    border-radius: var(--radius-pill);
+    background: var(--_bar-color);
+    transform-origin: center;
+    will-change: transform, opacity;
+    transition: transform 0.2s ease, opacity 0.2s ease, background-color 240ms ease;
+  }
+
+  .hamburger-icon span:nth-child(2) {
+    inline-size: var(--_middle-bar-width);
+    justify-self: end;
+  }
+
+  .navbar.scrolled .hamburger-icon {
+    --_border-color: var(--color-border-inverse-stronger);
+    --_surface: transparent;
+    --_bar-color: var(--color-text-inverse);
+  }
+
+  .menu-button:focus-visible + .hamburger-icon {
+    outline: var(--stroke-focus) solid var(--color-accent);
+    outline-offset: 0.125rem; /* 2px */
+  }
+
+  :is(.menu-button:checked + .hamburger-icon, .hamburger-icon.is-open) span:nth-child(1) {
+    transform: translateY(var(--_close-offset)) rotate(45deg);
+  }
+
+  :is(.menu-button:checked + .hamburger-icon, .hamburger-icon.is-open) span:nth-child(2) {
+    opacity: 0;
+  }
+
+  :is(.menu-button:checked + .hamburger-icon, .hamburger-icon.is-open) span:nth-child(3) {
+    transform: translateY(calc(var(--_close-offset) * -1)) rotate(-45deg);
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .menu-link {
+      font-size: 3rem; /* 48px */
+    }
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    .menu-link {
+      font-size: 2rem; /* 32px */
+    }
+    .nav-controls {
+      gap: var(--space-8);
+    }
+  }
+
+  @media screen and (max-width: 29.9375rem) { /* 479px */
+    .header-phone-wrapper {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hamburger-icon,
+    .hamburger-icon span {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .navbar {
+      border-bottom-width: 0.125rem; /* 2px */
+    }
+
+    .menu-link::after {
+      width: 40%;
+      height: 0.1875rem; /* 3px */
+    }
+  }
+
+  @media (forced-colors: active) {
+    .navbar,
+    .navigation {
+      background: Canvas;
+      color: CanvasText;
+      border: var(--stroke-thin) solid CanvasText; /* 1px */
+      box-shadow: none;
+    }
+
+    .hamburger-icon {
+      background: Canvas;
+      border: var(--stroke-thin) solid ButtonText; /* 1px */
+    }
+
+    .hamburger-icon span,
+    .menu-link::after {
+      background: ButtonText;
+    }
+
+    .brand-logo,
+    .icon.phone {
+      filter: none;
+    }
+  }
+</style>

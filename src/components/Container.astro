@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+const classes = ["container-padding", className].filter(Boolean).join(" ");
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style>
+  .container-padding {
+    width: 100%;
+    max-width: var(--container);
+    padding-inline: var(--space-16);
+    margin: 0 auto;
+  }
+</style>

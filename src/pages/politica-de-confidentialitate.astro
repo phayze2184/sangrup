@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { siteMeta } from "../data/site";
+---
+
+<BaseLayout
+  currentPath="/politica-de-confidentialitate"
+  title="Politica de confidențialitate | San Electroterm Grup"
+  description="Politica de confidențialitate San Electroterm Grup SRL privind prelucrarea datelor cu caracter personal."
+>
+  <main id="main-content" tabindex="-1">
+    <Section aria-labelledby="privacy-title">
+      <Container>
+        <div class="legal-content">
+          <SectionHeader eyebrow="Confidențialitate">
+            <div class="title-text">
+              <h1 id="privacy-title">Politica de confidențialitate</h1>
+            </div>
+            <p class="legal-updated">Ultima actualizare: 1 iulie 2026</p>
+          </SectionHeader>
+
+          <div class="legal-section">
+            <h2>1. Operatorul de date cu caracter personal</h2>
+            <p>
+              {siteMeta.companyInfo[0]}, {siteMeta.companyInfo[1]}, {siteMeta.companyInfo[2]}, cu
+              sediul în {siteMeta.addressLines.join(", ")}, este operator de date cu caracter
+              personal pentru datele colectate prin intermediul acestui website.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>2. Ce date colectăm</h2>
+            <p>
+              Prin formularul de contact colectăm datele pe care ni le furnizați direct: numele,
+              numărul de telefon, adresa de email și conținutul mesajului transmis. Nu folosim
+              cookie-uri de urmărire și nu colectăm alte date cu caracter personal prin
+              intermediul website-ului.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>3. Scopul prelucrării</h2>
+            <p>
+              Datele sunt folosite exclusiv pentru a răspunde solicitărilor dumneavoastră și
+              pentru a pregăti oferte sau informații legate de serviciile noastre.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>4. Temeiul legal</h2>
+            <p>
+              Prelucrarea se bazează pe consimțământul dumneavoastră explicit, exprimat prin
+              bifarea casetei de acord din formularul de contact, conform art. 6 alin. (1) lit.
+              a) din Regulamentul (UE) 2016/679 (GDPR). Vă puteți retrage consimțământul
+              oricând, contactându-ne la datele de mai jos, fără a afecta legalitatea
+              prelucrării efectuate anterior retragerii.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>5. Destinatarii datelor</h2>
+            <p>
+              Formularul de contact este procesat prin serviciul terț Web3Forms, care are rolul
+              exclusiv de a transmite mesajul dumneavoastră către adresa noastră de email.
+              Datele dumneavoastră nu sunt vândute, închiriate sau folosite în scopuri de
+              marketing către terți.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>6. Perioada de stocare</h2>
+            <p>
+              Păstrăm datele transmise prin formular pe durata necesară soluționării
+              solicitării dumneavoastră, dar nu mai mult de 24 de luni de la ultima interacțiune,
+              cu excepția cazului în care legea impune o perioadă mai lungă de arhivare (de
+              exemplu, în cazul încheierii unui contract).
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>7. Drepturile dumneavoastră</h2>
+            <p>Conform GDPR, aveți dreptul de a solicita:</p>
+            <ul>
+              <li>accesul la datele dumneavoastră cu caracter personal;</li>
+              <li>rectificarea datelor inexacte sau incomplete;</li>
+              <li>ștergerea datelor („dreptul de a fi uitat”);</li>
+              <li>restricționarea prelucrării;</li>
+              <li>portabilitatea datelor;</li>
+              <li>opoziția la prelucrare;</li>
+              <li>retragerea consimțământului, în orice moment.</li>
+            </ul>
+            <p>
+              De asemenea, aveți dreptul de a depune o plângere la Autoritatea Națională de
+              Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), dacă
+              apreciați că drepturile dumneavoastră au fost încălcate.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>8. Cum vă puteți exercita drepturile</h2>
+            <p>
+              Pentru orice solicitare privind datele dumneavoastră cu caracter personal, ne
+              puteți contacta la adresa de email <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a> sau
+              la numărul de telefon <a href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>.
+            </p>
+          </div>
+
+          <div class="legal-section">
+            <h2>9. Modificări ale politicii</h2>
+            <p>
+              Această politică poate fi actualizată periodic, pentru a reflecta eventuale
+              modificări legale sau ale modului în care prelucrăm datele. Data ultimei
+              actualizări este afișată la începutul acestei pagini.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .title-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--title-text-gap);
+  }
+
+  .legal-content {
+    display: grid;
+    gap: var(--space-32);
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+
+  .legal-section {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .legal-section p,
+  .legal-section li {
+    max-width: none;
+  }
+
+  .legal-section ul {
+    display: grid;
+    gap: var(--space-8);
+    margin: 0;
+    padding-inline-start: 1.25rem; /* 20px */
+    color: var(--color-text-muted);
+    font-size: var(--p-size);
+    line-height: var(--lh-body);
+  }
+
+  .legal-updated {
+    color: var(--color-text-subtle);
+    font-size: var(--subtext-size);
+  }
+</style>

@@ -1,0 +1,207 @@
+---
+import { Image } from "astro:assets";
+import CircuitDecoration from "../components/CircuitDecoration.astro";
+import Button from "../components/Button.astro";
+import heroRail from "../assets/hero-rail.png";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+const locale = getLocale(Astro.currentLocale);
+const t = ui.hero;
+---
+
+<section class="hero-section">
+  <div class="hero-content">
+    <CircuitDecoration variant="hero" />
+    <div class="hero-content-left">
+      <div class="copy">
+          <h1 class="title">
+             {t.titlePrefix[locale]}<span class="highlight">{t.titleHighlight[locale]}</span>{t.titleSuffix[locale]}
+          </h1>
+          <p class="description">
+              {t.description[locale]}
+          </p>
+      </div>
+      <Button variant="primary" label={t.ctaLabel[locale]} href="#contact" />
+    </div>
+    <div class="hero-content-right">
+      <Image
+        class="hero-media"
+        src={heroRail}
+        alt={t.imageAlt[locale]}
+        loading="eager"
+        fetchpriority="high"
+        widths={[400, 480, 560, 640, 800, 960, 1200, 1508]}
+        sizes="(min-width: 62rem) 50vw, 100vw"
+      />
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">23+</div>
+        <div class="hero-kpi-label">{t.kpiLabel[locale]}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+  }
+
+  .hero-content {
+    position: static;
+    display: grid;
+    place-items: end stretch;
+    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-content-left {
+    --_hero-align-offset: max(0px, calc((100vw - var(--container)) / 2));
+    --_hero-copy-max-inline-size: calc(32rem + var(--_hero-align-offset)); /* 512px + offset */
+    --_hero-copy-offset-end: clamp(2rem, 2.5vw, 3rem); /* 32px to 48px */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    inline-size: min(100%, var(--_hero-copy-max-inline-size));
+    padding-inline-start: calc(var(--space-16) + var(--_hero-align-offset));
+    padding-block-end: var(--_hero-copy-offset-end);
+    gap: var(--gap-component-xxl);
+
+    @media screen and (max-width: 47.9375rem) { /* 767px */
+      gap: var(--gap-component-md);
+    }
+  }
+   
+  .copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--title-text-gap);
+
+    & .title {
+      margin: 0;
+    }
+  }
+
+  .hero-content-right {
+    position: relative;
+    height: 100svh;
+  }
+
+  .hero-media {
+    position: static;
+    inset: 0%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-kpi {
+    position: absolute;
+    right: var(--space-40);
+    bottom: var(--space-40);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(0.75rem, 10vh, 10rem); /* 12px to 160px */
+    min-height: clamp(7.5rem, 10vh, 10rem); /* 120px to 160px */
+    gap: calc(var(--space-4) / 2);
+    padding: var(--space-24);
+    border: var(--stroke-thin) solid var(--color-border-kpi); /* 1px */
+    background: var(--surface-brand-gradient);
+    color: var(--color-text-inverse);
+    backdrop-filter: blur(0.625rem); /* 10px */
+    -webkit-backdrop-filter: blur(0.625rem); /* 10px */
+    text-align: center;
+  }
+
+  .hero-kpi-value {
+    font-family: var(--font-heading);
+    font-size: var(--h1-extra-size);
+    font-weight: var(--weight-bold);
+    line-height: 1;
+  }
+
+  .hero-kpi-label {
+    font-family: var(--font-body);
+    font-size: var(--subtext-size);
+    letter-spacing: var(--ls-wide);
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .hero-section {
+      min-height: 100vh;
+      min-height: calc(100dvh - var(--nav-height));
+    }
+
+    .hero-content {
+      min-height: auto;
+      place-items: start stretch;
+      justify-content: flex-start;
+      grid-auto-columns: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: var(--space-40);
+    }
+
+    .hero-content-left {
+      order: 2;
+      inline-size: 100%;
+      max-inline-size: none;
+      block-size: auto;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-block-end: 0;
+      padding-inline: var(--space-16);
+    }
+
+    .hero-content-right {
+      order: 1;
+      height: 50vh;
+    }
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    .hero-content {
+      min-height: 100vh;
+      grid-template-rows: 50vh 1fr;
+      align-items: stretch;
+      justify-items: stretch;
+      gap: var(--space-32);
+    }
+
+    .hero-content-left {
+      align-self: stretch;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-inline: var(--space-16);
+      padding-bottom: clamp(1.5rem, 6vw, 2.5rem); /* 24px to 40px */
+    }
+
+    .hero-content-left :global(.button) {
+      align-self: center;
+    }
+
+    .hero-content-right {
+      height: 50vh;
+    }
+
+    .hero-kpi {
+      right: 1rem; /* 16px */
+      bottom: 1rem; /* 16px */
+    }
+  }
+
+  @media screen and (max-width: 29.9375rem) { /* 479px */
+    .hero-content-right {
+      height: 100%;
+    }
+  }
+</style>

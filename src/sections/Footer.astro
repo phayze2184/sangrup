@@ -1,0 +1,282 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Container from "../components/Container.astro";
+import { siteMeta, footerNavItems as footerNavItemsByLocale, type HeaderNavItem } from "../data/site";
+import { withBase } from "../utils/base";
+import { getLocale } from "../i18n/locales";
+import { ui } from "../i18n/ui";
+
+interface Props {
+  currentPath: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  contactTitle?: string;
+  menuTitle?: string;
+  addressTitle?: string;
+  infoTitle?: string;
+  footerNavItems?: HeaderNavItem[];
+  copyright?: string;
+}
+
+const currentYear = new Date().getFullYear();
+const locale = getLocale(Astro.currentLocale);
+
+const {
+  currentPath,
+  logoSrc = withBase("/assets/logo-footer.svg"),
+  logoAlt = ui.footer.logoAlt[locale],
+  contactTitle = ui.footer.contactTitle[locale],
+  menuTitle = ui.footer.menuTitle[locale],
+  addressTitle = ui.footer.addressTitle[locale],
+  infoTitle = ui.footer.infoTitle[locale],
+  footerNavItems = footerNavItemsByLocale[locale],
+  copyright,
+} = Astro.props;
+
+const homePathForLocale = locale === "ro" ? "/" : `/${locale}`;
+const isHome = currentPath === homePathForLocale;
+const footerLinks = footerNavItems.map((link) => ({
+  ...link,
+  resolvedHref: isHome && link.homeHref ? link.homeHref : link.href,
+}));
+
+const [copyrightPrefix, copyrightSuffix] = ui.footer.copyrightTemplate[locale].split("{year}");
+const privacyHref = getRelativeLocaleUrl(locale, "politica-de-confidentialitate");
+---
+
+<footer class="footer">
+  <Container>
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <div class="footer-left">
+          <img class="footer-logo" src={logoSrc} alt={logoAlt} aria-hidden="true" />
+        </div>
+        <div class="footer-right">
+          <div class="text-wrapper">
+            <h3 class="footer-heading is-uppercase text-white">{contactTitle}</h3>
+            <div class="details">
+              <div class="contact-item">
+                <img class="footer-icon" src={withBase("/assets/phone-white.svg")} alt={ui.footer.phoneAlt[locale]} />
+                <a class="footer-link" href={siteMeta.phoneHref}>{siteMeta.phoneDisplay}</a>
+              </div>
+              <div class="contact-item">
+                <img class="footer-icon" src={withBase("/assets/email-white.svg")} alt={ui.footer.emailAlt[locale]} />
+                <a class="footer-link" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+              </div>
+              <div class="contact-item">
+                <img class="footer-icon" src={withBase("/assets/linkedin-icon.svg")} alt={ui.footer.linkedinAlt[locale]} />
+                <a class="footer-link" href={siteMeta.linkedin}>LinkedIn</a>
+              </div>
+            </div>
+          </div>
+          <div class="text-wrapper menu-footer">
+            <h3 class="footer-heading is-uppercase text-white">{menuTitle}</h3>
+            <div class="details">
+              {
+                footerLinks.map((link) => (
+                  <a class="footer-link" href={link.resolvedHref}>
+                    {link.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+          <div class="text-wrapper">
+            <h3 class="footer-heading is-uppercase text-white">{addressTitle}</h3>
+            <div class="details">
+              {
+                siteMeta.addressLines.map((line) => (
+                  <a class="footer-link" href={siteMeta.addressUrl} target="_blank" rel="noopener">
+                    {line}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+          <div class="text-wrapper">
+            <h3 class="footer-heading is-uppercase text-white">{infoTitle}</h3>
+            <div class="details">
+              {siteMeta.companyInfo.map((line) => <p class="text-white">{line}</p>)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a class="footer-link" href={privacyHref}>
+          {ui.footer.privacyLink[locale]}
+        </a>
+        {
+          copyright ? (
+            <p class="text-white">{copyright}</p>
+          ) : (
+            <p class="text-white">
+              {copyrightPrefix}<span data-current-year>{currentYear}</span>{copyrightSuffix}
+            </p>
+          )
+          }
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<script>
+  for (const yearNode of document.querySelectorAll("[data-current-year]")) {
+    yearNode.textContent = String(new Date().getFullYear());
+  }
+</script>
+
+<style>
+  .footer {
+    --footer-item-block-size: 2rem;
+    margin: 0;
+    padding-top: var(--section-block-lg);
+    padding-bottom: var(--space-32);
+    background: var(--surface-brand-gradient);
+    color: var(--color-text-inverse);
+  }
+
+  .footer-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(2rem, 3vh, 2.5rem); /* 32px to 40px */
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-60);
+  }
+
+  .footer-right {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(10rem, 1fr)); /* 160px min */
+    grid-template-rows: auto;
+    gap: clamp(3.75rem, 5vw, 5rem); /* 60px to 80px */
+    align-items: start;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .footer-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .text-wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+    min-width: 0;
+  }
+
+  .footer-heading {
+    font-size: var(--h4-size);
+    line-height: var(--lh-title);
+  }
+
+  .details {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: var(--space-12);
+  }
+
+  .menu-footer {
+    padding-inline: 2.5rem; /* 40px */
+  }
+
+  .footer-icon {
+    display: block;
+    align-self: center;
+    width: 1rem; /* 16px */
+    min-width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    padding-top: 0;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--footer-item-block-size);
+    color: var(--color-text-inverse);
+    font-family: var(--font-body);
+    font-size: var(--subtext-size);
+    font-weight: var(--weight-medium);
+  }
+
+  .footer .details > p {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--footer-item-block-size);
+    font-size: var(--subtext-size);
+  }
+
+  .footer-link:hover,
+  .footer-link:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8) var(--space-24);
+    width: 100%;
+    padding: clamp(1rem, 2vw, 1.5rem) var(--space-16); /* 16px to 24px block */
+    border-top: var(--stroke-thin) solid var(--color-border-inverse); /* 1px */
+    text-align: center;
+  }
+
+  @media screen and (max-width: 61.9375rem) { /* 991px */
+    .footer {
+      padding-top: var(--section-block-md);
+      padding-bottom: var(--space-24);
+    }
+
+    .footer-left {
+      align-self: center;
+    }
+
+    .footer-right {
+      grid-template-columns: repeat(2, minmax(8.75rem, 1fr)); /* 140px min */
+      grid-template-rows: auto;
+      justify-items: start;
+      align-items: start;
+    }
+
+    .menu-footer {
+      padding-inline: 0;
+    }
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    .footer-top {
+      flex-direction: column;
+    }
+  }
+</style>

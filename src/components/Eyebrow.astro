@@ -1,0 +1,41 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+const classes = ["eyebrow", "is-uppercase", className].filter(Boolean).join(" ");
+---
+
+<div class={classes}><slot /></div>
+
+<style>
+  .eyebrow {
+    display: inline-flex;
+    padding: var(--space-12) 0.875rem; /* 12px 14px */
+    border: var(--stroke-thin) solid var(--color-border-strong); /* 1px */
+    border-radius: var(--radius-xs);
+    background: var(--color-surface-glass);
+    color: var(--color-text-subtle);
+    font-family: var(--font-eyebrow);
+    font-size: var(--subtext-size);
+    font-weight: var(--weight-regular);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-wider);
+  }
+
+  @media (prefers-contrast: more) {
+    .eyebrow {
+      border-width: 0.125rem; /* 2px */
+    }
+  }
+
+  @media (forced-colors: active) {
+    .eyebrow {
+      background: Canvas;
+      color: CanvasText;
+      border: var(--stroke-thin) solid CanvasText; /* 1px */
+      box-shadow: none;
+    }
+  }
+</style>

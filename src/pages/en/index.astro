@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../sections/Hero.astro";
+import Certifications from "../../sections/Certifications.astro";
+import Despre from "../../sections/Despre.astro";
+import Services from "../../sections/Services.astro";
+import Portfolio from "../../sections/Portfolio.astro";
+import Contact from "../../sections/Contact.astro";
+---
+
+<BaseLayout currentPath="/en" title="San Electroterm Grup - Railway and civil electrical installations" description="We design, build, and modernize railway installations using state-of-the-art technology and solid expertise, for safer, more efficient, and higher-performing railway transport networks.">
+  <main id="main-content" tabindex="-1">
+    <Hero />
+    <Certifications />
+    <Despre />
+    <Services />
+    <Portfolio />
+    <Contact />
+  </main>
+</BaseLayout>

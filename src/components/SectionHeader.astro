@@ -1,0 +1,28 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import CircuitDecoration from "./CircuitDecoration.astro";
+
+interface Props {
+  eyebrow?: string;
+  decoration?: boolean;
+}
+
+const { eyebrow, decoration = false } = Astro.props;
+---
+
+<div class="header">
+  {decoration && <CircuitDecoration variant="header" />}
+  {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+  <slot />
+</div>
+
+<style>
+  .header {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--eyebrow-text-gap);
+  }
+</style>

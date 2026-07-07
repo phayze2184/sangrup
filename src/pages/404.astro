@@ -1,0 +1,110 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import CircuitDecoration from "../components/CircuitDecoration.astro";
+import Button from "../components/Button.astro";
+---
+
+<BaseLayout
+  currentPath="/404"
+  title="Pagina nu a fost găsită | Page not found — San Electroterm Grup"
+  description="Pagina căutată nu a fost găsită. The page you're looking for could not be found."
+>
+  <main id="main-content" tabindex="-1">
+    <Section aria-labelledby="not-found-title">
+      <Container>
+        <div class="not-found">
+          <CircuitDecoration variant="default" />
+          <Eyebrow>Eroare 404 · Error 404</Eyebrow>
+          <p class="not-found-code extra-large-text" aria-hidden="true">404</p>
+          <h1 id="not-found-title">Pagina nu a fost găsită</h1>
+          <p class="not-found-lead">
+            Ne pare rău, pagina pe care o cauți nu există sau a fost mutată. Verifică
+            adresa sau întoarce-te la pagina principală.
+          </p>
+          <hr class="not-found-divider" />
+          <h2 class="not-found-en-heading">Page not found</h2>
+          <p class="not-found-lead">
+            Sorry, the page you're looking for doesn't exist or has been moved. Check the
+            URL or head back to the homepage.
+          </p>
+          <div class="not-found-actions">
+            <Button variant="primary" label="Înapoi acasă" href={getRelativeLocaleUrl("ro", "")} />
+            <Button variant="secondary" label="Back to homepage" href={getRelativeLocaleUrl("en", "")} />
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--gap-component-md);
+    padding-block: var(--section-block-lg);
+    text-align: center;
+  }
+
+  .not-found-code {
+    margin: 0;
+    color: var(--color-border-strong);
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    line-height: 1;
+  }
+
+  .not-found h1 {
+    max-width: none;
+  }
+
+  .not-found-en-heading {
+    margin: 0;
+    color: var(--color-text-subtle);
+    font-family: var(--font-heading);
+    font-size: var(--h3-size);
+    font-weight: var(--weight-semibold);
+  }
+
+  .not-found-lead {
+    max-width: 45ch;
+    color: var(--color-text-muted);
+  }
+
+  .not-found-divider {
+    width: 3rem; /* 48px */
+    margin: var(--space-8) 0;
+    border: none;
+    border-top: var(--stroke-thin) solid var(--color-border);
+  }
+
+  .not-found-actions {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: var(--gap-component-md);
+    margin-top: var(--space-12);
+  }
+
+  .not-found-actions :global(.button) {
+    margin-top: 0;
+  }
+
+  @media screen and (max-width: 47.9375rem) { /* 767px */
+    .not-found {
+      padding-block: var(--section-block-md);
+    }
+
+    .not-found-actions {
+      flex-flow: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 20rem; /* 320px */
+    }
+  }
+</style>

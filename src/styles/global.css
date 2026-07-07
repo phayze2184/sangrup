@@ -1,4 +1,58 @@
-@layer reset, tokens, base, layout, components, utilities, accessibility;
+@layer reset, tokens, base, utilities, accessibility;
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("../fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("../fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/dm-mono-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/dm-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @layer tokens {
   :root {
@@ -31,10 +85,10 @@
     --color-black: oklch(0% 0 0);
     --color-white: var(--color-neutral-0);
 
-    /* Primitive sizes */
+    /* Primitives: font sizes */
     --h1-extra-size: clamp(2.5rem, 5vw, 4.5rem); /* 40px to 72px */
     --h1-size: clamp(2rem, 4.1vw, 4rem); /* 32px to 64px */
-    --h2-size: clamp(1.75rem, 3.2vw, 3.5rem); /* 28px to 56px */
+    --h2-size: clamp(1.75rem, 2vw, 2.87rem); /* 28px to 46px */
     --h3-size: clamp(1.25rem, 2.6vw, 2.5rem); /* 20px to 40px */
     --h4-size: clamp(1.125rem, 2.2vw, 1.625rem); /* 18px to 26px */
     --h5-size: clamp(1.125rem, 1.6vw, 1.625rem); /* 18px to 26px */
@@ -64,19 +118,22 @@
     --ls-wide: 0.02em;
     --ls-wider: 0.2em;
 
-    /* Primitives: spacing and radius */
-    --space-0: 0;
-    --space-1: 0.25rem; /* 4px */
-    --space-2: 0.5rem; /* 8px */
-    --space-3: 0.75rem; /* 12px */
-    --space-4: 1rem; /* 16px */
-    --space-5: 1.5rem; /* 24px */
-    --space-6: 2rem; /* 32px */
-    --space-7: 2.5rem; /* 40px */
-    --space-8: 3rem; /* 48px */
-    --space-9: 3.75rem; /* 60px */
-    --space-10: 5rem; /* 80px */
-    --space-11: 7.5rem; /* 120px */
+    /* Primitives: spacing */
+
+    --space-4: 0.25rem; /* 4px */
+    --space-8: 0.5rem; /* 8px */
+    --space-12: 0.75rem; /* 12px */
+    --space-16: 1rem; /* 16px */
+    --space-24: 1.5rem; /* 24px */
+    --space-32: 2rem; /* 32px */
+    --space-40: 2.5rem; /* 40px */
+    --space-48: 3rem; /* 48px */
+    --space-60: 3.75rem; /* 60px */
+    --space-80: 5rem; /* 80px */
+    --space-120: 7.5rem; /* 120px */
+
+    /* Primitives: radius */
+
     --radius-xs: 0.125rem; /* 2px */
     --radius-sm: 0.375rem; /* 6px */
     --radius-md: 0.5rem; /* 8px */
@@ -84,7 +141,7 @@
     --radius-xl: 1rem; /* 16px */
     --radius-2xl: 1.5rem; /* 24px */
     --radius-pill: 1000rem;
-    
+
     --stroke-thin: 0.0625rem; /* 1px */
     --stroke-focus: 0.125rem; /* 2px */
     --stroke-strong: 0.375rem; /* 6px */
@@ -95,18 +152,32 @@
     --shadow-panel-color: color-mix(in oklch, var(--color-neutral-900) 22%, transparent);
 
     /* Primitives: layout */
-    --container: 77.5rem; /* 1240px */
-    --section-seam-gap: 7.5rem; /* 120px */
-    --section-seam-gap-mobile: 5rem; /* 80px */
+    --container: 80rem; /* 1280px */
+
     --title-max-width: 40.625rem; /* 650px */
     --title-max-width-mobile: 20ch;
     --text-max-width: 80ch;
     --text-max-width-mobile: 100%;
+
+     /* Semantic: layout */
+    --padding-inline-section: clamp(1rem, 4vw, 1.75rem); /* 16px to 28px */
+    --section-block-lg: var(--space-120); /* 120px */
+    --section-block-md: var(--space-80); /* 80px */
+
+    --gap-component-sm: var(--space-12); /* 12px */
+    --gap-component-md: var(--space-24); /* 24px */
+    --gap-component-xl: var(--space-32); /* 32px */
+    --gap-component-xxl: var(--space-48); /* 48px */
+
     --elements-gap: clamp(2rem, 3vw, 3.75rem); /* 32px to 60px */
     --elements-gap-big: clamp(3.75rem, 5vh, 5rem); /* 60px to 80px */
-    --eyebrow-text-gap: 1.5rem; /* 24px */
-    --container-gutter: 3rem; /* 48px */
-    --nav-height: 4.5rem; /* 72px */
+
+    --padding-inline-tn: var(--space-8); /* 8px */
+    --padding-inline-sm: var(--space-16); /* 16px */
+
+    --eyebrow-text-gap: var(--space-12); /* 12px */
+    --container-gutter: var(--space-16); /* 16px */
+    --nav-height: var(--space-40); /* 40px */
     --marquee-gap: clamp(1.5rem, 4vw, 3.25rem); /* 24px to 52px */
     --cert-4-5-gap: clamp(0.75rem, 2vw, 1.75rem); /* 12px to 28px */
     --duration: 30s;
@@ -178,15 +249,16 @@
     --color-text-about-history-card: color-mix(in oklch, var(--color-text) 88%, var(--color-neutral-900));
     --color-decoration-about-history-card: color-mix(in oklch, var(--color-neutral-900) 20%, transparent);
     --color-surface-management-card: color-mix(in oklch, var(--color-neutral-0) 92%, transparent);
+    --_surface-glow-neutral: radial-gradient(130% 150% at 85% 15%, color-mix(in oklch, var(--color-neutral-0) 22%, transparent), color-mix(in oklch, var(--color-neutral-0) 0%, transparent) 55%);
     --surface-brand-gradient:
       radial-gradient(120% 140% at 90% 10%, color-mix(in oklch, var(--color-brand-glow-1) 32%, transparent), color-mix(in oklch, var(--color-brand-glow-1) 0%, transparent) 55%),
       radial-gradient(140% 160% at 15% 85%, color-mix(in oklch, var(--color-brand-glow-2) 20%, transparent), color-mix(in oklch, var(--color-brand-glow-2) 0%, transparent) 62%),
-      radial-gradient(130% 150% at 85% 15%, color-mix(in oklch, var(--color-neutral-0) 22%, transparent), color-mix(in oklch, var(--color-neutral-0) 0%, transparent) 55%),
+      var(--_surface-glow-neutral),
       linear-gradient(135deg, color-mix(in oklch, var(--color-brand-deep-1) 92%, transparent), color-mix(in oklch, var(--color-neutral-900) 98%, transparent));
     --surface-section-tint:
       radial-gradient(120% 140% at 90% 10%, color-mix(in oklch, var(--color-brand-glow-1) 12%, transparent), color-mix(in oklch, var(--color-brand-glow-1) 0%, transparent) 55%),
       radial-gradient(140% 160% at 15% 85%, color-mix(in oklch, var(--color-brand-glow-2) 10%, transparent), color-mix(in oklch, var(--color-brand-glow-2) 0%, transparent) 62%),
-      radial-gradient(130% 150% at 85% 15%, color-mix(in oklch, var(--color-neutral-0) 22%, transparent), color-mix(in oklch, var(--color-neutral-0) 0%, transparent) 55%),
+      var(--_surface-glow-neutral),
       linear-gradient(180deg, color-mix(in oklch, var(--color-neutral-900) 6%, transparent), color-mix(in oklch, var(--color-neutral-900) 0%, transparent)),
       var(--color-bg);
     --surface-fade-left: linear-gradient(90deg, var(--color-bg), color-mix(in oklch, var(--color-bg) 0%, transparent));
@@ -241,7 +313,7 @@
   a {
     color: inherit;
     text-decoration: none;
-    transition: 0.18s ease;
+    transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
   }
 
   button,
@@ -261,7 +333,6 @@
   }
 
   h1 {
-    margin: 0;
     color: var(--color-text);
     font-family: var(--font-heading);
     font-size: var(--h1-size);
@@ -272,7 +343,7 @@
 
   .highlight {
     display: inline-block;
-    padding: 0 var(--space-2);
+    padding: 0 var(--space-8);
     background: var(--color-text);
     color: var(--color-text-inverse);
     border-radius: var(--radius-sm);
@@ -327,15 +398,15 @@
 
   .skip-link {
     position: fixed;
-    top: var(--space-4);
-    left: var(--space-4);
+    top: var(--space-16);
+    left: var(--space-16);
     z-index: 200;
-    padding: var(--space-3) var(--space-4);
-    border: 0.0625rem solid var(--color-border-strong); /* 1px */
+    padding: var(--space-12) var(--space-16);
+    border: var(--stroke-thin) solid var(--color-border-strong); /* 1px */
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     color: var(--color-text-strong);
-    transform: translateY(calc(-100% - var(--space-4)));
+    transform: translateY(calc(-100% - var(--space-16)));
     transition: transform 0.2s ease;
   }
 
@@ -389,16 +460,6 @@
       scroll-behavior: auto !important;
     }
 
-    .marquee-track {
-      animation: none !important;
-      transform: none !important;
-    }
-
-    .feedback-popup__backdrop {
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-
     .reveal-up {
       opacity: 1;
       transform: none;
@@ -419,32 +480,6 @@
       --color-border-panel: color-mix(in oklch, var(--color-neutral-900) 24%, transparent);
       --color-focus-ring: color-mix(in oklch, var(--color-brand-500) 28%, transparent);
     }
-
-    .navbar {
-      border-bottom-width: 0.125rem; /* 2px */
-    }
-
-    .eyebrow,
-    .form-input,
-    .form-textarea,
-    .is-secondary,
-    .feedback-popup__panel {
-      border-width: 0.125rem; /* 2px */
-    }
-
-    .feedback-popup__close,
-    .feedback-popup__status {
-      border: 0.125rem solid currentColor; /* 2px */
-    }
-
-    .button {
-      font-weight: var(--weight-bold);
-    }
-
-    .menu-link::after {
-      width: 40%;
-      height: 0.1875rem; /* 3px */
-    }
   }
 
   @media (forced-colors: active) {
@@ -454,66 +489,6 @@
 
     a:not(.button) {
       color: LinkText;
-    }
-
-    .navbar,
-    .navigation,
-    .section,
-    .eyebrow,
-    .form-input,
-    .form-textarea,
-    .is-primary,
-    .is-secondary,
-    .feedback-popup__panel,
-    .feedback-popup__close {
-      background: Canvas;
-      color: CanvasText;
-      border: 0.0625rem solid CanvasText; /* 1px */
-      box-shadow: none;
-    }
-
-    .feedback-popup__backdrop {
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-
-    .feedback-popup__status {
-      background: Canvas;
-      color: CanvasText;
-      border: 0.0625rem solid CanvasText; /* 1px */
-    }
-
-    .feedback-popup.is-success .feedback-popup__status,
-    .feedback-popup.is-error .feedback-popup__status {
-      background: Highlight;
-      color: HighlightText;
-      border-color: Highlight;
-    }
-
-    .button-icon {
-      background: ButtonText;
-      color: ButtonFace;
-    }
-
-    .hamburger-icon {
-      background: Canvas;
-      border: 0.0625rem solid ButtonText; /* 1px */
-    }
-
-    .hamburger-icon span,
-    .menu-link::after {
-      background: ButtonText;
-    }
-
-    .certifications-marquee::before,
-    .certifications-marquee::after {
-      display: none;
-    }
-
-    .brand-logo,
-    .icon.phone {
-      filter: none;
     }
   }
 }

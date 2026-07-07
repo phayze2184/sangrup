@@ -1,17 +1,17 @@
 ---
 interface Props {
-  className?: string;
+  variant?: "default" | "header" | "hidden" | "about-history" | "hero";
   viewBox?: string;
   strokeWidth?: number;
 }
 
 const {
-  className = "",
+  variant = "default",
   viewBox = "0 0 320 220",
   strokeWidth = 2,
 } = Astro.props;
 
-const classes = ["decoration", className].filter(Boolean).join(" ");
+const classes = ["decoration", `decoration--${variant}`].join(" ");
 const circuitPaths = [
   "M12 28h92m20 0h40m16 0h96",
   "M24 76h64m24 0h120m16 0h52",
@@ -40,3 +40,50 @@ const circuitDots = [
     </g>
   </svg>
 </div>
+
+<style>
+  .decoration {
+    position: absolute;
+    top: 1.125rem; /* 18px */
+    right: calc((100% - min(var(--container), calc(100% - var(--container-gutter)))) / 2);
+    width: clamp(11.25rem, 28vw, 22.5rem); /* 180px to 360px */
+    color: var(--color-decoration);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .decoration svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .decoration--header {
+    top: -6.25rem; /* -100px */
+    right: 0;
+    left: auto;
+
+    @media screen and (max-width: 47.9375rem) { /* 767px */
+      top: -4rem; /* -64px */
+      width: clamp(6.25rem, 20vw, 9.375rem); /* 100px to 150px */
+    }
+  }
+
+  .decoration--hidden {
+    display: none;
+  }
+
+  .decoration--hero {
+    top: 3.75rem; /* 60px */
+    left: 3.75rem; /* 60px */
+  }
+
+  .decoration--about-history {
+    inset-block-start: clamp(1.375rem, 2.4vw, 1.875rem); /* 22px to 30px */
+    inset-inline-start: clamp(1.5rem, 2.5vw, 2.125rem); /* 24px to 34px */
+    inset-inline-end: auto;
+    inline-size: clamp(4rem, 11vw, 6.5rem); /* 64px to 104px */
+    color: var(--color-decoration-about-history-card);
+    opacity: 0.56;
+  }
+</style>

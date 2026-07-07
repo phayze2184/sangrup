@@ -1,20 +1,17 @@
 ---
 import { Image, getImage } from "astro:assets";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import Container from "../components/Container.astro";
-import SectionHeader from "../components/SectionHeader.astro";
-import Eyebrow from "../components/Eyebrow.astro";
-import CircuitDecoration from "../components/CircuitDecoration.astro";
-import { aboutHistory, managementTeam } from "../data/site";
-import altproSensor from "../assets/Altpro-numarator-osii-800px.jpg";
-import heroImageADesktop from "../assets/hero-image-a.jpeg";
-import heroImageAMobile from "../assets/hero-image-a-mobile.webp";
-import { getLocale } from "../i18n/locales";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import Container from "../../components/Container.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import CircuitDecoration from "../../components/CircuitDecoration.astro";
+import { aboutHistory, managementTeam } from "../../data/site";
+import altproSensor from "../../assets/Altpro-numarator-osii-800px.jpg";
+import heroImageADesktop from "../../assets/hero-image-a.jpeg";
+import heroImageAMobile from "../../assets/hero-image-a-mobile.webp";
 
-const locale = getLocale(Astro.currentLocale);
-
-const historyCards = aboutHistory[locale].map((paragraph, index) => ({
+const historyCards = aboutHistory.en.map((paragraph, index) => ({
   paragraph,
   classes: ["about-history-card", index === 1 && "about-history-card-center"].filter(Boolean).join(" "),
 }));
@@ -30,7 +27,7 @@ const heroDesktop = `url("${heroDesktopImage.src}")`;
 const heroMobile = `url("${heroMobileImage.src}")`;
 ---
 
-<BaseLayout currentPath="/about" title="Despre noi | San Electroterm Grup">
+<BaseLayout currentPath="/en/about" title="About us | San Electroterm Grup" description="Learn about San Electroterm Grup: our mission, our history, our management team, and our partnerships.">
   <link
     slot="head"
     rel="preload"
@@ -51,17 +48,17 @@ const heroMobile = `url("${heroMobileImage.src}")`;
     <div class="hero-section hero-image-a" id="about" aria-labelledby="about-page-title">
       <div class="hero-copy">
         <Eyebrow class="text-white">San Electroterm Grup</Eyebrow>
-        <h1 class="hero-title text-white extra-large-text" id="about-page-title">Despre noi</h1>
+        <h1 class="hero-title text-white extra-large-text" id="about-page-title">About us</h1>
       </div>
     </div>
 
     <Section id="istoric" background="about-history" aria-labelledby="history-title">
       <Container>
         <div class="about-history-content">
-          <SectionHeader eyebrow="Scurt istoric">
-            <h2 id="history-title">Evoluție constantă</h2>
+          <SectionHeader eyebrow="Brief history">
+            <h2 id="history-title">Constant evolution</h2>
           </SectionHeader>
-          <div class="about-history-grid" aria-label="Evoluția companiei San Electroterm Grup">
+          <div class="about-history-grid" aria-label="San Electroterm Grup's evolution">
             {
               historyCards.map((card) => (
                 <article class={card.classes}>
@@ -78,10 +75,10 @@ const heroMobile = `url("${heroMobileImage.src}")`;
     <Section id="management" aria-labelledby="management-title">
       <Container>
         <div class="management-wrapper">
-          <SectionHeader eyebrow="Echipa managerială">
-            <h2 id="management-title">Management orientat spre performanță</h2>
+          <SectionHeader eyebrow="Management team">
+            <h2 id="management-title">Performance-driven management</h2>
           </SectionHeader>
-          <div class="management-grid" aria-label="Echipa managerială">
+          <div class="management-grid" aria-label="Management team">
             {
               teamMembers.map((member) => (
                 <article class="management-card">
@@ -107,15 +104,15 @@ const heroMobile = `url("${heroMobileImage.src}")`;
         <div class="news-wrapper">
           <div class="news-grid">
             <div class="news-left">
-              <Eyebrow>Parteneriate</Eyebrow>
-              <h2 id="news-title">Colaborări și încredere</h2>
+              <Eyebrow>Partnerships</Eyebrow>
+              <h2 id="news-title">Collaboration and trust</h2>
               <p>
-                Colaborăm cu <span class="highlight">autorități publice</span> și <span class="highlight">companii private</span> oferind soluții personalizate care respectă termenele, bugetele și standardele de calitate ale proiectelor complexe de infrastructură și instalații.
+                We work with <span class="highlight">public authorities</span> and <span class="highlight">private companies</span>, delivering tailored solutions that meet the deadlines, budgets, and quality standards of complex infrastructure and installation projects.
               </p>
               <div class="news-image">
                 <Image
                   src={altproSensor}
-                  alt="Senzor de numărare a osiilor montat pe șină"
+                  alt="Axle-counting sensor mounted on a rail"
                   loading="lazy"
                   widths={[400, 640, 800]}
                   sizes="(min-width: 64rem) 640px, 100vw"
@@ -124,10 +121,10 @@ const heroMobile = `url("${heroMobileImage.src}")`;
             </div>
             <div class="news-right">
               <p>
-                San Electroterm Grup SRL este reprezentant oficial în România al companiei <span class="highlight">Altpro d.o.o.</span>, producător recunoscut la nivel european de echipamente pentru siguranța și controlul traficului feroviar.
+                San Electroterm Grup SRL is the official representative in Romania of <span class="highlight">Altpro d.o.o.</span>, a manufacturer recognized across Europe for railway traffic safety and control equipment.
               </p>
               <p>
-                Prin acest parteneriat, San Electroterm Grup asigură furnizarea, integrarea și suportul tehnic pentru <span class="highlight">dulapuri electronice de tip TN</span> <span class="highlight">și sisteme de numărare a osiilor</span>, soluții esențiale pentru monitorizarea și securizarea infrastructurii feroviare moderne.
+                Through this partnership, San Electroterm Grup provides the supply, integration, and technical support of <span class="highlight">TN-type electronic cabinets</span> <span class="highlight">and axle-counting systems</span>, solutions essential for monitoring and securing modern railway infrastructure.
               </p>
             </div>
           </div>
@@ -356,7 +353,7 @@ const heroMobile = `url("${heroMobileImage.src}")`;
   }
 
   .news-left h2 {
-    max-width: 9ch;
+    max-width: 12ch;
   }
 
   .news-image {

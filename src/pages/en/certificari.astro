@@ -1,14 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import Container from "../components/Container.astro";
-import SectionHeader from "../components/SectionHeader.astro";
-import { certificationDocuments } from "../data/site";
-import { getLocale } from "../i18n/locales";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import Container from "../../components/Container.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { certificationDocuments } from "../../data/site";
 
-const locale = getLocale(Astro.currentLocale);
-
-const documents = certificationDocuments[locale].map((document, index) => ({
+const documents = certificationDocuments.en.map((document, index) => ({
   ...document,
   fileName: decodeURIComponent(document.filePath.split("/").pop() ?? `${document.id}.pdf`),
   previewPath: `${document.filePath}#toolbar=0&navpanes=0&scrollbar=1`,
@@ -19,20 +16,20 @@ const documents = certificationDocuments[locale].map((document, index) => ({
 ---
 
 <BaseLayout
-  currentPath="/certificari"
-  title="Certificări | San Electroterm Grup"
-  description="Descărcați certificările și documentele oficiale San Electroterm Grup."
+  currentPath="/en/certificari"
+  title="Certifications | San Electroterm Grup"
+  description="Download San Electroterm Grup's official certifications and documents."
 >
   <main id="main-content" tabindex="-1">
     <Section class="section-certification-library" aria-labelledby="certificari-library-title">
       <Container>
         <div class="certification-library">
-          <SectionHeader eyebrow="Documente oficiale">
+          <SectionHeader eyebrow="Official documents">
             <div class="title-text">
-              <h1 id="certificari-library-title">Certificări și atestate</h1>
+              <h2 id="certificari-library-title">Certifications and authorizations</h2>
               <p>
-                Fiecare document poate fi extins pentru previzualizare și descărcat individual
-                direct din listă.
+                Each document can be expanded for preview and downloaded individually
+                directly from the list.
               </p>
             </div>
           </SectionHeader>
@@ -52,11 +49,11 @@ const documents = certificationDocuments[locale].map((document, index) => ({
                         data-accordion-trigger
                       >
                         <span class="certification-trigger__title">{document.title}</span>
-                        <span class="certification-trigger__meta">Previzualizare</span>
+                        <span class="certification-trigger__meta">Preview</span>
                       </button>
 
                       <a class="certification-download" href={document.filePath} download={document.fileName}>
-                        <span>Descarcă</span>
+                        <span>Download</span>
                         <span class="certification-download__format">PDF</span>
                       </a>
                     </div>
@@ -73,7 +70,7 @@ const documents = certificationDocuments[locale].map((document, index) => ({
                         <figure class="certification-preview">
                           <iframe
                             src={document.previewPath}
-                            title={`Previzualizare ${document.title}`}
+                            title={`Preview ${document.title}`}
                             loading="lazy"
                           ></iframe>
                         </figure>
@@ -85,7 +82,7 @@ const documents = certificationDocuments[locale].map((document, index) => ({
                             href={document.filePath}
                             download={document.fileName}
                           >
-                            Descarcă documentul PDF
+                            Download the PDF document
                           </a>
                         </div>
                       </div>
@@ -93,7 +90,7 @@ const documents = certificationDocuments[locale].map((document, index) => ({
                   </article>
                 ))
               ) : (
-                <p>Nu există documente PDF disponibile în acest moment.</p>
+                <p>No PDF documents are available at this time.</p>
               )
             }
           </div>
