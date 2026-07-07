@@ -2,8 +2,8 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: 'https://www.sangrup.ro',
-  base: '/',
+  site: 'https://phayze2184.github.io',
+  base: '/sangrup',
   i18n: {
     defaultLocale: "ro",
     locales: ["ro", "en"],

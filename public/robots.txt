@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sangrup.ro/sitemap-index.xml
+Sitemap: https://phayze2184.github.io/sangrup/sitemap-index.xml

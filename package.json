@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/phayze2184/sangrup.git"
   },
-  "homepage": "https://www.sangrup.ro",
+  "homepage": "https://phayze2184.github.io/sangrup",
   "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "astro dev",
